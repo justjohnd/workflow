@@ -6,7 +6,7 @@ This document describes my worflow in detail for creating a Wordpress project fo
 ### Setting up git local and remote repos
 - Create a repository or fork an existing one
 - Open the repo and click the Code button, then copy the path
-- in CLI (within your main project directory) type <code>git clone copied-path</code>
+- in CLI (within your main project directory) type <code>git clone copied-path-from-above</code>
 
 # Client Information
 
