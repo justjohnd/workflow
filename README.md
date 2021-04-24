@@ -8,6 +8,15 @@ This document describes my worflow in detail for creating a Wordpress project fo
 - Open the repo and click the Code button, then copy the path
 - in CLI (within your main project directory) type <code>git clone copied-path-from-above</code>
 
+### Dependencies
+- npm
+- Sass
+- Bootstrap (optional)
+- normalize.css (if not using Bootstrap)
+- Transitions library
+- CSS Objects library (optional)
+- jQuery (if using Transitions or CSS Objects library)
+
 # Client Information
 
 Here you will find basic information on how to set up and maintain the content of your site. Before making any siginificant changes, please make sure you have a save backup of the site in case you want to rever to the previous version.
