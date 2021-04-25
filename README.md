@@ -10,12 +10,16 @@ This document describes my worflow in detail for creating a Wordpress project fo
 
 ### Dependencies
 - npm
-- Sass
-- Bootstrap (optional)
+- npx: <code>npm i npx</code>
+- gulp: <code>npm install --save-dev gulp</code>
+- Sass (should be installed globally)
+- Bootstrap: <code>npm i bootstrap</code>
 - normalize.css (if not using Bootstrap)
 - Transitions library
 - CSS Objects library (optional)
-- jQuery (if using Transitions or CSS Objects library)
+- jQuery CDN (if using Transitions or CSS Objects library)
+  <code><script src="https://code.jquery.com/jquery-3.6.0.min.js"></script></code>
+  Note that whether jQuery has been loaded on browser, just add <code>console.log($)</code> to you JS file.
 
 # Client Information
 
