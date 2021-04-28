@@ -17,10 +17,14 @@ git push origin main
 ```
 
 ### Dependencies
+- SASS (globally)
 - npm
 - npx: <code>npm i npx</code>
-- gulp: <code>npm install --save-dev gulp</code>
-- Sass (should be installed globally)
+- gulp:
+ ```
+npm install gulp-cli -g
+npm install --save-dev gulp
+```
 - Bootstrap: <code>npm i bootstrap</code>
 - normalize.css (if not using Bootstrap)
 - Transitions library
@@ -28,6 +32,12 @@ git push origin main
 - jQuery CDN (if using Transitions or CSS Objects library)
   <code><script src="https://code.jquery.com/jquery-3.6.0.min.js"></script></code>
   Note that whether jQuery has been loaded on browser, just add <code>console.log($)</code> to you JS file.
+
+### Troubleshooting Gulp
+-If SASS isn't compiling:
+1. Reinstall all packages: <code>npm install</code>
+2. Reinstall <code>npm i --save-dev node-sass gulp-sass</code>
+3. 
 
 # Client Information
 
