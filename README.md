@@ -23,7 +23,7 @@ git push origin main
 - gulp and gulp dependencies:
  ```
 npm i gulp-cli -g
-npm i gulp node-sass gulp-sass browser-sync gulp-sourcemaps cssnano gulp-imagemin gulp-cache gulp-htmlmin del --save-dev
+npm i gulp gulp-sass browser-sync gulp-sourcemaps gulp-cssnano gulp-imagemin gulp-cache gulp-htmlmin del gulp-autoprefixer gulp-babel @babel/core @babel/preset-env --save-dev
 ```
 - Bootstrap: <code>npm i bootstrap</code>
 - normalize.css (if not using Bootstrap)
