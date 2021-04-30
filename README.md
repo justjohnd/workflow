@@ -23,7 +23,7 @@ git push origin main
 - gulp and gulp dependencies:
  ```
 npm i gulp-cli -g
-$ npm i gulp gulp-sass browser-sync --save-dev
+npm i gulp node-sass gulp-sass browser-sync gulp-sourcemaps cssnano gulp-imagemin gulp-cache --save-dev
 ```
 - Bootstrap: <code>npm i bootstrap</code>
 - normalize.css (if not using Bootstrap)
@@ -34,10 +34,7 @@ $ npm i gulp gulp-sass browser-sync --save-dev
   Note that whether jQuery has been loaded on browser, just add <code>console.log($)</code> to you JS file.
 
 ### Troubleshooting Gulp
--If SASS isn't compiling:
-1. Reinstall all packages: <code>npm install</code>
-2. Reinstall <code>npm i --save-dev node-sass gulp-sass gulp-sourcemaps cssnano gulp-imagemin gulp-cache</code>
-3. 
+- Reinstall all packages: <code>npm install</code>
 
 # Client Information
 
