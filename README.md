@@ -17,13 +17,13 @@ git push origin main
 ```
 
 ### Dependencies
-- SASS (globally)
-- npm
-- npx: <code>npm i npx</code>
-- gulp:
+- Node and npm (globally)
+- SASS (globally): <code>npm install sass -g </code>
+- npx (optional?): <code>npm i npx</code>
+- gulp and gulp dependencies:
  ```
-npm install gulp-cli -g
-npm install --save-dev gulp
+npm i gulp-cli -g
+$ npm i gulp gulp-sass browser-sync --save-dev
 ```
 - Bootstrap: <code>npm i bootstrap</code>
 - normalize.css (if not using Bootstrap)
@@ -36,7 +36,7 @@ npm install --save-dev gulp
 ### Troubleshooting Gulp
 -If SASS isn't compiling:
 1. Reinstall all packages: <code>npm install</code>
-2. Reinstall <code>npm i --save-dev node-sass gulp-sass</code>
+2. Reinstall <code>npm i --save-dev node-sass gulp-sass gulp-sourcemaps cssnano gulp-imagemin gulp-cache</code>
 3. 
 
 # Client Information
