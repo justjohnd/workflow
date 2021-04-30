@@ -1,6 +1,6 @@
 # Workflow
 
-This document describes my worflow in detail for creating a Wordpress project for myself or a prospective customer
+This document describes my worflow in detail for creating a Wordpress project (starting with a static site) for myself or a prospective customer
 
 ## Initial Setup
 ### Setting up git local and remote repos
