@@ -4,17 +4,19 @@ This document describes my worflow in detail for creating a Wordpress project (s
 
 ## Initial Setup
 ### Setting up git local and remote repos
-- Create a repository or fork an existing one
-- Open the repo and click the Code button, then copy the path
-- in CLI (within your main project directory) type:
+- Click "Import repository"
+- Under "Your old repository’s clone URL" enter <code>https://github.com/justjohnd/static-site.git</code>
+- Name the repository and click "Begin Import"
+- Open your new repository and under "Code" copy the HTTPS address
+- In CLI (within your main project directory) type: <code>git clone my-repository-path</code>
+- Make a change to README (or any file), save and make your initial commit:
 ```
-git clone copied-path-from-above
-echo "# gulp-templates-from-class" >> README.md
-git add README.md
+git add -A
 git commit -m "first commit"
 git branch -M main
 git push origin main
 ```
+- In CLI type <code>npm install</code>
 
 ### Dependencies
 - Node and npm (globally)
