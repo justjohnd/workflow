@@ -8,7 +8,7 @@ This document describes my worflow in detail for creating a Wordpress project (s
 - Under "Your old repository’s clone URL" enter <code>https://github.com/justjohnd/static-site.git</code>
 - Name the repository and click "Begin Import"
 - Open your new repository and under "Code" copy the HTTPS address
-- In CLI (within your main project directory) type: <code>git clone my-repository-path</code>
+- In CLI (within your projects folder, for instance `/webDevelopment`) type: `git clone my-repository-path`
 - Make a change to README (or any file), save and make your initial commit:
 ```
 git add -A
@@ -18,25 +18,36 @@ git push origin main
 ```
 - In CLI type <code>npm install</code>
 
+### Setting up MySQL database and installing Wordpress Locally
+- 
+
 ### Dependencies
 - Node and npm (globally)
 - SASS (globally): <code>npm install sass -g </code>
-- npx (optional?): <code>npm i npx</code>
-- gulp and gulp dependencies:
+- npx: <code>npm i npx</code>
+- In case you don't directly install dependencies from the cloned `static-site` above, you can also run the following in CLI:
  ```
 npm i gulp-cli -g
 npm i gulp gulp-sass browser-sync gulp-sourcemaps gulp-cssnano gulp-imagemin gulp-cache gulp-htmlmin del gulp-autoprefixer gulp-babel @babel/core @babel/preset-env --save-dev
 ```
-- Bootstrap: <code>npm i bootstrap</code>
-- normalize.css (if not using Bootstrap)
-- Transitions library
-- CSS Objects library (optional)
-- jQuery CDN (if using Transitions or CSS Objects library)
-  <code><script src="https://code.jquery.com/jquery-3.6.0.min.js"></script></code>
-  Note that whether jQuery has been loaded on browser, just add <code>console.log($)</code> to you JS file.
+- Bootstrap: <code>npm i --save bootstrap</code>
 
-### Troubleshooting Gulp
-- Reinstall all packages: <code>npm install</code>
+**Troubleshooting Notes**
+You can confirm whether jQuery has been loaded on browser by adding <code>console.log($)</code> to you JS file.
+
+### Setting up MySQL and Wordpress Locally
+- Open the XAMPP Control Panel and start MySQL.
+- Click Admin to open phpMyAdmin.
+- Click New and enter database name.
+- In the `xampp/htdocs/` folder, create a directory with your project name (Note: best practice is to name the project and directory the same).
+- Download newest version of Wordpress from here: `https://wordpress.org/download/`, directly into the new project directory.
+- Inside the directory, change the filename `wp-config-sample.php` to `wp-config.php`.
+- Open `wp-config.php` and change:
+-  `'database_name_here'` to your database name
+-  `'username_here'` to `'root'`
+-  `'password_here'` to `''`
+- In browser, open `http://localhost/my-project-name`
+- Enter username, password, and email information and click Create
 
 # Client Information
 
