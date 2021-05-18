@@ -16,10 +16,7 @@ git commit -m "first commit"
 git branch -M main
 git push origin main
 ```
-- In CLI type <code>npm install</code>
-
-### Setting up MySQL database and installing Wordpress Locally
-- 
+- In CLI type <code>npm install</code> 
 
 ### Dependencies
 - Node and npm (globally)
@@ -48,6 +45,8 @@ You can confirm whether jQuery has been loaded on browser by adding <code>consol
 -  `'password_here'` to `''`
 - In browser, open `http://localhost/my-project-name`
 - Enter username, password, and email information and click Create
+- At `https://underscores.me/` click Advanced, check ***_sassify*** and add any theme information you wish.
+- Download and unzip as a file in your projects `themes` directory
 
 # Client Information
 
