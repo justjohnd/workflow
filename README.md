@@ -33,7 +33,7 @@ npm i gulp gulp-sass browser-sync gulp-sourcemaps gulp-cssnano gulp-imagemin gul
 - You can confirm whether jQuery has been loaded on browser by adding <code>console.log($)</code> to you JS file.
 - Find all npm packages installed in a project with `npm list --depth=0`. This will show top level dependencies. Change the depth number to see lower level dependencies.
 
-# Wordpress Integration
+# Wordpress Integration (for Bootstrap 4)
 
 ## Setting up MySQL and Wordpress Locally
 - Open the XAMPP Control Panel and start MySQL.
@@ -51,7 +51,36 @@ npm i gulp gulp-sass browser-sync gulp-sourcemaps gulp-cssnano gulp-imagemin gul
 - At `https://underscores.me/` click Advanced, check ***_sassify*** and add any theme information you wish.
 - Download and unzip as a file in your projects `themes` directory
 
+## Creating a Navbar
+- See these `https://github.com/wp-bootstrap/wp-bootstrap-navwalker` and `https://gist.github.com/cristovaov/6306f833faa07608a1fe` for references.
+- Copy the code from `class-wp-bootstrap-navwalker`. Create a new file in your root directory with the same name and paste the code in.
+- Add this code to `functions.php`
+```
+/**
+ * Register Custom Navigation Walker
+ */
+function register_navwalker()
+{
+	require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
+}
+add_action('after_setup_theme', 'register_navwalker');
+```
+- See above website or Bootstrap template for boilerplate HTML. Paste this html into your header page.
+- Make sure `'theme_location'` is pointed to the correct menu, and that menu is set up on the Wordpress dashboard
+- See the above gist or Bootstrap Template to see how to add other elements, such as buttons, into the menu. In the `wp_nav_menu` function, `'container'` should be set to `''`. Then you can wrap the menu and additional elements in a single container
+- You can add classes to the `li` that wraps each menu item by going to `class-wp-bootstrap-navwalker`, finding, and editing this portion of the code:
+```
 
+				$atts['href'] = !empty($item->url) ? $item->url : '#';
+				// For items in dropdowns use .dropdown-item instead of .nav-link.
+				// Add classes to nav link level here:
+				if ($depth > 0) {
+					$atts['class'] = 'dropdown-item';
+				} else {
+					$atts['class'] = 'nav-link text-white';
+				}
+			}
+```
 
 # Client Information
 
