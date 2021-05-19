@@ -70,16 +70,14 @@ add_action('after_setup_theme', 'register_navwalker');
 - See the above gist or Bootstrap Template to see how to add other elements, such as buttons, into the menu. In the `wp_nav_menu` function, `'container'` should be set to `''`. Then you can wrap the menu and additional elements in a single container
 - You can add classes to the `li` that wraps each menu item by going to `class-wp-bootstrap-navwalker`, finding, and editing this portion of the code:
 ```
-
-				$atts['href'] = !empty($item->url) ? $item->url : '#';
-				// For items in dropdowns use .dropdown-item instead of .nav-link.
-				// Add classes to nav link level here:
-				if ($depth > 0) {
-					$atts['class'] = 'dropdown-item';
-				} else {
-					$atts['class'] = 'nav-link text-white';
-				}
-			}
+$atts['href'] = !empty($item->url) ? $item->url : '#';
+// For items in dropdowns use .dropdown-item instead of .nav-link.
+// Add classes to nav link level here:
+if ($depth > 0) {
+	$atts['class'] = 'dropdown-item';
+} else {
+	$atts['class'] = 'nav-link text-white';
+}
 ```
 
 # Client Information
