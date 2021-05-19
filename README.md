@@ -2,8 +2,8 @@
 
 This document describes my worflow in detail for creating a Wordpress project (starting with a static site) for myself or a prospective customer
 
-## Initial Setup
-### Setting up git local and remote repos
+# Initial Setup
+## Setting up git local and remote repos
 - Click "Import repository"
 - Under "Your old repository’s clone URL" enter <code>https://github.com/justjohnd/static-site.git</code>
 - Name the repository and click "Begin Import"
@@ -29,10 +29,13 @@ npm i gulp gulp-sass browser-sync gulp-sourcemaps gulp-cssnano gulp-imagemin gul
 ```
 - Bootstrap: <code>npm i --save bootstrap</code>
 
-**Troubleshooting Notes**
-You can confirm whether jQuery has been loaded on browser by adding <code>console.log($)</code> to you JS file.
+**Dependency Troubleshooting Notes**
+- You can confirm whether jQuery has been loaded on browser by adding <code>console.log($)</code> to you JS file.
+- Find all npm packages installed in a project with `npm list --depth=0`. This will show top level dependencies. Change the depth number to see lower level dependencies.
 
-### Setting up MySQL and Wordpress Locally
+# Wordpress Integration
+
+## Setting up MySQL and Wordpress Locally
 - Open the XAMPP Control Panel and start MySQL.
 - Click Admin to open phpMyAdmin.
 - Click New and enter database name.
@@ -47,6 +50,8 @@ You can confirm whether jQuery has been loaded on browser by adding <code>consol
 - Enter username, password, and email information and click Create
 - At `https://underscores.me/` click Advanced, check ***_sassify*** and add any theme information you wish.
 - Download and unzip as a file in your projects `themes` directory
+
+
 
 # Client Information
 
