@@ -28,6 +28,7 @@ npm i gulp-cli -g
 npm i gulp gulp-sass browser-sync gulp-sourcemaps gulp-cssnano gulp-imagemin gulp-cache gulp-htmlmin del gulp-autoprefixer gulp-babel @babel/core @babel/preset-env --save-dev
 ```
 - Bootstrap: <code>npm i --save bootstrap</code>
+- Composer. Note that composer is already installed for the local XAMPP environment. To confirm installation, type `composer` into CLI. See [here](https://thecodedeveloper.com/install-composer-windows-xampp/) for how to install.
 
 **Dependency Troubleshooting Notes**
 - You can confirm whether jQuery has been loaded on browser by adding <code>console.log($)</code> to you JS file.
