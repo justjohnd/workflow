@@ -80,6 +80,8 @@ if ($depth > 0) {
 	$atts['class'] = 'nav-link text-white';
 }
 ```
+- Use a custom-logo to allow the user to upload their logo image:
+`<?php get_template_part('template-parts/content', 'custom-logo'); ?>`
 
 ## Creating Template Parts
 - Template parts, along with custom posts will typically access content via ACF using the `get_field` function. Please paste the following snippet at 
