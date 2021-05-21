@@ -81,6 +81,24 @@ if ($depth > 0) {
 }
 ```
 
+## Creating Template Parts
+- Template parts, along with custom posts will typically access content via ACF using the `get_field` function. Please paste the following snippet at 
+Currently I do not have an automation process set up, however, please add the following snippet to the top of any page directly running get_field() for ACF:
+```
+<?php
+$post = $wp_query->get_queried_object();
+$name = $post->post_name; //Retrieves post name (currently not be used).
+ $template_path_array = explode('/', $_template_file);
+ $template_filename = end($template_path_array);
+ $template_name = substr($template_filename, 0, strlen($template_filename) - 4);
+?>
+```
+This standardizes field names to: `page-name_template-name_description`. So as to follow ACF field name conventions, which use underscores to namespace, make sure to also save all template part files using a `_` namespace, versus the conventional `-`.
+
+## Advanced Custom Fields
+- At this time, there is no automated solution for ACF, so fields must be entered manually, and should be done so only after site design has been finalized
+
+
 # Client Information
 
 Here you will find basic information on how to set up and maintain the content of your site. Before making any siginificant changes, please make sure you have a save backup of the site in case you want to rever to the previous version.
