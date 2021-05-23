@@ -18,7 +18,7 @@ git push origin main
 ```
 - In CLI type <code>npm install</code> 
 
-### Dependencies
+### Dependencies (Static Site)
 - Node and npm (globally)
 - SASS (globally): <code>npm install sass -g </code>
 - npx: <code>npm i npx</code>
@@ -44,13 +44,16 @@ npm i gulp gulp-sass browser-sync gulp-sourcemaps gulp-cssnano gulp-imagemin gul
 - Download newest version of Wordpress from here: `https://wordpress.org/download/`, directly into the new project directory.
 - Inside the directory, change the filename `wp-config-sample.php` to `wp-config.php`.
 - Open `wp-config.php` and change:
--  `'database_name_here'` to your database name
+-  `'database_name_here'` to your database name.
 -  `'username_here'` to `'root'`
 -  `'password_here'` to `''`
-- In browser, open `http://localhost/my-project-name`
-- Enter username, password, and email information and click Create
+- In browser, open `http://localhost/my-project-name`.
+- Enter username, password, and email information and click Create.
 - At `https://underscores.me/` click Advanced, check ***_sassify*** and add any theme information you wish.
-- Download and unzip as a file in your projects `themes` directory
+- Download and unzip as a file in your projects `themes` directory.
+- Verify that node, npm, SASS, and gulp-cli are globally installed. If unsure whether gulp-cli is installed, run `npm i --g gulp-cli`
+- Run `npm init`
+- Initialize git and github local and remote repositories per the instructions above.
 
 ## Creating a Navbar
 - See these `https://github.com/wp-bootstrap/wp-bootstrap-navwalker` and `https://gist.github.com/cristovaov/6306f833faa07608a1fe` for references.
