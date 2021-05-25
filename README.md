@@ -67,7 +67,7 @@ $name = $post->post_name; //Retrieves post name (currently not be used).
  $template_name = substr($template_filename, 0, strlen($template_filename) - 4);
 ?>
 ```
-This standardizes field names to: `page-name_template-name_description`. So as to follow ACF field name conventions, which use underscores to namespace, make sure to also save all template part files using a `_` namespace, versus the conventional `-`.
+This standardizes field names to: `page-name-template-name-description`. Note that to keep with the template parts namespaced `-` convention, all ACF field names should be also set up using `-` instead of `_`.
 
 ## Creating a Navbar
 - See these `https://github.com/wp-bootstrap/wp-bootstrap-navwalker` and `https://gist.github.com/cristovaov/6306f833faa07608a1fe` for references.
