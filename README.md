@@ -55,6 +55,20 @@ npm i gulp gulp-sass browser-sync gulp-sourcemaps gulp-cssnano gulp-imagemin gul
 - Run `npm init`
 - Initialize git and github local and remote repositories per the instructions above.
 
+## Creating Template Parts
+- Template parts, along with custom posts will typically access content via ACF using the `get_field` function. Please paste the following snippet at 
+Currently I do not have an automation process set up, however, please add the following snippet to the top of any page directly running get_field() for ACF:
+```
+<?php
+$post = $wp_query->get_queried_object();
+$name = $post->post_name; //Retrieves post name (currently not be used).
+ $template_path_array = explode('/', $_template_file);
+ $template_filename = end($template_path_array);
+ $template_name = substr($template_filename, 0, strlen($template_filename) - 4);
+?>
+```
+This standardizes field names to: `page-name_template-name_description`. So as to follow ACF field name conventions, which use underscores to namespace, make sure to also save all template part files using a `_` namespace, versus the conventional `-`.
+
 ## Creating a Navbar
 - See these `https://github.com/wp-bootstrap/wp-bootstrap-navwalker` and `https://gist.github.com/cristovaov/6306f833faa07608a1fe` for references.
 - Copy the code from `class-wp-bootstrap-navwalker`. Create a new file in your root directory with the same name and paste the code in.
@@ -86,19 +100,32 @@ if ($depth > 0) {
 - Use a custom-logo to allow the user to upload their logo image:
 `<?php get_template_part('template-parts/content', 'custom-logo'); ?>`
 
-## Creating Template Parts
-- Template parts, along with custom posts will typically access content via ACF using the `get_field` function. Please paste the following snippet at 
-Currently I do not have an automation process set up, however, please add the following snippet to the top of any page directly running get_field() for ACF:
+## Waypoints and DOM Manipulation
+- **Waypoints** allows you to manipulate the DOM based on user scroll position. The starter template currently uses it to change the navbar header background from transparent to white
+- Use `element` to define the element which will call the `handler` function when that element is scrolled to
+- As a best practice, namespace these elements as `js-elementName` to signify that they are not style elements
+- Example:
 ```
-<?php
-$post = $wp_query->get_queried_object();
-$name = $post->post_name; //Retrieves post name (currently not be used).
- $template_path_array = explode('/', $_template_file);
- $template_filename = end($template_path_array);
- $template_name = substr($template_filename, 0, strlen($template_filename) - 4);
-?>
+const waypoint = new Waypoint({
+  element: document.getElementById('js-navbar'),
+  handler: function () {
+    document.getElementById('nav').classList.add('bg-white');
+    document.getElementById('nav').classList.remove('bg-transparent');
+
+    let elements = document.getElementsByClassName('nav-link'); // get all elements
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].classList.remove('text-white');
+      elements[i].classList.add('text-dark');
+    }
+  },
+});
 ```
-This standardizes field names to: `page-name_template-name_description`. So as to follow ACF field name conventions, which use underscores to namespace, make sure to also save all template part files using a `_` namespace, versus the conventional `-`.
+This code will call the `handler` function when `js-navbar` is scrolled to.
+
+## CSS Transitions
+- All transitions files reside in `src/sass/transitions`. 
+- **Scroll-Out** is used to trigger CSS transitions on data-scroll
+- `data-scroll` must be added to the container for which you impose the transition on scoll
 
 ## Advanced Custom Fields
 - At this time, there is no automated solution for ACF, so fields must be entered manually, and should be done so only after site design has been finalized
