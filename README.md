@@ -104,6 +104,7 @@ if ($depth > 0) {
 - **Waypoints** allows you to manipulate the DOM based on user scroll position. The starter template currently uses it to change the navbar header background from transparent to white
 - Use `element` to define the element which will call the `handler` function when that element is scrolled to
 - As a best practice, namespace these elements as `js-elementName` to signify that they are not style elements
+- Use `offset` to change the scroll position for that element to be triggered. A positive number will offset the starting point up from the initial element
 - Example:
 ```
 const waypoint = new Waypoint({
@@ -118,6 +119,7 @@ const waypoint = new Waypoint({
       elements[i].classList.add('text-dark');
     }
   },
+  offset: 200,
 });
 ```
 This code will call the `handler` function when `js-navbar` is scrolled to.
