@@ -325,22 +325,38 @@ To route your emails to gmail:
 - Under Value, enter <code>v=DMARC1; p=none; fo=1; rua=mailto:email-name@my-site.com</code>
 - Add <code>\_dmarc</code> to the Name.
 
-## Setting Up Contact Forms 7 [reference](https://themeisle.com/blog/how-to-set-up-contact-form-7/#:~:text=The%20first%20step%20to%20setting,displayed%2C%20click%20Install%20%3E%20Activate)
+## Setting Up Contact Forms 7 and Captcha [reference](https://themeisle.com/blog/how-to-set-up-contact-form-7/#:~:text=The%20first%20step%20to%20setting,displayed%2C%20click%20Install%20%3E%20Activate)
 
-1. Install plugin
-2. Under Contact, add any necessary forms
+1. Install Contact Forms 7 plugin
+2. Install Advanced noCaptcha & invisible Captcha plugin
+3. Under Contact, add any necessary forms
+4. 
 
 ## Setting Up Captcha for Contact Forms 7
 
 1. Confirm Contact Forms 7 plugin is installed.
 2. Confirm Advanced noCaptcha & invisible Captcha plugin is installed.
-
-- Under settings, confirm that version is set to V3
-
-3. Set up reCAPTCHA at Google and assign account to local server (for development) and site. Make sure that your version is also set to V3.
+3. Under settings in the Captcha plugin, set the version to V3
+3. Set up reCAPTCHA at Google and assign account to local server (for development) and site. Domain should be set to `localhost`. Make sure that your version is also set to V3.
 4. Under Contact -> Integration, enter site key and secret key.
-5. In each for just above the Submit line, enter the following code:
+5. When creating contact forms:
+- Just above the Submit line, enter the following code:
    <code>[anr_nocaptcha g-recaptcha-response]</code>
+- Add any necessary classes directly in the form on the dashboard. For example,
+```
+<label> Name
+    [text* your-name class:form-control placeholder "Enter your name here"] </label>
+```
+Applies the class "form-control" to the text field. This is useful in assigning bootstrap classes to the fields
+- Adjust any additional styling in style.scss
+- Copy the shortcode and save
+- In the page php file enter the following into your form:
+`    <?php echo do_shortcode(wp_kses_post('[shortcode]')) ?>
+6. To remove recapcha badge, add the following to css (but make sure to include Googles privacy policy on the site):
+```.grecaptcha-badge {
+  visibility: hidden;
+}
+```
 
 ## Theme Structure Notes
 
