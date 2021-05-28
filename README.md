@@ -55,7 +55,7 @@ npm i gulp gulp-sass browser-sync gulp-sourcemaps gulp-cssnano gulp-imagemin gul
 - Run `npm init`
 - Initialize git and github local and remote repositories per the instructions above.
 
-## Creating Template Parts
+## Template Parts
 - Template parts, along with custom posts will typically access content via ACF using the `get_field` function. Please paste the following snippet at 
 Currently I do not have an automation process set up, however, please add the following snippet to the top of any page directly running get_field() for ACF:
 ```
@@ -69,7 +69,11 @@ $name = $post->post_name; //Retrieves post name (currently not be used).
 ```
 This standardizes field names to: `page-name-template-name-description`. Note that to keep with the template parts namespaced `-` convention, all ACF field names should be also set up using `-` instead of `_`.
 
-## Creating a Navbar
+## Header and Footer
+- Use the deafault headers and footers for any full-width pages.
+- Use the `sidebar` versions to include a righthand sidebar.
+
+## Navbar
 - See these `https://github.com/wp-bootstrap/wp-bootstrap-navwalker` and `https://gist.github.com/cristovaov/6306f833faa07608a1fe` for references.
 - Copy the code from `class-wp-bootstrap-navwalker`. Create a new file in your root directory with the same name and paste the code in.
 - Add this code to `functions.php`
