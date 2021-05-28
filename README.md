@@ -374,11 +374,11 @@ Applies the class "form-control" to the text field. This is useful in assigning 
 
   All HTML should be escaped to avoid hacks.
 
-  - Custom fields: <code><?php esc_attr(the_field('field-name')); ?></code>
-  - Urls: <code><?php echo esc_url('url-name'); ?></code>
-  - Variables to print: <code><?php echo esc_html($variable); ?></code>
-    or <code><?php echo esc_attr($variable); ?></code>
-  - Short codes: <code><?php echo do_shortcode(wp_kses_post('[short-code]')) ?></code>
+  - Custom fields: `<?php esc_attr(the_field('field-name')); ?>`
+  - Urls: `<?php echo esc_url('url-name'); ?>`
+  - Variables to print: `<?php echo esc_html($variable); ?>`
+    or `<?php echo esc_attr($variable); ?>`
+  - Short codes: `<?php echo do_shortcode(wp_kses_post('[short-code]')) ?>`
 
   ## Setting Metadata
 
