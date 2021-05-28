@@ -104,6 +104,9 @@ if ($depth > 0) {
 - Use a custom-logo to allow the user to upload their logo image:
 `<?php get_template_part('template-parts/content', 'custom-logo'); ?>`
 
+## entry-footer
+`function bootstrap_theme_entry_footer() {...}` is located in `incl/template-tags.php`. Edit this function if you want to change the appearance of the `.entry-footer` class.
+
 ## Waypoints and DOM Manipulation
 - **Waypoints** allows you to manipulate the DOM based on user scroll position. The starter template currently uses it to change the navbar header background from transparent to white
 - Use `element` to define the element which will call the `handler` function when that element is scrolled to
