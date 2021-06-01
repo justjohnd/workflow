@@ -237,6 +237,37 @@ Under Appearance -> Customize -> Widgets, click Add a Widget, select Featured Pr
 - Type in localhost/my-project-name into browser window
 - To access the Wordpress admin panel, add /wp-admin to the above URL, then enter your name and password
 
+## Server Side
+
+### Setting up a new Droplet (Digital Ocean)
+
+1. Log in and from dashboard go to Marketplace. Select Wordpress Create Droplet. Connect your domain and check the DNS records point to the new IP address. You should have A records for both my-site.com and www.my-site.com.
+2. With puttyGen, generate a private key for SSH access.
+3. Select your image, location, plan, and SSH key. Use your private key to set up SSH.
+4. Enter droplet IP address into other browser window, and confirm the IP address is live.
+5. Open a puTTY session, and enter your IP address. Make sure that there is a path to the private key, under SSH -> Auth. Make sure under Data that user is set to root. It make take 12 up to 12 hours to be visible. Clear cache and reload the site
+6. Log back in to SSH to set up SSL for your domains with the following:
+   <code>certbot --apache -d my-site.com -d www.my-site.com</code>
+
+To add an SSH key first open puTTY Key Generator, set passphrase, and generate key. Note you will use this passphrase any time you also use the key.
+
+### Set up SSL Certificate (Digital Ocean)
+
+1. From dashboard, Account -> Security
+2. Under Certificates for Load Balancers and Spaces, click Add Certificate.
+3. Add your domain, select subdomains, and enter a name. Your certificate will generate.
+
+### Log in to SSH
+
+1. Open PuTTY, and open Host Name.
+2. Enter password (note: password authentication is enabled for SSH).
+
+## Using SASS
+
+SASS is installed, so you need to make any css changes to the sass/style.scss file. To watch for changes on the CLI, use
+<code>$ sass --watch sass/style.scss:style.css</code>
+
+
 ## Uploading to the Server
 
 1. Open Filezilla.
@@ -395,36 +426,6 @@ Applies the class "form-control" to the text field. This is useful in assigning 
 
 1. Add this anywhere to any page where you'd like the Featured Products widget to appear: <code><?php get_sidebar() ?></code>
 2. Under Appearance -> Customize -> Widgets, click Add a Widget, then select Featured Products
-
-## Server Side
-
-### Setting up a new Droplet (Digital Ocean)
-
-1. Log in and from dashboard go to Marketplace. Select Wordpress Create Droplet. Connect your domain and check the DNS records point to the new IP address. You should have A records for both my-site.com and www.my-site.com.
-2. With puttyGen, generate a private key for SSH access.
-3. Select your image, location, plan, and SSH key. Use your private key to set up SSH.
-4. Enter droplet IP address into other browser window, and confirm the IP address is live.
-5. Open a puTTY session, and enter your IP address. Make sure that there is a path to the private key, under SSH -> Auth. Make sure under Data that user is set to root. It make take 12 up to 12 hours to be visible. Clear cache and reload the site
-6. Log back in to SSH to set up SSL for your domains with the following:
-   <code>certbot --apache -d my-site.com -d www.my-site.com</code>
-
-To add an SSH key first open puTTY Key Generator, set passphrase, and generate key. Note you will use this passphrase any time you also use the key.
-
-### Set up SSL Certificate (Digital Ocean)
-
-1. From dashboard, Account -> Security
-2. Under Certificates for Load Balancers and Spaces, click Add Certificate.
-3. Add your domain, select subdomains, and enter a name. Your certificate will generate.
-
-### Log in to SSH
-
-1. Open PuTTY, and open Host Name.
-2. Enter password (note: password authentication is enabled for SSH).
-
-## Using SASS
-
-SASS is installed, so you need to make any css changes to the sass/style.scss file. To watch for changes on the CLI, use
-<code>$ sass --watch sass/style.scss:style.css</code>
 
 ## Git Cheatsheet
 - **Remove untracked files**:
