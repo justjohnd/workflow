@@ -262,11 +262,24 @@ To add an SSH key first open puTTY Key Generator, set passphrase, and generate k
 1. Open PuTTY, and open Host Name.
 2. Enter password (note: password authentication is enabled for SSH).
 
-## Using SASS
+### Creating Users in SSH
+1. Log in to SSH
+2.Type `ssh root@your-swerver-ip`
+3. Click Yes to continue
+4. Type `adduser user-name`
+5. Enter any information you wish
+- To create a superuser, type `usermod -aG sudo user-name'
+- To change users, type `su johnd`
 
-SASS is installed, so you need to make any css changes to the sass/style.scss file. To watch for changes on the CLI, use
-<code>$ sass --watch sass/style.scss:style.css</code>
+### Creating Virtual Hosts
+Virtual hosts could be used for creating staging sites, or hosting multiple sites on a single droplet. Before following the tutorial below, confirm that you have created a non-root user with superuser privilidges. Then log in to putty with your key password, and change the user from root: `su johnd`
+Refer to this tutorial for setting up a virtual host: https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-ubuntu-18-04
 
+### Creating a Subdomain
+- To creat a subdomain, on the Digital Ocean dashboard go to Networking -> Domains
+- Enter in your host name (Ex.: dev.my-site.com)
+- Create an A record
+- Check the URL in the browser. It will redirect to the site domain until is it point to another virtual host.
 
 ## Uploading to the Server
 
@@ -395,6 +408,11 @@ Applies the class "form-control" to the text field. This is useful in assigning 
   visibility: hidden;
 }
 ```
+
+## Using SASS
+
+SASS is installed, so you need to make any css changes to the sass/style.scss file. To watch for changes on the CLI, use
+<code>$ sass --watch sass/style.scss:style.css</code>
 
 ## Theme Structure Notes
 
