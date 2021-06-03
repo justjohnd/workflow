@@ -38,6 +38,8 @@ git push origin main
 npm init
 npm install
 ```
+-In your gulpfile change the brwosersync proxy to your appropriate database path. Ex.: `proxy: 'http://localhost/database-name',`
+
 ## On the Wordpress Dashboard
 - Install Advanced Custom Fields plugin
 - Create a field group with image arrays `image-1` to `image-8`
