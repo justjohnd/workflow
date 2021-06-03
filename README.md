@@ -3,13 +3,14 @@
 This document describes my worflow in detail for creating a Wordpress project (starting with a static site) for myself or a prospective customer
 
 # Initial Setup
+- Verify that node, npm, SASS, and gulp-cli are globally installed. If unsure whether gulp-cli is installed, run `npm i --g gulp-cli`
+- 
 ## Setting up git local and remote repos
-- Click "Import repository" or "New"
-**If Importing** - Name the repository and click "Begin Import". Open your new repository
-- Copy the path
-- In CLI (within your projects folder, for instance `/webDevelopment`) type: `git clone my-repository-path`
-- cd into the directory
+- Click "New"
+- In your main projects directory:
 ```
+mkdir project-name
+cd project-name
 echo "# site-name" >> README.md
 git init
 git add -A
@@ -17,9 +18,36 @@ git commit -m "first commit"
 git branch -M main
 git push origin main
 ```
-- In CLI type <code>npm install</code> 
 
-### Dependencies (Static Site)
+# Wordpress and MySQL (for Bootstrap 4)
+- Open the XAMPP Control Panel and start MySQL.
+- Click Admin to open phpMyAdmin.
+- Click New and enter database name.
+- Download newest version of Wordpress from here: `https://wordpress.org/download/`, directly into the new project directory.
+- Inside the directory, change the filename `wp-config-sample.php` to `wp-config.php`.
+- Open `wp-config.php` and change:
+-  `'database_name_here'` to your database name.
+-  `'username_here'` to `'root'`
+-  `'password_here'` to `''`
+- In browser, open `http://localhost/my-project-name`.
+- Enter username, password, and email information and click Create. For consistancy, use the name `admin_project-name`
+- Copy your theme (ex: `bootstrap-theme`) into the themes directory
+- cd into the directory and run:
+```
+npm init
+npm install
+```
+## On the Wordpress Dashboard
+- Install Advanced Custom Fields plugin
+- Create a field group with image arrays `image-1` to `image-8`
+- Add default images to each field, and make the field group applicable to all posts and pages
+- Activate the theme
+- Create a blank Home Page called "Home"
+- Under Customize, set the Homepage to "Static" and select the Home page
+- Under Users, disable viewing of the toolbar on the site
+- Check the site in the browswer; it should be loaded
+
+### Dependency Notes (Static Site)
 - Node and npm (globally)
 - SASS (globally): <code>npm install sass -g </code>
 - npx: <code>npm i npx</code>
@@ -35,26 +63,6 @@ npm i gulp gulp-sass browser-sync gulp-sourcemaps gulp-cssnano gulp-imagemin gul
 - You can confirm whether jQuery has been loaded on browser by adding <code>console.log($)</code> to you JS file.
 - Find all npm packages installed in a project with `npm list --depth=0`. This will show top level dependencies. Change the depth number to see lower level dependencies.
 
-# Wordpress Integration (for Bootstrap 4)
-
-## Setting up MySQL and Wordpress Locally
-- Open the XAMPP Control Panel and start MySQL.
-- Click Admin to open phpMyAdmin.
-- Click New and enter database name.
-- In the `xampp/htdocs/` folder, create a directory with your project name (Note: best practice is to name the project and directory the same).
-- Download newest version of Wordpress from here: `https://wordpress.org/download/`, directly into the new project directory.
-- Inside the directory, change the filename `wp-config-sample.php` to `wp-config.php`.
-- Open `wp-config.php` and change:
--  `'database_name_here'` to your database name.
--  `'username_here'` to `'root'`
--  `'password_here'` to `''`
-- In browser, open `http://localhost/my-project-name`.
-- Enter username, password, and email information and click Create.
-- At `https://underscores.me/` click Advanced, check ***_sassify*** and add any theme information you wish.
-- Download and unzip as a file in your projects `themes` directory.
-- Verify that node, npm, SASS, and gulp-cli are globally installed. If unsure whether gulp-cli is installed, run `npm i --g gulp-cli`
-- Run `npm init`
-- Initialize git and github local and remote repositories per the instructions above.
 
 ## Template Parts
 - Template parts, along with custom posts will typically access content via ACF using the `get_field` function. Please paste the following snippet at 
