@@ -32,6 +32,7 @@ git push origin main
 - In browser, open `http://localhost/my-project-name`.
 - Enter username, password, and email information and click Create. For consistancy, use the name `admin_project-name`
 - Copy your theme (ex: `bootstrap-theme`) into the themes directory
+- Delete the .git directory from the theme
 - cd into the directory and run:
 ```
 npm init
