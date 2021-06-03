@@ -4,13 +4,14 @@ This document describes my worflow in detail for creating a Wordpress project (s
 
 # Initial Setup
 ## Setting up git local and remote repos
-- Click "Import repository"
-- Under "Your old repository’s clone URL" enter <code>https://github.com/justjohnd/static-site.git</code>
-- Name the repository and click "Begin Import"
-- Open your new repository and under "Code" copy the HTTPS address
+- Click "Import repository" or "New"
+**If Importing** - Name the repository and click "Begin Import". Open your new repository
+- Copy the path
 - In CLI (within your projects folder, for instance `/webDevelopment`) type: `git clone my-repository-path`
-- Make a change to README (or any file), save and make your initial commit:
+- cd into the directory
 ```
+echo "# site-name" >> README.md
+git init
 git add -A
 git commit -m "first commit"
 git branch -M main
