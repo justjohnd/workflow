@@ -253,15 +253,22 @@ Under Appearance -> Customize -> Widgets, click Add a Widget, select Featured Pr
 
 ### Setting up a new Droplet (Digital Ocean)
 
-1. Log in and from dashboard go to Marketplace. Select Wordpress Create Droplet. Connect your domain and check the DNS records point to the new IP address. You should have A records for both my-site.com and www.my-site.com.
-2. With puttyGen, generate a private key for SSH access.
-3. Select your image, location, plan, and SSH key. Use your private key to set up SSH.
-4. Enter droplet IP address into other browser window, and confirm the IP address is live.
-5. Open a puTTY session, and enter your IP address. Make sure that there is a path to the private key, under SSH -> Auth. Make sure under Data that user is set to root. It make take 12 up to 12 hours to be visible. Clear cache and reload the site
-6. Log back in to SSH to set up SSL for your domains with the following:
-   <code>certbot --apache -d my-site.com -d www.my-site.com</code>
+1. Log in and from dashboard go to Droplets -> Create
+- Click on the Marketplace tab and select Wordpress. 
+- Choose the number of droplets you wish, and name them.
+- If you already have an SSH key created, select it for use. Otherwise create a new SSH key. You will use this private key to set up your SSH portal (if it hasn't been set up already). Use puttyGen to generate a private key for SSH access.
+- Create droplets
+2. If you want to connect a domain, make sure the DNS records point to the new droplet IP address. You should have A records for both my-site.com and www.my-site.com.
+3. Enter droplet IP address into other browser window, and confirm the IP address is live. (It give you a prompt to continue configuration in SSH.)
+4. Load a puTTy session, but before doing so, confirm your IP address is correct. Make sure that there is a path to the private key, under SSH -> Auth. Make sure under Data that user is set to root. 
+5. Once logged in to the SSH, continue with Wordpress configuration. Enter domain (ex. `my-site.com`), email, username, password, site title.
+6. Set up LetsEncrypt for get SSL for site.
+7. It make take 12 up to 12 hours for the site to be visible. Clear cache and reload the site
 
-To add an SSH key first open puTTY Key Generator, set passphrase, and generate key. Note you will use this passphrase any time you also use the key.
+
+**Notes**
+- SSL can also be set up manually with the following: <code>certbot --apache -d my-site.com -d www.my-site.com</code>
+- To add an SSH key first open puTTY Key Generator, set passphrase, and generate key. Note you will use this passphrase any time you also use the key.
 
 ### Set up SSL Certificate (Digital Ocean)
 
