@@ -323,7 +323,7 @@ Refer to this tutorial for setting up a virtual host: https://www.digitalocean.c
 - MySQL Hostfile: 127.0.0.1
 - MySQL Server Port: 3306
 - Username: wordpress
-- Password: Get this password from the .digitalocean_password file from the server, under the `root` directory. (Can download with FTP)
+- Password: Get this password from the .digitalocean_password file from the server, under the `root` directory. It can be downloaded from FTP. Use the `wordpress_mysql_pass`
 
 6. Select on Database -> Connect to Database.
 7. Select database on server, under SCHEMAS.
