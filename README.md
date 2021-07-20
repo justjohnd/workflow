@@ -151,6 +151,13 @@ This code will call the `handler` function when `js-navbar` is scrolled to.
 ## Advanced Custom Fields
 - At this time, there is no automated solution for ACF, so fields must be entered manually, and should be done so only after site design has been finalized
 
+## General Escaping Notes
+All HTML should be escaped to avoid hacks.
+- Custom fields: `<?php esc_attr(the_field('field-name')); ?>`
+- Urls: `<?php echo esc_url('url-name'); ?>`
+- Variables to print: `<?php echo esc_html($variable); ?>`
+  or `<?php echo esc_attr($variable); ?>`
+- Short codes: `<?php echo do_shortcode(wp_kses_post('[short-code]')) ?>`
 
 # Client Information
 
