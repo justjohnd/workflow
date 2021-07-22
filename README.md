@@ -481,3 +481,6 @@ SASS is installed, so you need to make any css changes to the sass/style.scss fi
 git stash save --keep-index --include-untracked
 git stash drop
 ```
+
+## Notes on WPML
+- When using ACF be sure to set all images to "Copy" (not "Translate") under WMPL settings
