@@ -482,5 +482,68 @@ git stash save --keep-index --include-untracked
 git stash drop
 ```
 
-## Notes on WPML
+## How to Use WPML
+### Installation and Setup (Developer)
+- Refer to ----- for general insallation instructions
+- Under settings, click "Use WPML's Advanced Translation Editor"
 - When using ACF be sure to set all images to "Copy" (not "Translate") under WMPL settings
+
+### Translate Post or Page
+- Go to WPML -> Translation Management. 
+- Select Posts or Pages you wish to translate. Note that you can send multiple posts/pages at the same time.
+- Click ***Add Selected Content to Translation Basket*** button at bottom of page.
+![image](https://user-images.githubusercontent.com/55176130/126728839-48acde91-b814-45b0-9ced-84f91ed18343.png)
+- Click on the Translation Basket tab.
+- Under number 3, "Choose translator or Translation Service" choose the name of the person you wish to assign translation duties to.
+- Click ***Send all items for translation*** at the bottom of the screen
+![image](https://user-images.githubusercontent.com/55176130/126729060-93af5c53-f99c-4678-a42e-e0117dfdad1c.png)
+- Click WMPL -> Translations and click the ***Translate*** button for the page/post you wish to translate
+![image](https://user-images.githubusercontent.com/55176130/126729175-6bcb7be0-28d3-407b-9185-c56a2c55d3f3.png)
+- You will now be on the Advanced Translation Editor page. Note that original-language text may appear in individual boxes, depending on whether text was entered into the Wordpress editor in separate blocks or not. To combine sections (for instance, if you adding a large transalation for multiple sentences or pragraphs), click the small, round link button that appears on the dividing line between Source and Target areas. This will combine the blocks into one section.
+- Click ***Click to edit translation***
+- In the translation field on the write add or edit translated material
+- When complete click the Checkbox
+- Note that all sections of the page/post must be translated in order to save
+- Once finished, click the ***Complete*** button
+-![image](https://user-images.githubusercontent.com/55176130/126729583-99c5b898-9053-4ea7-b36f-5b01a00cdea7.png)
+- Note that once any pages have been flagged for translation, they can also be accessed by the Pages or Posts page by clicking on the icon for the page in its Foreign Language Column. You can add, edit, or update pages, depending on current translation status, through these icons
+![image](https://user-images.githubusercontent.com/55176130/126730407-fad61350-fd8a-41df-aa93-8716dfdd6662.png)
+- Note that other items may appear in the Advanced Translation Editor screen for elements that are not readable on the site (but some which can be seen in the pages source code). Element may include image names, alternate text for images, field names or messagges viewable from the Wordpress Dashboard, or short codes. Image names and alternate text for images are good to translate, however if you do not know what an item is (such as a field name), DO NOT translate it. Doing so could break aspects of the site.
+
+### Editing Translations ###
+- Translations can be edited following the instructions above.
+- If you make changes to any page/post in the original post, you will need to update the foreign language translation
+
+## Translate Contact Form 7 ##
+- Under WPML -> Translation Management, under the number 1, "Select items for translation" dropdown, select Contact Form and then the **Filter** button
+- From here, follow the typical instructions for translation.
+
+## Translate Menus ##
+Menu items may come either from actual posts or pages accessible in Wordpress, or they may be custom links created by the developer
+### Translate Menus accessible inside Wordpress ###
+- Go to Appearance -> Menu
+- Click the language link next to "Translations:" on the far right
+- Drag items to add to translate menu
+- Note that page and post names shown on the Page and Post pages will be in whatever language that is being shown on Appearance -> Menu.
+
+### Translate Custom links ###
+Custom links may include external links or links to specific areas on a page or post in Wordpress
+- Go to WPML -> Theme and plugins localization
+- Under Strings in the themes, check your theme name ("Boostrap Theme")
+- Click **Scan selected themes for strings**
+![image](https://user-images.githubusercontent.com/55176130/126735173-51bfdede-0e00-45ae-b523-9b59d8ce83bc.png)
+- Go to WPML -> String translation
+- In the Search for box, type the word or phrase you are looking to translate
+- Add the translation
+![image](https://user-images.githubusercontent.com/55176130/126735206-124a1ae6-3248-480f-9262-444db8477017.png)
+
+### Menu Translation Developer Notes ###
+- To be able to translate strings in the theme via WPML the text must be wrapped in a gettext call. Example:
+```<a href="#"><?php _e('******', 'text-domain'); ?></a>```
+where '******' is the string string you wish to translate and 'text-domain' is your theme name (e.g.: 'bootstrap-theme').
+
+## Troubleshooting ##
+- If images appear as broken links on pages: Go to WPML -> Settings -> Media Translation, and click **Start**. Once complete, refresh page and check again.
+
+
+
