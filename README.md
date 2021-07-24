@@ -541,6 +541,11 @@ Custom links may include external links or links to specific areas on a page or 
 - To be able to translate strings in the theme via WPML the text must be wrapped in a gettext call. Example:
 ```<a href="#"><?php _e('******', 'text-domain'); ?></a>```
 where '******' is the string string you wish to translate and 'text-domain' is your theme name (e.g.: 'bootstrap-theme').
+- For the home link to work, you also need to replace
+```<?php echo esc_url(site_url('/')); ?>"```
+with
+```<?php echo apply_filters('wpml_home_url', get_option('home')); ?>```
+for the href path.
 
 ## Troubleshooting ##
 - If images appear as broken links on pages: Go to WPML -> Settings -> Media Translation, and click **Start**. Once complete, refresh page and check again.
