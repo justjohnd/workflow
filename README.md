@@ -15,6 +15,7 @@ npm i gulp gulp-sass browser-sync gulp-sourcemaps gulp-cssnano gulp-imagemin gul
 ```
 - Bootstrap 4
 - Composer. Note that composer is already installed for the local XAMPP environment. To confirm installation, type `composer` into CLI. See [here](https://thecodedeveloper.com/install-composer-windows-xampp/) for how to install.
+- Prettier (should be installed locally for every project). Instructions here: https://prettier.io/docs/en/install.html
 
 ### Dependency Troubleshooting Notes ###
 - You can confirm whether jQuery has been loaded on browser by adding <code>console.log($)</code> to you JS file.
