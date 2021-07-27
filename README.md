@@ -99,7 +99,8 @@ This standardizes field names to: `page-name-template-name-description`. Note th
 - Use the `sidebar` versions to include a righthand sidebar.
 
 ### Navbar
-- See these `https://github.com/wp-bootstrap/wp-bootstrap-navwalker` and `https://gist.github.com/cristovaov/6306f833faa07608a1fe` for references.
+#### Navwalker
+- See [here](https://github.com/wp-bootstrap/wp-bootstrap-navwalker) and [here](https://gist.github.com/cristovaov/6306f833faa07608a1fe) for references on how the navwalker file is used. Navwalker is necessary for bootstrap to work with the Wordpress Navbar.
 - Copy the code from `class-wp-bootstrap-navwalker`. Create a new file in your root directory with the same name and paste the code in.
 - Add this code to `functions.php`
 ```
@@ -112,7 +113,8 @@ function register_navwalker()
 }
 add_action('after_setup_theme', 'register_navwalker');
 ```
-- See above website or Bootstrap template for boilerplate HTML. Paste this html into your header page.
+
+#### General
 - Make sure `'theme_location'` is pointed to the correct menu, and that menu is set up on the Wordpress dashboard
 - See the above gist or Bootstrap Template to see how to add other elements, such as buttons, into the menu. In the `wp_nav_menu` function, `'container'` should be set to `''`. Then you can wrap the menu and additional elements in a single container
 - You can add classes to the `li` that wraps each menu item by going to `class-wp-bootstrap-navwalker`, finding, and editing this portion of the code:
