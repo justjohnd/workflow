@@ -113,6 +113,10 @@ function register_navwalker()
 }
 add_action('after_setup_theme', 'register_navwalker');
 ```
+#### Custom Logo
+- Use a custom logo to allow the user to upload their logo image:
+`<?php get_template_part('template-parts/content', 'custom-logo'); ?>`
+- Change logo styles by .custom-logo class
 
 #### General
 - Make sure `'theme_location'` is pointed to the correct menu, and that menu is set up on the Wordpress dashboard
@@ -128,8 +132,7 @@ if ($depth > 0) {
 	$atts['class'] = 'nav-link text-white';
 }
 ```
-- Use a custom-logo to allow the user to upload their logo image:
-`<?php get_template_part('template-parts/content', 'custom-logo'); ?>`
+
 
 ### entry-footer
 `function bootstrap_theme_entry_footer() {...}` is located in `incl/template-tags.php`. Edit this function if you want to change the appearance of the `.entry-footer` class.
