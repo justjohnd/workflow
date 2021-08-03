@@ -497,6 +497,16 @@ Under Appearance -> Customize -> Widgets, click Add a Widget, select Featured Pr
 - Under WPML -> Translation Management, under the number 1, "Select items for translation" dropdown, select Contact Form and then the **Filter** button
 - From here, follow the typical instructions for translation.
 
+### Translate Forms
+All forms are made with the Contact Form 7 plugin. To access form content for editing and translation, from the WP dashboard:
+- Go to Contact -> Contact Forms, and select the form you wish to edit.
+- Under the Form tab, edit any of the titles of your form fields
+- In the righthand column, under Translations, click the icon next to the language name
+![image](https://user-images.githubusercontent.com/55176130/127945379-4bbb0c11-fd2c-43c0-a8a7-f1eaa2501dcc.png)
+- Make and save any translations. See **Translate Post or Page** section of this document for more information.
+- If you do not know what the field is, leave the translation the same as it originally was in English.
+
+
 ### Translate Menus ##
 Menu items may come either from actual posts or pages accessible in Wordpress, or they may be custom links created by the developer
 
