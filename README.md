@@ -132,7 +132,10 @@ if ($depth > 0) {
 	$atts['class'] = 'nav-link text-white';
 }
 ```
+#### Main and Custom Navbars (Developers Notes)
+Note that the main navbar was actually found to have some bugs, especially on ipad. This navbar uses the waypoints.js library to trigger various DOM elements at a set scroll point. The result is that when the user scrolls past the banner carousel on the front page, navbar transitions from a transparent background to a solid background. Menu item colors and logo also changes for visibility.
 
+Because this navbar is not ready for production, the site is set up with header('sidebar'). This is a simple sticky navbar with a dark background, used on all pages other than the front page. It does not need to be used with footer('sidebar').
 
 ### entry-footer
 `function bootstrap_theme_entry_footer() {...}` is located in `incl/template-tags.php`. Edit this function if you want to change the appearance of the `.entry-footer` class.
