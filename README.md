@@ -207,6 +207,7 @@ for the href path.
 - Click on the Marketplace tab and select Wordpress. 
 - Choose the number of droplets you wish, and name them.
 - If you already have an SSH key created, select it for use. Otherwise create a new SSH key. You will use this private key to set up your SSH portal (if it hasn't been set up already). Use puttyGen to generate a private key for SSH access.
+- Prior to creating droplets you can also opt to create a public key. Public key will allow access directly the your local machine's command line. See below for details
 - Create droplets
 2. If you want to connect a domain, make sure the DNS records point to the new droplet IP address. You should have A records for both my-site.com and www.my-site.com.
 3. Enter droplet IP address into other browser window, and confirm the IP address is live. (It give you a prompt to continue configuration in SSH.)
@@ -214,6 +215,17 @@ for the href path.
 5. Once logged in to the SSH, continue with Wordpress configuration. Enter domain (ex. `my-site.com`), email, username, password, site title.
 6. Set up LetsEncrypt for get SSL for site.
 7. It make take 12 up to 12 hours for the site to be visible. Clear cache and reload the site
+
+### Creating a Public Key
+Do this if you want to access SSH directly from your local computer
+1. In CMD type `ssh-keygen`
+2. Enter through the prompts, setting the location to `~/.ssh/id_rsa.pub` (default file name and path)
+3. Navigate to the directory (note that it will be a hidden file in `/Users`)
+4. View file by `cat id_rsa.pub`
+5. Copy the public key, add a new key in the DO control panel, under the Security section
+6. Paste the key into the key field, name and save
+7. Be sure to add this key to your Droplet when creating it
+8. To access SSH via cmd, type `ssh root@ip-address`
 
 **Additional Notes**
 - SSL can also be set up manually with the following: <code>certbot --apache -d my-site.com -d www.my-site.com</code>
