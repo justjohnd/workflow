@@ -17,8 +17,12 @@ npm i gulp gulp-sass browser-sync gulp-sourcemaps gulp-cssnano gulp-imagemin gul
 - Composer. Note that composer is already installed for the local XAMPP environment. To confirm installation, type `composer` into CLI. See [here](https://thecodedeveloper.com/install-composer-windows-xampp/) for how to install.
 - Prettier (should be installed locally for every project). Instructions here: https://prettier.io/docs/en/install.html
 
-### Dependency Troubleshooting Notes ###
-- You can confirm whether jQuery has been loaded on browser by adding `console.log(typeof $);` to your JS file.
+### jQuery ###
+In this section you will find important information as to how jQuery interacts with other libraries when it is a dependency
+- Bootstrap 4 and Waypoints use jQuery as a dependency, therefore jQuery must be independently installed via npm
+- These libraries will access jQuery, but you cannot confirm that jQuery has been loaded on the page with the method below. `console.log(typeof $)` will return `undefined` even though jQuery is supporting these libraries as a dependency
+- If only using as a dependency to libraries imported from node, jQuery does not have to be called in your `index.js` file. If you need to use jQuery directly in the file, add `import 'jquery';` to the top of the file
+- You can confirm whether jQuery has been loaded on browser by adding `console.log(typeof $);` to your JS file. See above for stipulations.
 - 	`undefined` means jQuery has not been loaded
 - 	`function` means jQuery has been loaded
 - Find all npm packages installed in a project with `npm list --depth=0`. This will show top level dependencies. Change the depth number to see lower level dependencies.
