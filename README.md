@@ -18,7 +18,9 @@ npm i gulp gulp-sass browser-sync gulp-sourcemaps gulp-cssnano gulp-imagemin gul
 - Prettier (should be installed locally for every project). Instructions here: https://prettier.io/docs/en/install.html
 
 ### Dependency Troubleshooting Notes ###
-- You can confirm whether jQuery has been loaded on browser by adding <code>console.log($)</code> to you JS file.
+- You can confirm whether jQuery has been loaded on browser by adding `console.log(typeof $);` to your JS file.
+- 	`undefined` means jQuery has not been loaded
+- 	`function` means jQuery has been loaded
 - Find all npm packages installed in a project with `npm list --depth=0`. This will show top level dependencies. Change the depth number to see lower level dependencies.
 
 ## Set up git local and Github remote repos
