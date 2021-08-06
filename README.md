@@ -455,6 +455,17 @@ Note that deleting a page will remove it from the menus. It will need to be read
 
 Note that any images uploaded should be compressed and optimized for the web. Overly large images will slow your site down.
 
+## Editing Images
+Large images can slow your site way down. Here are some tips for image optimization.
+- Crop your images to the desired shape (square or rectangle). This can be done in Wordpress, but I recommend doing before hand before moving to media library. You can crop images [here](https://bulkresizephotos.com/en).
+- Resize your images to the minimum pixel size require for the largest screen. To determine this size, on a Chrome browser, go to your website. Then right click -> Inspect. You should see a Developer Tools section open up over part of the page. Make sure that the tools are located across the bottom of the page so that the page itself is still full width. Then at the far left end of the Developer Tools toolbar, click the Element Selector icon. Now hover your mouse over the desired image. You will see the dimensions displayed. Take not of the width. This is what you will set your minimum width to for that image.
+
+![image](https://user-images.githubusercontent.com/55176130/128441885-312970bc-9ab8-436c-afee-a66fd2cd9601.png)
+
+You can use Wordpress to resize images, but I recommend doing so before moving to media library. [Here](https://bulkresizephotos.com/en) is an online tool you can use.
+- Compress your images prior to using. [Here] is a good online tool.
+- In Wordpress, always add alt text to your image. If using WMPL, also add a translation.
+
 ## Adding / Editing Footer Information
 
 If the footer uses ACF then footer information, such as the company address, link titles, or social icons links technically can be edited uniquely for any specific page, but this is ill-advised. When setting up or changing footer content, it is best to bulk edit all pages/posts at once. To do this:
