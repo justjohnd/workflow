@@ -213,7 +213,7 @@ for the href path.
 - Click on the Marketplace tab and select Wordpress. 
 - Choose the number of droplets you wish, and name them.
 - If you already have an SSH key created, select it for use. Otherwise create a new SSH key. You will use this private key to set up your SSH portal (if it hasn't been set up already). Use puttyGen to generate a private key for SSH access.
-- Prior to creating droplets you can also opt to create a public key. Public key will allow access directly the your local machine's command line. See below for details
+- Note that the public key in in Digital Ocean must match the one that was generated using puTTyGen. If unsure, open puTTyGen and load your public key. Check it against the public key attached to the account. **Changing keys assigned to your droplet after the droplet is created will lock you out of the Console**
 - Create droplets
 2. If you want to connect a domain, make sure the DNS records point to the new droplet IP address. You should have A records for both my-site.com and www.my-site.com.
 3. Enter droplet IP address into other browser window, and confirm the IP address is live. (It give you a prompt to continue configuration in SSH.)
