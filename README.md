@@ -521,9 +521,10 @@ Under Appearance -> Customize -> Widgets, click Add a Widget, select Featured Pr
 ![image](https://user-images.githubusercontent.com/55176130/126730407-fad61350-fd8a-41df-aa93-8716dfdd6662.png)
 - Note that other items may appear in the Advanced Translation Editor screen for elements that are not readable on the site (but some which can be seen in the pages source code). Element may include image names, alternate text for images, field names or messagges viewable from the Wordpress Dashboard, or short codes. Image names and alternate text for images are good to translate, however if you do not know what an item is (such as a field name), DO NOT translate it. Doing so could break aspects of the site.
 
-### Editing Translations ###
+### Editing or Deleting Translations ###
 - Translations can be edited following the instructions above.
 - If you make changes to any page/post in the original post, you will need to update the foreign language translation
+- Note that you must delete translated pages separately. Do this by going to posts or pages, selecting the language at the top and selecting the pages you wish to delete.
 
 ### Translate Contact Form 7 ##
 - Under WPML -> Translation Management, under the number 1, "Select items for translation" dropdown, select Contact Form and then the **Filter** button
@@ -566,4 +567,6 @@ Custom links may include external links or links to specific areas on a page or 
 # SSR990 Boostrap-Theme Notes #
 ## Template Heirarchy ##
 - DJ's and Shows page uses page-blog.php custom page
+- Blog and DJ post pages (any post with a category set up with a custom post type) use single-cat-[category name].php custom page
+- Uncategorized blog posts go to index.php if custom post templates are being used, otherwise they go to single.php
 
