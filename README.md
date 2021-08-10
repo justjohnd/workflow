@@ -560,5 +560,10 @@ Custom links may include external links or links to specific areas on a page or 
 ![image](https://user-images.githubusercontent.com/55176130/126735206-124a1ae6-3248-480f-9262-444db8477017.png)
 
 ## Troubleshooting ##
+- If page does not appear translated, has missing images, or missing content, first verify that a page/post translation exists
 - If images appear as broken links on pages: Go to WPML -> Settings -> Media Translation, and click **Start**. Once complete, refresh page and check again.
+
+# SSR990 Boostrap-Theme Notes #
+## Template Heirarchy ##
+- DJ's and Shows page uses page-blog.php custom page
 
