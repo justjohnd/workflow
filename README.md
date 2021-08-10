@@ -83,6 +83,7 @@ All HTML should be escaped to avoid hacks.
 - Short codes: `<?php echo do_shortcode(wp_kses_post('[short-code]')) ?>`
 
 ## Project Sections ##
+### Posts ###
 - **single.php** is used for posts, which are also used for created Tours pages. single.php in turn uses template part **content.php**
 - Template part **content-featured** is only used to embed posts into the home page. Changes to this file will only be reflected on the home page, not within any of the post pages
 
@@ -420,25 +421,6 @@ Note that all pages and posts are set up to automatically generate appropriate m
 2. If you do not see the AIOSEO tool bar, click the three dots in the top right corner and then select AIOSEO from the Plugins section
 3. Click Edit Snippet. Here you can manually change the title and description for any page.
 
-## Creating New Pages, Posts (Skitours Theme Only)
-
-For the site to be multilingual all pages or posts created need an original title (for the Japanese page) and a copy of the page/post with the same title, plus an "-en" extension at the end. For example "Contact" is the Japanese Contact page, "Contact-en" the English version of the page.
-
-1. Go to Pages or Posts and click "Add New".
-2. Enter the title for the Japanese page
-3. Add a featured image
-4. Choose a page template
-5. Fill in any custom fields with text or images at the bottom
-6. If adding images, be sure to fill in the alt text field as well
-7. Confirm changes and publish. Open the page in a new browser tab and reconfirm changes
-8. Repeat the above steps, but add "-en" to the end of the title
-9. Add the tag "english" as well
-10. If you want the page/post displayed as a menu item in the top navigational bar, add the item to both English and Japanese menus under Appearance -> Menus.
-
-All English pages/posts must also include the tag, "english".
-
-When adding new pages, please add the pages to both the Japanese and English custom menus.
-
 ## Deleting Pages, Posts
 
 Note that deleting a page will remove it from the menus. It will need to be readded, once a new page is created.
@@ -476,22 +458,6 @@ If the footer uses ACF then footer information, such as the company address, lin
 4. Click Update.
 5. Repeat the above procedure for all Posts.
 6. Got back to Plugins and Deactivate the ACF QuickEdit Fields plugin (please do not delete it).
-
-## Changing the Homepage Carousel Images (Skitours Theme Only)
-(Note that the Boostrap Theme controls carousel images by ACF, so images can be edited directly in the page edit screen. Only Skitours Theme uses the configuration described here.)
-
-Got to Posts, and you will find posts Slide 1, Slide 2, and Slide 3. The featured image for each post appears as an image in the Homepage carousel. Simply change the featured image to change the carousel.
-
-## Changing the Featured Tour (Skitours Theme Only)
-Use the tag, "featured" to designate any tour you wish to feature on the home page. Be sure to tag both the Japanese and the English post.
-
-## Adding the Featured Products Widget to the Homepage (Skitours Theme Only)
-Under Appearance -> Customize -> Widgets, click Add a Widget, select Featured Product. Then click Publish.
-
-## Troubleshooting
-
-1. If content has disappeared from the page, go back to the page or post edit screen and click Update.
-2. If you receive a strange message from Google Translate on your page, some custom fields are not showing correctly, or the LANGUAGES link is broken, check to make sure you have the appropriate tag ('english' for English pages) assigned to the page
 
 ## How to Use WPML
 ### Installation and Setup (Developer)
@@ -539,7 +505,6 @@ All forms are made with the Contact Form 7 plugin. To access form content for ed
 - Make and save any translations. See **Translate Post or Page** section of this document for more information.
 - If you do not know what the field is, leave the translation the same as it originally was in English.
 
-
 ### Translate Menus ##
 Menu items may come either from actual posts or pages accessible in Wordpress, or they may be custom links created by the developer
 
@@ -560,12 +525,49 @@ Custom links may include external links or links to specific areas on a page or 
 - Add the translation
 ![image](https://user-images.githubusercontent.com/55176130/126735206-124a1ae6-3248-480f-9262-444db8477017.png)
 
-## Troubleshooting ##
+## WPML Troubleshooting ##
 - If page does not appear translated, has missing images, or missing content, first verify that a page/post translation exists
 - If images appear as broken links on pages: Go to WPML -> Settings -> Media Translation, and click **Start**. Once complete, refresh page and check again.
 
-# SSR990 Boostrap-Theme Notes #
-## Template Heirarchy ##
+## General Troubleshooting
+
+1. If content has disappeared from the page, go back to the page or post edit screen and click Update.
+2. If you receive a strange message from Google Translate on your page, some custom fields are not showing correctly, or the LANGUAGES link is broken, check to make sure you have the appropriate tag ('english' for English pages) assigned to the page
+
+# Themes #
+## Skitours Theme ##
+Use 
+### Creating New Pages, Posts ###
+For the site to be multilingual all pages or posts created need an original title (for the Japanese page) and a copy of the page/post with the same title, plus an "-en" extension at the end. For example "Contact" is the Japanese Contact page, "Contact-en" the English version of the page.
+
+1. Go to Pages or Posts and click "Add New".
+2. Enter the title for the Japanese page
+3. Add a featured image
+4. Choose a page template
+5. Fill in any custom fields with text or images at the bottom
+6. If adding images, be sure to fill in the alt text field as well
+7. Confirm changes and publish. Open the page in a new browser tab and reconfirm changes
+8. Repeat the above steps, but add "-en" to the end of the title
+9. Add the tag "english" as well
+10. If you want the page/post displayed as a menu item in the top navigational bar, add the item to both English and Japanese menus under Appearance -> Menus.
+
+All English pages/posts must also include the tag, "english".
+
+When adding new pages, please add the pages to both the Japanese and English custom menus.
+
+### Changing the Homepage Carousel Images
+(Note that the Boostrap Theme controls carousel images by ACF, so images can be edited directly in the page edit screen. Only Skitours Theme uses the configuration described here.)
+
+Got to Posts, and you will find posts Slide 1, Slide 2, and Slide 3. The featured image for each post appears as an image in the Homepage carousel. Simply change the featured image to change the carousel.
+
+### Changing the Featured Tour
+Use the tag, "featured" to designate any tour you wish to feature on the home page. Be sure to tag both the Japanese and the English post.
+
+### Adding the Featured Products Widget to the Homepage
+Under Appearance -> Customize -> Widgets, click Add a Widget, select Featured Product. Then click Publish.
+
+## SSR990 Boostrap-Theme Notes ##
+### Template Heirarchy ###
 - DJ's and Shows page uses page-blog.php custom page
 - Blog and DJ post pages (any post with a category set up with a custom post type) use single-cat-[category name].php custom page
 - Uncategorized blog posts go to index.php if custom post templates are being used, otherwise they go to single.php
