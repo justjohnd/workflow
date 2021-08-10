@@ -84,8 +84,46 @@ All HTML should be escaped to avoid hacks.
 
 ## Project Sections ##
 ### Posts ###
-- **single.php** is used for posts, which are also used for created Tours pages. single.php in turn uses template part **content.php**
-- Template part **content-featured** is only used to embed posts into the home page. Changes to this file will only be reflected on the home page, not within any of the post pages
+- **single.php** is used for posts by default, which are also used for created Tours pages. single.php in turn uses template part **content.php**
+- Custom post templates can be set up by adding the following to `functions.php`. Note, however that this will disable `single.php` and all posts without a custom template as defined by their category will default to `index.php`.
+```
+<?php
+
+// Create custom single post for category posts
+/*
+* Define a constant path to our single template folder
+*/
+define('SINGLE_PATH', TEMPLATEPATH . '/single');
+
+/**
+* Filter the single_template with our custom function
+*/
+add_filter('single_template', 'my_single_template');
+
+/**
+* Single template function which will choose our template
+*/
+function my_single_template($single)
+{
+	global $wp_query, $post;
+
+	/**
+	* Checks for single template by category
+	* Check by category slug and ID
+	*/
+	foreach ((array)get_the_category() as $cat) :
+
+if (file_exists(SINGLE_PATH . '/single-cat-' . $cat->slug . '.php')) {
+	return SINGLE_PATH . '/single-cat-' . $cat->slug . '.php';
+} elseif (file_exists(SINGLE_PATH . '/single-cat-' . $cat->term_id . '.php')) {
+	return SINGLE_PATH . '/single-cat-' . $cat->term_id . '.php';
+}
+
+	endforeach;
+}
+```
+- To get custom post templates to work you must also set up directory in root called `single`. Inside, store all custom post files with the following namespace: `single-cat-[category name].php`
+
 
 ### Template Parts ###
 - Template parts, along with custom posts will typically access content via ACF using the `get_field` function. Please paste the following snippet at 
@@ -536,7 +574,9 @@ Custom links may include external links or links to specific areas on a page or 
 
 # Themes #
 ## Skitours Theme ##
-Use 
+- Use Post to create a new tour page
+- Developer Note: - Template part **content-featured** is only used to embed posts into the home page. Changes to this file will only be reflected on the home page, not within any of the post pages
+-
 ### Creating New Pages, Posts ###
 For the site to be multilingual all pages or posts created need an original title (for the Japanese page) and a copy of the page/post with the same title, plus an "-en" extension at the end. For example "Contact" is the Japanese Contact page, "Contact-en" the English version of the page.
 
