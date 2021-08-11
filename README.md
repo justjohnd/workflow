@@ -609,6 +609,10 @@ Under Appearance -> Customize -> Widgets, click Add a Widget, select Featured Pr
 ## SSR990 Boostrap-Theme Notes ##
 ### Template Heirarchy ###
 - DJ's and Shows page uses page-blog.php custom page
-- Blog and DJ post pages (any post with a category set up with a custom post type) use single-cat-[category name].php custom page
-- Uncategorized blog posts go to index.php if custom post templates are being used, otherwise they go to single.php
+- All post bages use the single.php template. Inside single.php there is logic to change the look of the blog depending on whether category: DJs has been selected. DJ post pages will display the custom field `background_image` as a banner at the top, as well as the custom field `dj_image`. Otherwise the title will display across the top of the page and `background_image` will display at the top of the body of the post.
 
+# PHP Reference #
+Many of the methods described below for used in Wordpress only
+
+## Useful Methods ##
+`get_the_category()` returns an array of categories and related data.
