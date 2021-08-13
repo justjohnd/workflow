@@ -466,7 +466,7 @@ Note that all pages and posts are set up to automatically generate appropriate m
 
 ## Images
 Large images can slow your site way down. Here are some tips for image optimization.
-- Crop your images to the desired shape (square or rectangle). This can be done in Wordpress, but I recommend doing before hand before moving to media library. You can crop images [here](https://bulkresizephotos.com/en).
+- Crop your images to the desired shape (square or rectangle). This can be done in Wordpress, but I recommend doing before hand before moving to media library. You can crop images [here](https://www.iloveimg.com/crop-image).
 - Resize your images to the minimum pixel size require for the largest screen. To determine this size, on a Chrome browser, go to your website. Then right click -> Inspect. You should see a Developer Tools section open up over part of the page. Make sure that the tools are located across the bottom of the page so that the page itself is still full width. Then at the far left end of the Developer Tools toolbar, click the Element Selector icon. Now hover your mouse over the desired image. You will see the dimensions displayed. Take not of the width. This is what you will set your minimum width to for that image.
 
 ![image](https://user-images.githubusercontent.com/55176130/128441885-312970bc-9ab8-436c-afee-a66fd2cd9601.png)
@@ -474,6 +474,21 @@ Large images can slow your site way down. Here are some tips for image optimizat
 You can use Wordpress to resize images, but I recommend doing so before moving to media library. [Here](https://bulkresizephotos.com/en) is an online tool you can use.
 - Compress your images prior to using. [Here] is a good online tool.
 - In Wordpress, always add alt text to your image. If using WMPL, also add a translation.
+
+### SSR990 Theme Maximum Image Width Reference ###
+- Full screen-width images: front page banner and DJ page Background Image: 1264px
+- Front page DJS AND SHOWS and LATEST NEWS: 730px
+- Front page UPLOAD MUSIC and RECENT POSTS: 364px
+- Front page EVENTS, ABOUT and CHARTS: 350px
+- DJ images: 250px
+- Blog post Background Image or images added in block editor: 852px
+- Sound Street logo: 250px
+- Other front page logos:
+	Play store: 250px
+	Apple store: 220px
+	Soundcloud and Mixcloud: 248px
+	Patreon: 270px
+	Paypal: 226px
 
 ## Categories
 Categories are used to index posts based on the category applied to the post.
@@ -587,9 +602,44 @@ Custom links may include external links or links to specific areas on a page or 
 - If images appear as broken links on pages: Go to WPML -> Settings -> Media Translation, and click **Start**. Once complete, refresh page and check again.
 
 ## General Troubleshooting
-
 1. If content has disappeared from the page, go back to the page or post edit screen and click Update.
 2. If you receive a strange message from Google Translate on your page, some custom fields are not showing correctly, or the LANGUAGES link is broken, check to make sure you have the appropriate tag ('english' for English pages) assigned to the page
+
+## Quick Reference ##
+### Edit Page ###
+1. Go to Pages --> Edit
+2. Edit content, either in upper block section, or in custom fields at bottom of screen
+3. Click Update
+4. On Page screen, click Tranlate icon
+5. Tranlate all fields
+6. Confirm changes weremade to both English and Japanese pages
+
+### Add Blog / News Post
+1. Go to Posts --> New
+2. Add content to bock editor
+3. Choose category: Blog or News
+4. Upload background image
+5. Click Publish twice
+5. On Page screen, click Tranlate icon
+6. Tranlate all fields
+7. Confirm changes weremade to both English and Japanese pages
+
+### Add DJ
+1. Create new post per instructions above
+2. Add DJ Image
+3. Instead of category: Blog or News, click all music genres that apply to DJ
+4. Once page content is confirmed, copy URL
+5. Go to Users --> Add New
+6. Create new User for DJ, selecting Role: Author
+7. Enter the DJ page url into the Website field
+8. Confirm that DJ appears under DJs section of front page and that it links correctly to the DJ page
+
+### Add Image to Media Library
+1. Prior to uploading, crop image
+2. Change width to the maximum size necessary for large computer screen
+3. Compress image
+4. Upload
+5. Confirm image title and alt text
 
 # Themes #
 ## Skitours Theme ##
