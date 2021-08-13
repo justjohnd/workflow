@@ -191,13 +191,18 @@ Custom links may include external links or links to specific areas on a page or 
 
 ### Add DJ
 1. Create new post per instructions above
-2. Add DJ Image
-3. Instead of category: Blog or News, click all music genres that apply to DJ
-4. Once page content is confirmed, copy URL
-5. Go to Users --> Add New
-6. Create new User for DJ, selecting Role: Author
-7. Enter the DJ page url into the Website field
-8. Confirm that DJ appears under DJs section of front page and that it links correctly to the DJ page
+2. Instead of category: Blog or News, click all music genres that apply to DJ
+3. Add DJ Image
+4. Add Background Image
+5. At bottom of screen 
+6. Once page content is confirmed, copy URL
+7. Go to Users --> Add New
+8. Create new User for DJ, selecting Role: Author
+9. Enter the DJ page url into the Website field
+10. Under post -> Quick Edit, change author of post to DJ name
+11. Translate post
+12. Confirm that DJ appears under DJs section of front page and that it links correctly to the DJ page
+13. Confirm DJ pages show correct information in both languages
 
 ### Add Image to Media Library
 1. Prior to uploading, crop image
