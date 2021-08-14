@@ -23,11 +23,13 @@ Setting your site's tagline is essential to helping search engines better index 
 
 Metadata is information about a website, which helps search engines index and rank it, making your site easier to find on the web. This site uses AIOSEO, a plugin that helps manage that information. AIOSEO does not recognize content in custom fields (used throughout this site). Hence, the plugin shows numerous unnecessary warnings in the Basic SEO and Readibility sections of the page or post. Please disregard these warnings.
 
-Note that all pages and posts are set up to automatically generate appropriate metadata by default, so you do not need to set it up. You may however tailor any page/post name and meta description to your liking using the AIOSEO fields:
+Note that all pages and posts are set up to automatically generate appropriate metadata by default, so you do not need to set it up. You may however tailor any page/post name and meta description to your liking using the AIOSEO fields. You can see edit directly from any page or post:
 
-1. Go to any page or post and click Edit
-2. If you do not see the AIOSEO tool bar, click the three dots in the top right corner and then select AIOSEO from the Plugins section
-3. Click Edit Snippet. Here you can manually change the title and description for any page.
+1. Go to All in One SEO -> Search Appearance -> Content Types. Go to Posts or Pages (whichever you wich to change) and click the Advanced tab. Under Other Options, toggle "Show AIOSEO Metabox".
+2. Go to any page or post and click Edit
+3. If you do not see the AIOSEO tool bar, click the three dots in the top right corner and then select AIOSEO from the Plugins section
+4. Click Edit Snippet. Here you can manually change the title and description for any page.
+5. If you do not want the AIOSEO Metabox seen by default in your post or page editory view, repeat Step 1 and toggle off "Show AIOSEO Metabox"
 
 ## Images
 Large images can slow your site way down. Here are some tips for image optimization.
@@ -59,7 +61,7 @@ You can use Wordpress to resize images, but I recommend doing so before moving t
 Categories are used to index posts based on the category applied to the post.
 
 **SSR990 Theme Notes**
-- This them is set up already with the following categories for posts: DJs, Blog, and News. DJ's category aggregates DJ bio pages. Blog category is to be used for "Recent Playlists". News is intended for blog posts related to SSR990 as an organization. All other categories are to be used for music genres and will be shown in the side bar on various other pages.
+- This theme is set up already with the following categories for posts: DJs, Blog, and News. DJ's category aggregates DJ bio pages. Blog category is to be used for "Recent Playlists". News is intended for blog posts related to SSR990 as an organization. All other categories are to be used for music genres and will be shown in the side bar on various other pages.
 
 Note that at this time, creating a new catetory is possible, but that category name will also appear under the "Music Genres" section of the sidebar.
 
@@ -70,16 +72,21 @@ Posts have two purposes in this theme: one is to create and show blog posts; the
 
 ## Add and Edit Blog Posts ##
 - Go to Posts → Add New to create a new post page.
-- Title the post
-- Add any text or image content directly into the Wordpress editor
-- (**SSRT Theme**) For DJ pages, under "DJ Image", add an image of the DJ. 
-- Under Background Image, add an image. (**SSRT Theme**) This image will either be shown as a banner image at the top of the page for DJ pages, or be shown in the body of the post (at the top) for all other pages. This image will also be used as a large thumbnail image for the post.
+- If the righthand sidebar isn't open, click the gear icon in the upper right corner to show it. Make sure the Posts tab is selected
+- Under the Posts tab in the sidebar, verify the Author matches the author or DJ name
+- Then scroll down until you see categories, and select the category appropriate to your post
+ **SSR Theme:**
+- For Playlist posts, select category: Blog
+- For DJ pages, select category: DJs, and any other categories pertaining to the genre of music that DJ plays
+- Note that multiple categories can be selected and will appear on multiple pages, but for non-DJ pages this should be avoided.
+- In the block editor, type in the Title the post
+- Add any text or image content directly into the Wordpress block editor
+![image](https://user-images.githubusercontent.com/55176130/129435755-a80e95c0-e234-4b4d-8fdc-db63e8896c46.png)
 
-In the side panel under Posts:
-- Verify the Author matches the author name
-- Under Categories, check the appropriate category. (**SSRT Theme**) For DJ pages, include the DJ category along with any music genres relevant to the DJ. For all other posts pick only one category suitable to the post, for example, Blog or News. Note that multiple categories can be selected and will appear on multiple pages, but for non-DJ pages this should be avoided.
-- When satisfied with all changes, click Update, then Publish
-- From the main Posts or Pages panel, add a translation per the instructions below in Translate Post or Page
+- **SSR Theme:** For DJ pages, under "DJ Image", add an image of the DJ. 
+- Under Background Image, add an image. **SSRT Theme:** This image will either be shown as a banner image at the top of the page for DJ pages, or be shown in the body of the post (at the top) for all other pages. This image will also be used as a large thumbnail image for the post.
+- When satisfied with all changes, click Update (if editing a post) or Publish (if publishing for the first time). Not that depending on your wordpress setup, when publishing you may be prompted to confirm you are ready, and click the button a second time
+- From the main Posts or Pages panel, add a translation per the instructions below in [Translate Post or Page](#translate)
 - **Be sure to check your actual post online and make sure all images are showing on the translated page** If they are not, see the WPML Troubleshooting secitn below.
 
 ## Deleting Pages, Posts
@@ -91,7 +98,10 @@ Note that deleting a page will remove it from the menus. It will need to be re-a
 - Prior to adding a new user, please create a new Author page for the user per the instructions above.
 - When creating a new Author user, paste the URL to their Author page into the Website field
 
-## Edit Menu
+## Navbar and Menu
+You can change your logo by going to Appearance -> Customize -> Site Identity -> Logo. Logo width is recommended at 250px.
+
+### Edit the Menu
 - You should not have to change your site menu, but it is possible to add or remove pages from the navigation bar. Please note that this is limited to the desktop only, and not mobile.
 - Changes to the Contact, Donate, Events, and More buttons, as well as any changes to the mobile menu must be made by a developer.
 - You can add / remove pages from the desktop menu under Appearance → Menus. Menu name is Menu 1
@@ -102,7 +112,22 @@ Note that deleting a page will remove it from the menus. It will need to be re-a
 - Under settings, click "Use WPML's Advanced Translation Editor"
 - When using ACF be sure to set all images to "Copy" (not "Translate") under WMPL settings
 
-### Translate Post or Page
+### <a name="translate">Translate Post or Page</a>
+**Method 1**
+Any page or post can be translated by by clicking on the icon for the page in its Foreign Language Column. You can add, edit, or update pages, depending on current translation status, through these icons
+![image](https://user-images.githubusercontent.com/55176130/126730407-fad61350-fd8a-41df-aa93-8716dfdd6662.png)
+- You will now be on the Advanced Translation Editor page. Note that original-language text may appear in individual boxes, depending on whether text was entered into the Wordpress editor in separate blocks or not. To combine sections (for instance, if you adding a large transalation for multiple sentences or pragraphs), click the small, round link button that appears on the dividing line between Source and Target areas. This will combine the blocks into one section.
+- Click ***Click to edit translation***
+- In the translation field on the right add or edit translated material
+- When complete click the Checkbox
+- Note that all sections of the page/post must be translated in order to save
+- Once finished, click the ***Complete*** button. Make sure that after clicking complete, you are automatically taken to the previous screen. Otherwise clicke Complete again to be sure the changes have been saved.
+-![image](https://user-images.githubusercontent.com/55176130/126729583-99c5b898-9053-4ea7-b36f-5b01a00cdea7.png)
+- Note that other items may appear in the Advanced Translation Editor screen for elements that are not readable on the site (but some which can be seen in the pages source code). Element may include image names, alternate text for images, field names or messagges viewable from the Wordpress Dashboard, or short codes. Image names and alternate text for images are good to translate, however if you do not know what an item is (such as a field name), **DO NOT translate it**. Doing so could break aspects of the site. If the translation field requires and entry, just copy over the infomation from English.
+
+**PLEASE NOTE** Once translations are created for pages or posts, if you change a DJ Image or Background Image (or any other image in the custom fields section at the bottom of the Wordpress editor screen), you do not need to update the page translation. These images are copied over automatically. However, if you make changes to images inside the block editor **DO** need to update the page translation, even if you written content was changed. In this case, open the translation editor and copy over the image name into the translation field.
+
+**Method 2 (Only available to Administrator**
 - Go to WPML -> Translation Management. 
 - Select Posts or Pages you wish to translate. Note that you can send multiple posts/pages at the same time.
 - Click ***Add Selected Content to Translation Basket*** button at bottom of page.
@@ -112,17 +137,6 @@ Note that deleting a page will remove it from the menus. It will need to be re-a
 - Click ***Send all items for translation*** at the bottom of the screen
 ![image](https://user-images.githubusercontent.com/55176130/126729060-93af5c53-f99c-4678-a42e-e0117dfdad1c.png)
 - Click WMPL -> Translations and click the ***Translate*** button for the page/post you wish to translate
-![image](https://user-images.githubusercontent.com/55176130/126729175-6bcb7be0-28d3-407b-9185-c56a2c55d3f3.png)
-- You will now be on the Advanced Translation Editor page. Note that original-language text may appear in individual boxes, depending on whether text was entered into the Wordpress editor in separate blocks or not. To combine sections (for instance, if you adding a large transalation for multiple sentences or pragraphs), click the small, round link button that appears on the dividing line between Source and Target areas. This will combine the blocks into one section.
-- Click ***Click to edit translation***
-- In the translation field on the write add or edit translated material
-- When complete click the Checkbox
-- Note that all sections of the page/post must be translated in order to save
-- Once finished, click the ***Complete*** button
--![image](https://user-images.githubusercontent.com/55176130/126729583-99c5b898-9053-4ea7-b36f-5b01a00cdea7.png)
-- Note that once any pages have been flagged for translation, they can also be accessed by the Pages or Posts page by clicking on the icon for the page in its Foreign Language Column. You can add, edit, or update pages, depending on current translation status, through these icons
-![image](https://user-images.githubusercontent.com/55176130/126730407-fad61350-fd8a-41df-aa93-8716dfdd6662.png)
-- Note that other items may appear in the Advanced Translation Editor screen for elements that are not readable on the site (but some which can be seen in the pages source code). Element may include image names, alternate text for images, field names or messagges viewable from the Wordpress Dashboard, or short codes. Image names and alternate text for images are good to translate, however if you do not know what an item is (such as a field name), DO NOT translate it. Doing so could break aspects of the site.
 
 ### Editing or Deleting Translations ###
 - Translations can be edited following the instructions above.
