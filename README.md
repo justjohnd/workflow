@@ -515,7 +515,7 @@ In the side panel under Posts:
 - Under Categories, check the appropriate category. (**SSRT Theme**) For DJ pages, include the DJ category along with any music genres relevant to the DJ. For all other posts pick only one category suitable to the post, for example, Blog or News. Note that multiple categories can be selected and will appear on multiple pages, but for non-DJ pages this should be avoided.
 - When satisfied with all changes, click Update, then Publish
 - From the main Posts or Pages panel, add a translation per the instructions below in Translate Post or Page
-- **Be sure to check your actual post online and make sure all images are showing on the translated page** If they are not, see the WPML Troubleshooting secitn below.
+- **Be sure to check your actual post online and make sure all images are showing on the translated page** If they are not, see the WPML Troubleshooting secition below.
 
 ## Deleting Pages, Posts
 Note that deleting a page will remove it from the menus. It will need to be re-added, once a new page is created.
@@ -536,6 +536,7 @@ Note that deleting a page will remove it from the menus. It will need to be re-a
 - Refer to ----- for general insallation instructions
 - Under settings, click "Use WPML's Advanced Translation Editor"
 - When using ACF be sure to set all images to "Copy" (not "Translate") under WMPL settings
+- Other fields can be set to "Translate" or "Don't Translate". For example links would not be translated, but typically text fields would
 
 ### Translate Post or Page
 - Go to WPML -> Translation Management. 
@@ -599,11 +600,16 @@ Custom links may include external links or links to specific areas on a page or 
 
 ## WPML Troubleshooting ##
 - If page does not appear translated, has missing images, or missing content, first verify that a page/post translation exists
-- If images appear as broken links on pages: Go to WPML -> Settings -> Media Translation, and click **Start**. Once complete, refresh page and check again.
+- If ACF images appear as broken links on pages:
+- 	Go to the page/post and open the editor
+- 	Scroll to the bottom and click on Show System Fields
+- 	All fields starting with an underscore (ex: `_image-1`) must be set to Copy
+- 	If this doesn't work, go to WPML -> Settings -> Media Translation, and click **Start**. Once complete, refresh page and check again.
 
 ## General Troubleshooting
 1. If content has disappeared from the page, go back to the page or post edit screen and click Update.
 2. If you receive a strange message from Google Translate on your page, some custom fields are not showing correctly, or the LANGUAGES link is broken, check to make sure you have the appropriate tag ('english' for English pages) assigned to the page
+3. ACF fields not showing in field groups: There might be a corruption with the user. Login as a different user and check again. You may need to delete and recreate the previous user.
 
 ## Quick Reference ##
 ### Edit Page ###
