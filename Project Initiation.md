@@ -1,23 +1,30 @@
 # Project Initiation
 
-
 ## Set up git local and Github remote repos
 - Log in to Github, click "New"
 - In your main projects directory (/webdevelopment): `repo project-name`
 
-This alias runs the following script:
+This alias runs the following function script, which will set up a local repo, run npm init, set up Prettier, and set up ignore files:
 ```
-mkdir project-name
-cd project-name
-echo "# project-name" >> README.md
-git init
-git add -A
-git commit -m "first commit"
-git branch -M main
-git push origin main
+repo () {
+  mkdir $1
+  cd $1
+  echo "# $1" >> README.md
+  git init
+  git add -A
+  git commit -m "first commit"
+  git branch -M main
+  git push origin main
+  npm init -y
+  npm install --save-dev --save-exact prettier
+  echo > .gitignore
+  echo > .prettierignore
+  echo "node_modules" | tee .prettierignore .gitignore
+  echo {}> .prettierrc.json
+}
 ```
 
-## Dependencies
+## Additional Dependencies
 - Before starting, verify that node, npm, SASS, and gulp-cli are globally installed. If unsure whether a package is installed, run 
 ```
 npm i --g package-name
@@ -28,7 +35,6 @@ npm i gulp gulp-sass browser-sync gulp-sourcemaps gulp-cssnano gulp-imagemin gul
 ```
 - Bootstrap 4
 - Composer. Note that composer is already installed for the local XAMPP environment. To confirm installation, type `composer` into CLI. See [here](https://thecodedeveloper.com/install-composer-windows-xampp/) for how to install.
-- Prettier (should be installed locally for every project). Instructions here: https://prettier.io/docs/en/install.html
 
 ### jQuery ###
 In this section you will find important information as to how jQuery interacts with other libraries when it is a dependency
@@ -54,11 +60,6 @@ In this section you will find important information as to how jQuery interacts w
 - Enter username, password, and email information and click Create. For consistancy, use the name `admin_project-name`
 - Copy your theme (ex: `bootstrap-theme`) into the themes directory
 - Delete the .git directory from the theme
-- cd into the directory and run:
-```
-npm init
-npm install
-```
 -In your gulpfile change the brwosersync proxy to your appropriate database path. Ex.: `proxy: 'http://localhost/database-name',`
 
 ## Configure Wordpress Dashboard
