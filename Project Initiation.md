@@ -1,10 +1,28 @@
 # Project Initiation
+Webdev can be done on two systems, either Windows, or Ubuntu with WSL. Ubuntu is perhaps preferrable. 
 
-## Set up git local and Github remote repos
+# Setting up SSH
+Instructions for connecting to Github below require setting up public and private keys for SSH connection. This is a similar procedure as used to connect to a Digital Ocean server, though the process uses the PuTTy application. Instructions below are for using an Ubuntu environment. This only has to be done once, unless you want to set up unique SSH keys for different projects. You can also generate keys via Windows powershell, but this is not necessary if following the instructions below.
+
+## Setting up via [Ubuntu](https://ubuntu.com/tutorials/ssh-keygen-on-windows#1-overview)
+1. Open Ubuntu terminal
+2. Verify ssh is installed: `sudo apt install openssh-client`
+3. Generate a key: `ssh-keygen -t rsa`
+4. You can see the file at `~/.ssh/`
+
+## Connecting to Github via SSH
+1. [Add SSH key to SSH agent](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent). First, ensure agent is running: `eval "$(ssh-agent -s)"`
+2. Add private key to ssh agent: `ssh-add ~/.ssh/id_rsa`
+3. Open your public ssh key (`id_rsa.pub`) and copy it to clipboard
+4. Go to your account on Github, and under SSH add the key
+5. You will need to use the ssh path when setting up new repos
+Note: See the above link to se how to change an HTTPS repo over to SSH
+
+# Set up git local and Github remote repos
 - Log in to Github, click "New"
 - In your main projects directory (/webdevelopment): `repo project-name`
 
-This alias runs the following function script, which will set up a local repo, run npm init, set up Prettier, and set up ignore files:
+This alias runs the following function script, which will set up a local repo, run npm init, set up Prettier, and set up ignore files. Note that the path is for a repo set up with SSH
 ```
 repo () {
   mkdir $1
@@ -14,6 +32,7 @@ repo () {
   git add -A
   git commit -m "first commit"
   git branch -M main
+  git remote add origin git@github.com/justjohnd/$1.git
   git push origin main
   npm init -y
   npm install --save-dev --save-exact prettier
