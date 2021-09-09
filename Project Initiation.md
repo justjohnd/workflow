@@ -1,8 +1,8 @@
 # Project Initiation
-Webdev can be done on two systems, either Windows, or Ubuntu with WSL. Ubuntu is perhaps preferrable. 
+This setup is in regards to using either Windows or Ubuntu (on Windows with WSL) development systems. Ubuntu is perhaps preferrable. 
 
 # Setting up SSH
-Instructions for connecting to Github below require setting up public and private keys for SSH connection. This is a similar procedure as used to connect to a Digital Ocean server, though the process uses the PuTTy application. Instructions below are for using an Ubuntu environment. This only has to be done once, unless you want to set up unique SSH keys for different projects. You can also generate keys via Windows powershell, but this is not necessary if following the instructions below.
+Instructions for connecting to Github below require setting up public and private keys for SSH connection. This is a similar procedure as used to connect to a Digital Ocean server, though that process uses the PuTTy application in Windows. Instructions below are for using an Ubuntu environment. This only has to be done once, unless you want to set up unique SSH keys for different projects. You can also generate keys via Windows powershell, but this is not necessary if following the instructions below.
 
 ## Setting up via [Ubuntu](https://ubuntu.com/tutorials/ssh-keygen-on-windows#1-overview)
 1. Open Ubuntu terminal
