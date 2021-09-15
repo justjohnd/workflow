@@ -357,14 +357,6 @@ Applies the class "form-control" to the text field. This is useful in assigning 
   visibility: hidden;
 }
 ```
-# General Developer Resources
-## Command Line Cheatsheet (Git Included)
-- **Remove untracked files**:
-```
-git stash save --keep-index --include-untracked
-git stash drop
-```
-- Remove directory and all contents: `rm -r directory-name`
 
 # Client Information
 
