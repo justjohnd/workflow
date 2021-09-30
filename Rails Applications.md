@@ -13,6 +13,8 @@
 - A model is a Ruby class that can add, find, update, and remove data from a database (CRUD). Rails automatically generates models.
 - Use the generate command to build a model:
   `bin/rails generate model ModelName ColumnOneName:ColumnOneType ColumnTwoName:ColumnTwoType`
+  Ex.: `bin/rails generate model Article title:string body:text'
+- The above model generation **creates the constructor class Articles for the article object** This object will later be accessed by used of an instance varialbe in the controller
 - Generating the model will also generate a migration file. Migrations define changes that will be made to the database. Migration files defined in Ruby are database-agnositc
 
 ## Migration File
