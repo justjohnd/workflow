@@ -14,8 +14,7 @@
   add_two(2)
   ```
   - **Parameters** are arguments passed to a method. In a web app there are two types: 1) query string parameters, which received from the browser URL in a GET request, and 2) POST data which comes from form info entered by the user. Rails treats the two types the same, using the `params` hash
-  - **params** is a built in has used 
-  - method is an important built in method that allows access to an object's properties. For example, a controller's show actions may be defines using params:
+  - **params** is a built in hash that allows access to an object's properties. For example, a controller's show actions may be defines using params:
   ```
     def show
     @article = Article.find(params[:id])
