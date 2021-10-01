@@ -32,7 +32,7 @@
 - The above model generation **creates the constructor class CreateArticles for the article object** This object will later be accessed by used of an instance varialbe in the controller
 - Generating the model will also generate a migration file. Migrations define changes that will be made to the database. Migration files defined in Ruby are database-agnositc
 
-### (Adding columns to a table)[https://stackoverflow.com/questions/4834809/adding-a-column-to-an-existing-table-in-a-rails-migration]
+### [Adding columns to a table](https://stackoverflow.com/questions/4834809/adding-a-column-to-an-existing-table-in-a-rails-migration)
 
 
 ## Migration File
