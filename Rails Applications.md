@@ -32,6 +32,9 @@
 - The above model generation **creates the constructor class CreateArticles for the article object** This object will later be accessed by used of an instance varialbe in the controller
 - Generating the model will also generate a migration file. Migrations define changes that will be made to the database. Migration files defined in Ruby are database-agnositc
 
+### (Adding columns to a table)[https://stackoverflow.com/questions/4834809/adding-a-column-to-an-existing-table-in-a-rails-migration]
+
+
 ## Migration File
 Here is an example of a migration file automatically generated when a model was generated:
 ```
@@ -61,10 +64,15 @@ The Controller makes use of **instance variables** (ex.: `@articles`). When an a
 
 Instance variables will typically be defined as a model (table) with a method called on it. Ex.: `@articles = Article.all`
 
-### Common methods for fetching data
-- Modelname.all (index action)
-- Modelname.find(params[:id]) (show action, for a specific id)
-- 
+### Using strong parameters
+when using the create action, you are allowing the user access to every parameter in your table, which is dangerous. Instead you must use a private method, and define only those parameters you are allowing access to:
+```
+  private
+  def article_params
+    params.require(:article).permit(:title, :body)
+  end
+end
+```
 
 
 ## Routes
