@@ -74,7 +74,6 @@ when using the create action, you are allowing the user access to every paramete
 end
 ```
 
-
 ## Routes
 Connect incoming HTTP requests to application and generates URLS (no hard coded URLS)
 - **routes.rb** is a single block sent to `ActionController::Routing::Routes.draw`
@@ -82,7 +81,20 @@ Connect incoming HTTP requests to application and generates URLS (no hard coded 
 - URLs are mapped by the controller's action (GET, POST, DELETE, PATCH, PUT)
 - `resources` routings iwll difine all common routes for a controller
 - RESTful routes use the following declaration style: `resources :controller-name`
-- Models that are dependen upon other models must be nested
+- Models that are dependent upon other models must be nested
+- A **resource** includes all of the following built in RESTful routes:
+```
+bin/rails routes
+      Prefix Verb   URI Pattern                  Controller#Action
+        root GET    /                            articles#index
+    articles GET    /articles(.:format)          articles#index
+ new_article GET    /articles/new(.:format)      articles#new
+     article GET    /articles/:id(.:format)      articles#show
+             POST   /articles(.:format)          articles#create
+edit_article GET    /articles/:id/edit(.:format) articles#edit
+             PATCH  /articles/:id(.:format)      articles#update
+             DELETE /articles/:id(.:format)      articles#destroy
+```
 
 # Initial Setup
 Assuming you have Ruby and Rails already installed:
@@ -97,6 +109,27 @@ Assuming you have Ruby and Rails already installed:
 5. Generate your controller from bash terminal: `bin/rails generate controller Articles index --skip-routes`
 6. Generate your model: `bin/rails generate model Article title:string body:text
 7. Run your migration: `bin/rails db:migrate`
+
+# The Form Builder
+- Forms will be found under `app/views/articles/new.html.erb `
+- The form will be wrapped in the following:
+```
+<%= form_with model: @article do |form| %>
+...
+<% end %>
+```
+- `form_with` is a helper method that instantiates the form
+- `:model` is passed to `form_with` as a resource, with all its RESTful routes
+- @article instance variable will pass the @article URL and POST route on submit
+- If using a form as a partial replace the instance variable (`@article`) with a local variable (`article`).  Because partials are shared code, it is best practice that they do not depend on specific instance variables set by a controller action. 
+
+# Partials
+- Partials should be saved under the appropriate veiws folder, and the title should begin with an underscore. Ex.: `app/views/articles/_form.html.erb`
+- Use `render` to access the partial: `<%= render "form", article: @article %>`
+
+
+
+
 
 
 
