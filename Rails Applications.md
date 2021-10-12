@@ -1,3 +1,6 @@
+# Tips and Tools
+- `bin/rails console` will open irb
+
 # Terminology
 ## Basic Terminology
   - A **hash** is an associative array of unique keys and their values
