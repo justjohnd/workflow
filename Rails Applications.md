@@ -1,6 +1,3 @@
-# Tips and Tools
-- `bin/rails console` will open irb
-
 # Terminology
 ## Basic Terminology
   - A **hash** is an associative array of unique keys and their values
@@ -129,6 +126,14 @@ Assuming you have Ruby and Rails already installed:
 # Partials
 - Partials should be saved under the appropriate veiws folder, and the title should begin with an underscore. Ex.: `app/views/articles/_form.html.erb`
 - Use `render` to access the partial: `<%= render "form", article: @article %>`
+
+# Modifying database via irb
+You can access your database directly through irb on the console. `bin/rails console` will open irb
+
+- Use `all` method to return an array of all records in a table. Ex.: `User.all`
+- Use `new` method to create an record instance. Ex.: `u = User.new` will create a new user, but not save it to the database
+- Use `create` method to create and save a new record to the database. Ex.: `u = User.create` will actually add a new record
+- Use `valid?` to check for validations. Note that a record with no validations (Ex.: `u.valid?` for the above example returns `true` because it has not validation criteria assigned to it).
 
 
 
