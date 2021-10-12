@@ -34,6 +34,13 @@
 
 ### [Adding columns to a table](https://stackoverflow.com/questions/4834809/adding-a-column-to-an-existing-table-in-a-rails-migration)
 
+### Validations
+Validations control what kind of data can be added to the database. Add validations to the model file under `app/models/modelName.rb`
+```
+class User < ApplicationRecord
+  validates :name, presence: true, uniqueness: true, length: {4..16}
+end
+```
 
 ## Migration File
 Here is an example of a migration file automatically generated when a model was generated:
@@ -128,7 +135,7 @@ Assuming you have Ruby and Rails already installed:
 - Use `render` to access the partial: `<%= render "form", article: @article %>`
 
 # Modifying database via irb
-You can access your database directly through irb on the console. `bin/rails console` will open irb
+You can access your database directly through irb on the console. `bin/rails console` will open irb. Use `reload!` to reload the console after making any changes to model files
 
 - Use `all` method to return an array of all records in a table. Ex.: `User.all`
 - Use `new` method to create an record instance. Ex.: `u = User.new` will create a new user, but not save it to the database
