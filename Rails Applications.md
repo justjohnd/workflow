@@ -31,16 +31,7 @@
   Ex.: `bin/rails generate model Article title:string body:text`
 - The above model generation **creates the constructor class CreateArticles for the article object** This object will later be accessed by used of an instance varialbe in the controller
 - Generating the model will also generate a migration file. Migrations define changes that will be made to the database. Migration files defined in Ruby are database-agnositc
-
-### [Adding columns to a table](https://stackoverflow.com/questions/4834809/adding-a-column-to-an-existing-table-in-a-rails-migration)
-
-### Validations
-Validations control what kind of data can be added to the database. Add validations to the model file under `app/models/modelName.rb`
-```
-class User < ApplicationRecord
-  validates :name, presence: true, uniqueness: true, length: {4..16}
-end
-```
+- If you are adding **associations** make sure to do so when creating the model. (See section below.)
 
 ## Migration File
 Here is an example of a migration file automatically generated when a model was generated:
@@ -58,6 +49,32 @@ end
 ```
 - `CreateArticles` was automatically generated when the `Article` model was generated. `CreateArticles` inherits the functionality of ActiveRecord's Migration class. The Migrations class in ActiveRecord contains helper methods that perform CRUD operations, like addtable, addcolumn, and rename_table. These are the types of things we want our class to do, so it inherits those methods, giving our class the ability to perform them.
 - The `change` method is defined by default as a constructive migration method. It will generate a table with the specified columns as well as timestamps for creation and updates
+- You must run `db:migrate` in order to update the database with the new migration
+
+### [Adding columns to a table](https://stackoverflow.com/questions/4834809/adding-a-column-to-an-existing-table-in-a-rails-migration)
+
+### Validations
+Validations control what kind of data can be added to the database. Add validations to the model file under `app/models/modelName.rb`
+```
+class User < ApplicationRecord
+  validates :name, presence: true, uniqueness: true, length: {4..16}
+end
+```
+
+## Associations to a model
+Associations connect multiple tables in a database, making them relational. 
+- Include your foreign key when setting up your model and migration, you can add `user_id` as a foreign key to the Post model at the point of generation:
+`bin/rails generate model Post title:string body:text user_id:integer`
+- Add associations under the appropriate model files:
+```
+class User < ApplicationRecord
+  has_many :posts
+end
+
+class Post < ApplicationRecord
+  belongs_to :user
+end
+```
 
 ## Controller
 The controller uses the model to access the database in some way
@@ -137,10 +154,14 @@ Assuming you have Ruby and Rails already installed:
 # Modifying database via irb
 You can access your database directly through irb on the console. `bin/rails console` will open irb. Use `reload!` to reload the console after making any changes to model files
 
-- Use `all` method to return an array of all records in a table. Ex.: `User.all`
-- Use `new` method to create an record instance. Ex.: `u = User.new` will create a new user, but not save it to the database
-- Use `create` method to create and save a new record to the database. Ex.: `u = User.create` will actually add a new record
-- Use `valid?` to check for validations. Note that a record with no validations (Ex.: `u.valid?` for the above example returns `true` because it has not validation criteria assigned to it).
+- `all` method returns an array of all records in a table. Ex.: `User.all`
+- `new` method creates an record instance. Ex.: `u = User.new` will create a new user, but not save it to the database
+- Add attributes to new User: `u = User.new(name: "John")`
+- `create` method creates and saves a new record to the database. Ex.: `u = User.create` will actually add a new record
+- `valid?` checks for validations. Note that a record with no validations (Ex.: `u.valid?` for the above example returns `true` because it has not validation criteria assigned to it).
+- 'recordName.errors.full_messages` show full description of any errors.
+- `save` method saves a new instance to the database. Ex.: `u.save`
+- 
 
 
 
