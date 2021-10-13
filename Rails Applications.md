@@ -119,6 +119,12 @@ edit_article GET    /articles/:id/edit(.:format) articles#edit
              PATCH  /articles/:id(.:format)      articles#update
              DELETE /articles/:id(.:format)      articles#destroy
 ```
+- Use `resources` in you routes like so:
+```
+Rails.application.routes.draw do
+  resources :articles
+end
+```
 
 # Initial Setup
 Assuming you have Ruby and Rails already installed:
