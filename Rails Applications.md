@@ -119,10 +119,10 @@ edit_article GET    /articles/:id/edit(.:format) articles#edit
              PATCH  /articles/:id(.:format)      articles#update
              DELETE /articles/:id(.:format)      articles#destroy
 ```
-- Use `resources` in you routes like so:
+- Use `resources` in you routes like so (you can use the `only` option to use only specific routes):
 ```
 Rails.application.routes.draw do
-  resources :articles
+  resources :users, only: [:new, :create]
 end
 ```
 
