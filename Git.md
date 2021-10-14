@@ -1,3 +1,6 @@
+#### Change master branch name to main
+git branch -M master main
+
 #### Compare branch file with main file
 In VS Code, while in the branch you want to compare with main, click the Source Control icon on the left. Then click SEARCH & COMPARE and click on the file you want to compare.
 
