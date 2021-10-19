@@ -192,6 +192,16 @@ Assuming you have Ruby and Rails already installed:
 6. Generate your model: `bin/rails generate model Article title:string body:text
 7. Run your migration: `bin/rails db:migrate`
 
+## VS Code Environment
+In your workspace settings, add the following:
+```
+{
+  "files.associations": {
+  "*.html.erb": "html"
+}
+}
+```
+
 # The Form Builder
 - Forms will be found under `app/views/articles/new.html.erb `
 - The form will be wrapped in the following:
