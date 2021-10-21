@@ -74,6 +74,7 @@ This standardizes field names to: `page-name-template-name-description`. Note th
 ### Header and Footer
 - Use the deafault headers and footers for any full-width pages.
 - Use the `sidebar` versions to include a righthand sidebar.
+- For any project, Wordpress or otherwise, use the following link for accessing the Font Awesome CDN: **https://use.fontawesome.com/releases/v5.13.1/css/all.css**
 
 ### Navbar
 #### Navwalker
