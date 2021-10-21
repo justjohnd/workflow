@@ -193,12 +193,38 @@ Assuming you have Ruby and Rails already installed:
 7. Run your migration: `bin/rails db:migrate`
 
 ## VS Code Environment
+Make sure you have ERB Formatter/Beutify and Ruby Extensions installed. Add the following for htmlbeautifier and emmet in you Workspace.
 In your workspace settings, add the following:
 ```
 {
+  "ruby.useBundler": true, //run non-lint commands with bundle exec
+  "ruby.useLanguageServer": true, // use the internal language server (see below)
+  "ruby.lint": {
+    "rubocop": {
+      "useBundler": true // enable rubocop via bundler
+    },
+    "reek": {
+      "useBundler": true // enable reek via bundler
+    }
+  },
+  "ruby.format": "rubocop", // use rubocop for formatting
   "files.associations": {
-  "*.html.erb": "html"
-}
+  "*.erb": "erb"
+  },
+  "[erb]": {
+    "editor.defaultFormatter":"aliariff.vscode-erb-beautify",
+    "editor.formatOnSave": true
+  },
+  "[html]": {
+    "editor.defaultFormatter": "aliariff.vscode-erb-beautify",
+    "editor.formatOnSave": true
+  },
+  
+  "emmet.includeLanguages": {
+          "erb": "html"
+        },
+  "emmet.showAbbreviationSuggestions": true,
+  "emmet.showSuggestionsAsSnippets": true,
 }
 ```
 
