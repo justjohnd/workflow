@@ -297,7 +297,7 @@ end
 - Make necessary edits to `views/devise/registrations/new` There are many other views you may need to update as well.
 - Go to Article model and add `belongs_to :user`.
 - Go to User  model and add `has_many :articles`
-- Add user id to articles model: `rails g migration Add UserIdToArticles user_id:integer`
+- Add user id to articles model: `rails g migration AddUserIdToArticles user_id:integer`
 - Run `rails db:migrate`
 - Use `current_user` helper in the Articles controller. Under both `new` and `create` actions, replace `Article.new` with `current_user.articles.build`. Note that you can also use this helper in embedded ruby inside any view: `<%= current_user.name % >`
 - Route new user sign up to got ot Registrations controller.
