@@ -266,6 +266,7 @@ You can access your database directly through irb on the console. `bin/rails con
 - Type `rails generate devise User` to generate a User model, migration and route
 - Run `db:migrate`
 - Go to `path/users/sign_up` to verify Sign Up page has been generated
+- Go to Articles controller and add to the top of the file: `before_action :authenticate_user!, except: [:index, :show]`
 - Add `registrations_controller.rb`
 ```
 class RegistrationsController < Devise::RegistrationsController
