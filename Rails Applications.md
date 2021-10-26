@@ -263,6 +263,9 @@ You can access your database directly through irb on the console. `bin/rails con
 - Add `config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }` to `config/environments/development.rb`. This will define default url options for development environment
 - Make sure you have a root set up already before running devise
 - Add `rails g devise:views` for a variety of default views. This should especially be done if devise is being used with bulma
+- Type `rails generate devise User` to generate a User model, migration and route
+- Run `db:migrate`
+- Go to `path/users/sign_up` to verify Sign Up page has been generated
 
 ## Notifications
 Devise uses flash notices to tell the user whether the their login was successful or unsuccessful. Place the following into the top of any pages where you have a sign in, just inside the `body` tag:
