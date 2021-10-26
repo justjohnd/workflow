@@ -266,6 +266,44 @@ You can access your database directly through irb on the console. `bin/rails con
 - Type `rails generate devise User` to generate a User model, migration and route
 - Run `db:migrate`
 - Go to `path/users/sign_up` to verify Sign Up page has been generated
+- Add `registrations_controller.rb`
+```
+class RegistrationsController < Devise::RegistrationsController
+
+  private
+  def sign_up_params
+    params.require(:user).permit(:name, :username, :email, :password, :password_confirmation)
+  end
+  
+  def account_update_params
+    params.require(:user).permit(:name, :username, :email, :password, :current_password)
+  end
+  
+end
+```
+- Add `rails g migration AddFieldsToUsers`
+- Add the following into your AddFieldsToUsers migration:
+```
+def change
+  add_column: :users, :name, :string
+  add_column: :users, :username, :string
+  add_index :users, :username, unique: true
+end
+```
+- Run `db:migrate`
+- Make necessary edits to `views/devise/registrations/new` There are many other views you may need to update as well.
+- Go to Article model and add `belongs_to :user`.
+- Go to User  model and add `has_many :articles`
+- Add user id to articles model: `rails g migration Add UserIdToArticles user_id:integer`
+- Run `rails db:migrate`
+- User `current_user` helper, and add to Articles controller. Under both `new` and `create` actions, replace `Article.new` with `current_user.articles.build`
+- 
+
+## Using console to confirm table data
+- `@user = User`
+- `User.connection`
+- Type `@user` again to see all columns
+- Type `@article = Article` to see all columns under Article. You should see a `user_id` key.
 
 ## Notifications
 Devise uses flash notices to tell the user whether the their login was successful or unsuccessful. Place the following into the top of any pages where you have a sign in, just inside the `body` tag:
