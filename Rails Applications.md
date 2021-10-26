@@ -255,7 +255,27 @@ You can access your database directly through irb on the console. `bin/rails con
 - `valid?` checks for validations. Note that a record with no validations (Ex.: `u.valid?` for the above example returns `true` because it has not validation criteria assigned to it).
 - 'recordName.errors.full_messages` show full description of any errors.
 - `save` method saves a new instance to the database. Ex.: `u.save`
-- 
+
+# Using Devise for authentification (Link)[https://github.com/heartcombo/devise]
+- Add the following to your Gemfile: `gem 'devise'`
+- Run `bundle` from command line
+- Run `rails generate devise:install` from command line
+- Add `config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }` to `config/environments/development.rb`. This will define default url options for development environment
+- Make sure you have a root set up already before running devise
+- Add `rails g devise:views` for a variety of default views. This should especially be done if devise is being used with bulma
+
+## Notifications
+Devise uses flash notices to tell the user whether the their login was successful or unsuccessful. Place the following into the top of any pages where you have a sign in, just inside the `body` tag:
+```
+<% if flash[:notice} %>
+  <p class="notice"><%= notice %></p>
+<% end %>
+<% if flash[:alert} %>
+  <p class="alert"><%= alert %></p>
+<% end %>
+```
+
+
 
 
 
