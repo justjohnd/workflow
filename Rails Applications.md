@@ -57,7 +57,7 @@ end
 Validations control what kind of data can be added to the database. Add validations to the model file under `app/models/modelName.rb`
 ```
 class User < ApplicationRecord
-  validates :name, presence: true, uniqueness: true, length: {4..16}
+  validates :name, presence: true, uniqueness: true, length: { in 4..16 }
 end
 ```
 
