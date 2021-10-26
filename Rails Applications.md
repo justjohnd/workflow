@@ -253,6 +253,7 @@ You can access your database directly through irb on the console. `bin/rails con
 - Add attributes to new User: `u = User.new(name: "John")`
 - `create` method creates and saves a new record to the database. Ex.: `u = User.create` will actually add a new record
 - `valid?` checks for validations. Note that a record with no validations (Ex.: `u.valid?` for the above example returns `true` because it has not validation criteria assigned to it).
+- `destroy` destroys the record. Ex. : `u = User.last` sets variable to last record in Users. `u.destroy` will destroy that last record.
 - 'recordName.errors.full_messages` show full description of any errors.
 - `save` method saves a new instance to the database. Ex.: `u.save`
 
@@ -282,6 +283,7 @@ class RegistrationsController < Devise::RegistrationsController
   
 end
 ```
+- Check `routes.rb`. You should see `devise_for :users` at the top. Change this to `devise_for :users, :controllers => { registrations: 'registrations' }`. If this isn't done, then a new user role's name and username will be set to `nil`.
 - Add `rails g migration AddFieldsToUsers`
 - Add the following into your AddFieldsToUsers migration:
 ```
@@ -297,8 +299,22 @@ end
 - Go to User  model and add `has_many :articles`
 - Add user id to articles model: `rails g migration Add UserIdToArticles user_id:integer`
 - Run `rails db:migrate`
-- User `current_user` helper, and add to Articles controller. Under both `new` and `create` actions, replace `Article.new` with `current_user.articles.build`
-- 
+- Use `current_user` helper in the Articles controller. Under both `new` and `create` actions, replace `Article.new` with `current_user.articles.build`. Note that you can also use this helper in embedded ruby inside any view: `<%= current_user.name % >`
+- Route new user sign up to got ot Registrations controller.
+- At this point, confirm that you can sign up for a new account by signing up on the site. Got to `path/users/sign_up`. You can confirm by checking `@user.last` in the rails console
+- Remove any test articles not tied to any account
+- Connect appropriate article content to name, username, etc. For example, to show the username of the author on the article, use `<% article.user.username %>`
+- Prevent user from being prompted to sign in again, with the following, added either to the navbar section:
+```
+<% if user_signed_in? %>
+  <%= link_to current_user.name, edit_user_registration_path, class: "classes" %>
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "classes" %>
+<% else %>
+  <%= link_to "Sign In", new_user_session_path, class: "classes" %>
+  <%= link_to "Sign Up", new_user_registration_path, class: "classes" %>
+<% end %>
+```
+- Note: You can use `user_signed_in?` method with an if statement to reveal various parts of a view, depending on whether they are signed in.
 
 ## Using console to confirm table data
 - `@user = User`
