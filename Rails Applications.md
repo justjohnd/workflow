@@ -33,7 +33,17 @@
 - Generating the model will also generate a migration file. Migrations define changes that will be made to the database. Migration files defined in Ruby are database-agnositc
 - If you are adding **associations** make sure to do so when creating the model. (See section below.)
 
+### Validations
+Validations control what kind of data can be added to the database. Add validations to the model file under `app/models/modelName.rb`
+```
+class User < ApplicationRecord
+  validates :name, presence: true, uniqueness: true, length: { in: 4..16 }
+end
+```
+
 ## Migration File
+Upon execution, migration files give commands to the database on how to change that database. Once a migration file is created, `rails db:migrate` must be performed. Once a migration is complete **do not** make changes to any previous migration files. A new migration file will need to be created and run (see below).
+
 Here is an example of a migration file automatically generated when a model was generated:
 ```
 class CreateArticles < ActiveRecord::Migration[6.1]
@@ -53,11 +63,13 @@ end
 
 ### [Adding columns to a table](https://stackoverflow.com/questions/4834809/adding-a-column-to-an-existing-table-in-a-rails-migration)
 
-### Validations
-Validations control what kind of data can be added to the database. Add validations to the model file under `app/models/modelName.rb`
+### Troubleshooting the database
+-**ActiveRecord:InvalidForeignKey** If you try to destroy a record and get this error, it is because you are being constrained by a foreign key association. If you wish to delete all associated files, and `on_delete: cascade` to the foreign key and run a new migration. Example:
 ```
-class User < ApplicationRecord
-  validates :name, presence: true, uniqueness: true, length: { in: 4..16 }
+class AddForeignKeyToComments < ActiveRecord::Migration[6.1]
+  def change
+    add_foreign_key :comments, :articles, on_delete: :cascade
+  end
 end
 ```
 
