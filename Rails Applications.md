@@ -256,6 +256,7 @@ You can access your database directly through irb on the console. `bin/rails con
 - `destroy` destroys the record. Ex. : `u = User.last` sets variable to last record in Users. `u.destroy` will destroy that last record.
 - 'recordName.errors.full_messages` show full description of any errors.
 - `save` method saves a new instance to the database. Ex.: `u.save`
+- `update` updates the value of an existing record. Ex.: `Article.last.update(user_id: 1)` will update the last Article record `user_id`
 
 # Using Devise for authentification (Link)[https://github.com/heartcombo/devise]
 - Add the following to your Gemfile: `gem 'devise'`
