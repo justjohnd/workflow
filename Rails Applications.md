@@ -245,7 +245,7 @@ In your workspace settings, add the following:
 - Partials should be saved under the appropriate veiws folder, and the title should begin with an underscore. Ex.: `app/views/articles/_form.html.erb`
 - Use `render` to access the partial: `<%= render "form", article: @article %>`
 
-# Modifying database via irb
+# Helpful methods and modifying the database via irb
 You can access your database directly through irb on the console. `bin/rails console` will open irb. Use `reload!` to reload the console after making any changes to model files
 
 - `all` method returns an array of all records in a table. Ex.: `User.all`
