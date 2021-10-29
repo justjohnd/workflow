@@ -346,6 +346,31 @@ Devise uses flash notices to tell the user whether the their login was successfu
 <% end %>
 ```
 
+#Custom 404 Page
+Rails ships with 404 pages, but all css must be embedded in the page. A better option is to set up custom pages.
+- Add a controller with methods: `rails g controller errors not_found internal_server_error`
+- In the controller:
+```
+def not_found
+  render status: 404
+end
+
+def internal_server_error
+  render status: 500
+end
+```
+- In `routes.rb` add:
+```
+match "/404", to: "errors#not_found", via: all
+match "/500", to "errors#internal_server_error, via: all
+```
+- Under `config/application.rb`, under `module DynamicErrors`, add:
+```
+config.exceptions_app = self.routes
+```
+- Delete the public files
+- To be able to see the changes in development environment, go to `config/environments/development.rb` and change `config.consider_all_requests = true` to `false`. **Make sure to change back before going to production**
+
 
 
 
