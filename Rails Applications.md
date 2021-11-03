@@ -190,7 +190,7 @@ Rails.application.routes.draw do
 end
 ```
 
-# Initial Setup
+# Setup and deployment
 Assuming you have Ruby and Rails already installed:
 1. Create your app: `rails new blog --skip-spring --skip-listen` (Note: this is specifically for Linux running on a Windows subsystem)
 3. Start app: `bin/rails server` to confirm it is connected
@@ -239,6 +239,27 @@ In your workspace settings, add the following:
   "emmet.showSuggestionsAsSnippets": true,
 }
 ```
+
+## Deployment to Heroku
+Before beginning, you should have already configured your command line for heroku commands, created a project, and initiated git. Then navigate to your project folder. Inside the project:
+- Enter `heroku create`
+- Enter `git remote` and check that heroku files are there
+- In your Gemfile, replace the line `gem 'sqlite3' with:
+```
+group :development, :test do
+ gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
+end
+```
+- From command line enter: `bundle config set --local without production`
+- Enter `bundle install`
+- Commit changes to git and Github
+- Push to Heroku: `git push heroku main`
+- Migrate database to Heroku: `heroku run rails db:migrate`
+- You should be all set up. Use `heroku open` to open the site and verify!
 
 # The Form Builder
 - Forms will be found under `app/views/articles/new.html.erb `
