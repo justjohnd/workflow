@@ -1,5 +1,8 @@
 # Terminology
-## Basic Terminology
+## CS Terminology
+- A [**DSL**](https://www.toptal.com/ruby/ruby-dsl-metaprogramming-guide), or domain specific language, is a programming language specific to certain application domains and is not general use. Some frameworks build higher language-syntax that accesses another langauge, becoming an _internal DSL_. Ruby is an example of a DSL, and Rails uses its own internal DSL based on Ruby.
+
+## Ruby/Rails Terminology
   - A **hash** is an associative array of unique keys and their values
     - Alternative syntax can be used when defining the key names of a hash, using `:` at the end of the hash name, thus converting the key name into a symbol.
     ```
@@ -23,7 +26,9 @@
   Here, when a GET request is made (show action), an instance varialbe `@article` is created. The article is defined by running a `find` method on the Article model (a table full of articles). Find is passed a params hash with the value of the ID defined from the URL
 
 ## Model
-- A model is a Ruby class that can add, find, update, and remove data from a database (CRUD). Rails automatically generates models.
+[**Active Record**](https://medium.com/@moulayjam/what-is-rails-activerecord-2a891390703b#:~:text=Rails%20Active%20Records%20provide%20an,field%20names%20of%20database%20tables) is the Model (M) of the Rails MVC configuration. It manages data and business logic and connects your application to the database, allowing you to make programmatic changes to the database.
+
+- A model is a Ruby class that can add, find, update, and remove data from a database (CRUD). Rails can automatically generate models.
 - Use the generate command to build a model:
   ```
   bin/rails generate model ModelName ColumnOneName:ColumnOneType ColumnTwoName:ColumnTwoType
@@ -60,6 +65,14 @@ end
 - `CreateArticles` was automatically generated when the `Article` model was generated. `CreateArticles` inherits the functionality of ActiveRecord's Migration class. The Migrations class in ActiveRecord contains helper methods that perform CRUD operations, like addtable, addcolumn, and rename_table. These are the types of things we want our class to do, so it inherits those methods, giving our class the ability to perform them.
 - The `change` method is defined by default as a constructive migration method. It will generate a table with the specified columns as well as timestamps for creation and updates
 - You must run `db:migrate` in order to update the database with the new migration
+
+### Additional Notes
+- Adding an index or indexes to a table can help with querying. `add_index` can be used. The following command adds an index to the `:userName` column of `:users`:
+```
+def change
+    add_index :users, :userName
+  end
+```
 
 ### [Adding columns to a table](https://stackoverflow.com/questions/4834809/adding-a-column-to-an-existing-table-in-a-rails-migration)
 
