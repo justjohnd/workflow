@@ -291,7 +291,7 @@ You can access your database directly through irb on the console. `bin/rails con
 - `save` method saves a new instance to the database. Ex.: `u.save`
 - `update` updates the value of an existing record. Ex.: `Article.last.update(user_id: 1)` will update the last Article record `user_id`
 
-# Using Devise for authentification (Link)[https://github.com/heartcombo/devise]
+# Using Devise for authentification [Link](https://github.com/heartcombo/devise)
 - Add the following to your Gemfile: `gem 'devise'`
 - Run `bundle` from command line
 - Run `rails generate devise:install` from command line
