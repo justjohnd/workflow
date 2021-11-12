@@ -49,8 +49,35 @@
     ```
  5. **State** is private and fully controlled by the component. **Hooks** are functions that let you use state and access React features without writing a class.
 
+
+# Props
+Props are always passed down from a parent component to a child component. In the following example, `Welcome` is a child component of `element`, and `element` passes the attribute `name` as a  prop value of `"Sara"` down to `Welcome`
+```
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+
+const element = <Welcome name="Sara" />;
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+```
+
 # State Hook
 `useState` is a hook called inside a function to add local state to it. React preserves state between re-renders. It returns a pair: the current state, and the function used to update it. The only argument passed to `useState` is the initial state value. Ex.: `const [userCalAverage, setUserCalAverage] = useState('');`
+
+The variable assigned to the current state, `userCalAverage`, also refers to an object. 'console.log({userCalAverage})' will return the object, while `console.log(userCalAverage)` will return the state. For this reason, when setting state with a variable that is controlled by another state, pass only the name of the variable and do not include curly braces. 
+
+## Passing a function to your state function
+The function used to update state can also accept a function when executed. This function can also be passed the previous value of the variable. So for example, if you want to make a form display if it isn't currently displayed, and vice versa, this will work:
+```
+  function change () {
+    setFormVisibility(prevValue => {
+      return !prevValue;
+    });
+  }
+```
 
 ## Passing functions as props
 You may need to access and manipulate data from one component and pass it to another one. In this case, you could preserve that data state in a parent component that shares two children. Example:
@@ -109,19 +136,54 @@ function App() {
 export default App;
 ```
 
-# Props
-Props are always passed down from a parent component to a child component. In the following example, `Welcome` is a child component of `element`, and `element` passes the attribute `name` as a  prop value of `"Sara"` down to `Welcome`
+## Forms and State
+State can be controlled by form data being entered by applying the `onChange` attribute to an input element. When set to execute a function controlling state, the state will change every time something is changed in the input field.
+
+When the input element triggers the function assigned to `onChange` it also passes an object as an argument to the function. That object corresponds to the event that triggered `onChange`. The object includes a `target` corresponding to the element that triggered the change, and that target contains a `value` which corresponds to the properties assigned to the element. You can also access other `target` properties, such as `placeholder` or `type`.
+
+You can use input data elsewhere in the component by setting state on it.
+
+In HTML forms, `input`, `textarea`, and `select` elements are naturally responsible for handling their own state. the `value` attribute corresponds to what is currently inside the input. In React, you should set the value of the form to the property you are using to control state. This way, we have one source of truth, and that is the state. This makes it a **controlled component**. See [here](https://reactjs.org/docs/forms.html) for details on controlling elements other than `input`. It's best practice to control the state of form input at all times, and not just on `submit`.
+
 ```
-function Welcome(props) {
-  return <h1>Hello, {props.name}</h1>;
+function App() {
+
+  const [name, setName] = useState("");
+
+  function handleChange(event) {
+    setName(event.target.value);
+    console.log(event.target.value);
+    console.log(event.target.placeholder);
+    console.log(event.target.type);
+  }
+  
+    return (
+    <div className="container">
+      <h1>Hello {headingText}</h1>
+      <form>
+        <input
+          onChange={handleChange}
+          type="text"
+          placeholder="What's your name?"
+          value={name}
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
 }
 
-const element = <Welcome name="Sara" />;
-ReactDOM.render(
-  element,
-  document.getElementById('root')
-);
+export default App;
 ```
+Typing `John` into the input field returns in the console:
+```
+John
+What's your name?
+text
+```
+
+
+
 
 
 
