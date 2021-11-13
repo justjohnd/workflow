@@ -30,7 +30,13 @@
     console.log(one) // 1
     console.log(two) // 2
     ```
-    
+ 4. **Functional Programming** is a pardigm that focuses on use of **pure functions**, and avoids **shared state**, **mutable data**, and **side-effects**. It is **declarative** (vs. imperative)
+    - A **pure function** is any function is any a function that given the same input, will always result in the same output. It has no side-effects. It also has **referential transparency**, meaning replacing the function with its expected output will have no effect on the program.
+    - A **shared state** is any variable, object, or memory space that exists in a shared scope. This means that functions dependent on shared-state variables are prone to race conditions, meaning the order of execution of functions will affect the output (usually a bug).
+ 6. A [**promise**](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) is an object that can be returned synchonously from an asychonous function, with one of three states: Fulfilled, Rejected, or Pending. Only the function that created the promise will have knowledge of its state.
+ 7. **Immutable** data is data than never mutates. Mutable data can lead to data loss. Immutability is the core concept of functional programming.
+ 8. A **side effect** is any application state change observable outside the function call other than its return value. Reducing side effects make an application more easy to understand and debug. Side effect actions need to be isolated from the application. 
+ 9. **Declarative programming** states, abstractly, what do do. Imperative programming states how to do it. Imperative functions often use statements, such as `for`, `if`, etc., while declarative functions usually call expressions, such as `map()`.
  
  ## React Terminology
  1.  2. **Elements** Are the smallest units of React. They are objects and describe what will be shown on the screen. They are immutable. 
@@ -181,6 +187,9 @@ John
 What's your name?
 text
 ```
+
+# Fetch API
+Most browsers have a `window.fetch` object built into it, enabling us to make HTTP requests using Javascript promises. 
 
 
 
