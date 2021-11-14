@@ -240,8 +240,9 @@ Refer to this tutorial for setting up a virtual host: https://www.digitalocean.c
 
 ## Uploading Files via FTP to the Server
 1. Open Filezilla.
-2. At File -> Site Manager, select server and click Connect.
-3. For Digital Ocean hosted sites, this is the path to theme files:
+2. If connecting for the first time, set up your connection under Site Manager, setting the Protocol to "SFTP - SSH File Transfer Protocol". Enter your IP addres in the Host field.
+3. If you have connected in the paset, got to File -> Site Manager, select server and click Connect.
+4. For Digital Ocean hosted sites, this is the path to theme files:
    <code>/var/www/html/wp-content/themes</code>
 4. Copy the relevant theme files from local site to the remote files by selecting, dragging, and dropping them into the new directory. All theme files will have been transferred.
 5. Open MySQL Workbench.
