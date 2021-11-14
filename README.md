@@ -188,11 +188,11 @@ for the href path.
 - Note that the public key in in Digital Ocean must match the one that was generated using puTTyGen. If unsure, open puTTyGen and load your public key. Check it against the public key attached to the account. **Changing keys assigned to your droplet after the droplet is created will lock you out of the Console**
 - Create droplets
 2. If you want to connect a domain, make sure the DNS records point to the new droplet IP address. You should have A records for both my-site.com and www.my-site.com.
-3. Enter droplet IP address into other browser window, and confirm the IP address is live. (It give you a prompt to continue configuration in SSH.)
-4. Load a puTTy session, but before doing so, confirm your IP address is correct. Make sure that there is a path to the private key, under SSH -> Auth. Make sure under Data that user is set to root. 
-5. Once logged in to the SSH, continue with Wordpress configuration. Enter domain (ex. `my-site.com`), email, username, password, site title.
-6. Set up LetsEncrypt for get SSL for site.
-7. It make take 12 up to 12 hours for the site to be visible. Clear cache and reload the site
+3. Enter droplet IP address into other browser window, and confirm the IP address is live. Make sure you are opening the correct IP address. Enter your password (note: password authentication is enabled for SSH)..
+5. Load a puTTy session, but before doing so, confirm your IP address is correct. Make sure that there is a path to the private key, under SSH -> Auth. Make sure under Data that user is set to root. 
+7. Once logged in to the SSH, continue with Wordpress configuration. Enter domain (ex. `my-site.com`), email, username, password, site title.
+8. Set up LetsEncrypt for get SSL for site.
+9. It make take 12 up to 12 hours for the site to be visible. Clear cache and reload the site
 
 ### Creating a Public Key
 Do this if you want to access SSH directly from your local computer
@@ -214,9 +214,10 @@ Do this if you want to access SSH directly from your local computer
 2. Under Certificates for Load Balancers and Spaces, click Add Certificate.
 3. Add your domain, select subdomains, and enter a name. Your certificate will generate.
 
-### Log in to SSH
-1. Open PuTTY, and open Host Name.
-2. Enter password (note: password authentication is enabled for SSH).
+### Creating SSH on Windows machine
+DigitalOcean droplets are Linux based. If you want to generate an SSH, you need to use PuTTYgen, which creates SSH keys, as well as PuTTy the utility used to connect your machine to the server via SSH
+1. Open PuTTygen and either generate a new key or load one (if you've created one in DigitalOcean)
+2. Select **Save Private Key**
 
 ### Creating Users in SSH
 1. Log in to SSH
