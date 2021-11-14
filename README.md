@@ -188,7 +188,7 @@ for the href path.
 - Note that the public key in in Digital Ocean must match the one that was generated using puTTyGen. If unsure, open puTTyGen and load your public key. Check it against the public key attached to the account. **Changing keys assigned to your droplet after the droplet is created will lock you out of the Console**
 - Create droplets
 2. If you want to connect a domain, make sure the DNS records point to the new droplet IP address. You should have A records for both my-site.com and www.my-site.com.
-3. Enter droplet IP address into other browser window, and confirm the IP address is live. Make sure you are opening the correct IP address. Enter your password (note: password authentication is enabled for SSH)..
+3. Enter droplet IP address into other browser window, and confirm the IP address is live. Make sure you are opening the correct IP address. 
 5. Load a puTTy session, but before doing so, confirm your IP address is correct. Make sure that there is a path to the private key, under SSH -> Auth. Make sure under Data that user is set to root. 
 7. Once logged in to the SSH, continue with Wordpress configuration. Enter domain (ex. `my-site.com`), email, username, password, site title.
 8. Set up LetsEncrypt for get SSL for site.
