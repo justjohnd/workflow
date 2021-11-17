@@ -34,9 +34,19 @@
     - A **pure function** is any function is any a function that given the same input, will always result in the same output. It has no side-effects. It also has **referential transparency**, meaning replacing the function with its expected output will have no effect on the program.
     - A **shared state** is any variable, object, or memory space that exists in a shared scope. This means that functions dependent on shared-state variables are prone to race conditions, meaning the order of execution of functions will affect the output (usually a bug).
  6. A [**promise**](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) is an object that can be returned synchonously from an asychonous function, with one of three states: Fulfilled, Rejected, or Pending. Only the function that created the promise will have knowledge of its state.
- 7. **Immutable** data is data than never mutates. Mutable data can lead to data loss. Immutability is the core concept of functional programming.
- 8. A **side effect** is any application state change observable outside the function call other than its return value. Reducing side effects make an application more easy to understand and debug. Side effect actions need to be isolated from the application. 
- 9. **Declarative programming** states, abstractly, what do do. Imperative programming states how to do it. Imperative functions often use statements, such as `for`, `if`, etc., while declarative functions usually call expressions, such as `map()`.
+    - A simple example of a promise is:
+    ```
+    const wait = time => new Promise((resolve) => setTimeout(resolve, time));
+
+    wait(3000).then(() => console.log('Hello!')); // 'Hello!'
+    ```
+   - The function `wait` takes an argument `time`. `wait` generates a new promise, inside of which another function is passed. This function has the argument `resolve`, which upon exectution is passed, along with `time` to the `setTimeout()` method. 
+   - The promise constructor takes two parameters, `resolve()` and `reject()`. The above example does not have a `reject()` parameter defined. Note that technically, the arguments could be called anything. 
+   - `resolve()` is called when the `setTimeout` function is finished.
+   - A promise must always pass and return a result variable
+ 8. **Immutable** data is data than never mutates. Mutable data can lead to data loss. Immutability is the core concept of functional programming.
+ 9. A **side effect** is any application state change observable outside the function call other than its return value. Reducing side effects make an application more easy to understand and debug. Side effect actions need to be isolated from the application. 
+ 10. **Declarative programming** states, abstractly, what do do. Imperative programming states how to do it. Imperative functions often use statements, such as `for`, `if`, etc., while declarative functions usually call expressions, such as `map()`.
  
  ## React Terminology
  1.  2. **Elements** Are the smallest units of React. They are objects and describe what will be shown on the screen. They are immutable. 
