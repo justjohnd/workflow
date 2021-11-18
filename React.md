@@ -52,7 +52,7 @@
  1.  2. **Elements** Are the smallest units of React. They are objects and describe what will be shown on the screen. They are immutable. 
  2. Components accept arbitrary inputs--or arguments--(props) and return elements describing what should appear on the screen. React passes JSX attributes and children to components as a single object called **props**
     - [**Functional (or "Function") Components**](https://www.freecodecamp.org/news/functional-components-vs-class-components-in-react/) are basic, stateless JS functions. They can be passed props as parameters though.
-    - **Class Components** are stateful and use the Component class in React. (See above link)
+    - **Class Components** are stateful and use the Component class in React. (See above link). Using hooks, such as `useState` makes it so that one does not need to use class components.
  3. **React** is the entry point to the React library. It uses reusable, containable components to create a UI. Typically, components are built in JSX. JSX is just sytactic sugar, replacing the first tag in any function return with a React.createElement function call. Import the following packages at the top of your `index.js` file:
     ```
     import React from "react";
@@ -63,8 +63,12 @@
     import App from './components/App';
     ReactDOM.render(<App />, document.getElementById('root'));
     ```
- 5. **State** is private and fully controlled by the component. **Hooks** are functions that let you use state and access React features without writing a class.
-
+ 5. **State** is the condition of the application at any given time. In React, state is private and fully controlled by the component. It is a data structure that determines the state of the UI. **Hooks** are functions that let you use state and access React features without writing a class. **Local state** refers to state that is controlled in the component, for instance, with the use of `setState`. There are also **global states**.
+ 6. **Rendering** is when a function component gets called and returns a set of instructions for building the DOM. It is passed props and set to default state. This is also called **initialization**
+ 8. **Mounting** is when a component builds the DOM for the first time, based on the instructions given during rendering
+ 9. **Re-rendering** is when a function gets called again and returns a new set of instructions on an already mounted component. The application is repainted. This is also referred to as **updating**.
+ 10. **Unmounting** is when a component is removed from the DOM
+ 11. **Lifecycle** is a series of methods invoked at different stages of a component's existence. The lifecycle includes: 1) Initialization, 2) Mounting, 3) Updating, 4) Unmounting
 
 # Props
 Props are always passed down from a parent component to a child component. In the following example, `Welcome` is a child component of `element`, and `element` passes the attribute `name` as a  prop value of `"Sara"` down to `Welcome`
@@ -197,9 +201,20 @@ John
 What's your name?
 text
 ```
+# The Effect Hook
+- The effect hook lets you perform side effects in function components. Data fetching is an example of a side effect. `useEffect` combines `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount`.
+- `useEffect` tells React that the function still has to do something after the component renders. React will call the function inside `useEffect` after the DOM updates.
 
 # Fetch API
-Most browsers have a `window.fetch` object built into it, enabling us to make HTTP requests using Javascript promises. 
+- Most browsers have a `window.fetch` object built into it, enabling us to make HTTP requests using Javascript promises.
+- `fetch` makes a simple GET request when given a URL
+- `fetch` should only be called when the component mounts. Otherwise, data will be fecthed every time the component updates.
+
+## Fetch with Hooks
+- When calling an API inside a function utilizing the `useState` hook, data is stored locally.
+- Where to fetch data is based on "need-to-know"; all areas using the data should be children of the parent
+- Where to place the loading indicator depends on where you want it viewed
+- 
 
 
 
