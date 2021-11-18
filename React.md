@@ -1,5 +1,5 @@
 # General Terminology
-1. **Arrow Function** - A shorthand form of a function consisting of `name = (parameters) => { operations; }
+2. **Arrow Function** - A shorthand form of a function consisting of `name = (parameters) => { operations; }
   - If the function contains a single operation, it doesn't need curly braces and has implicit return. Ex:
   ```hello = () => "Hello World!";```
   - Arrow functions don't bind their own `this`, instead they inherit the one from the parent scope. [See here](https://www.codementor.io/@dariogarciamoya/understanding-this-in-javascript-with-arrow-functions-gcpjwfyuc)
@@ -47,6 +47,7 @@
  8. **Immutable** data is data than never mutates. Mutable data can lead to data loss. Immutability is the core concept of functional programming.
  9. A **side effect** is any application state change observable outside the function call other than its return value. Reducing side effects make an application more easy to understand and debug. Side effect actions need to be isolated from the application. 
  10. **Declarative programming** states, abstractly, what do do. Imperative programming states how to do it. Imperative functions often use statements, such as `for`, `if`, etc., while declarative functions usually call expressions, such as `map()`.
+ 11. **CRUD**: Create, Read, Update, Destroy.
  
  ## React Terminology
  1.  2. **Elements** Are the smallest units of React. They are objects and describe what will be shown on the screen. They are immutable. 
@@ -204,18 +205,38 @@ text
 # The Effect Hook
 - The effect hook lets you perform side effects in function components. Data fetching is an example of a side effect. `useEffect` combines `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount`.
 - `useEffect` tells React that the function still has to do something after the component renders. React will call the function inside `useEffect` after the DOM updates.
+- The function passed to `useEffect` is the effect. Variables can be passed from the function component to `useEffect` because `useEffect` is scoped to that function.
+- `useEffect` will run **every time** the component renders or re-renders. Be careful with API calls.
+- If you are changing data on a server, you need to make sure you clean up your effect, otherwise you can incur a data leak.
+- `useEffect` takes a function and an array of dependencies as its two parameters. The dependency can be state or props, but must be used in the function itself. If the dependency value matches the value returned the previous time `useEffect` was invoked, `useEffect` will not be invoked again. Passing `[]` as the dependency will automatically prevent useEffect to be called on updates.
 
 # Fetch API
 - Most browsers have a `window.fetch` object built into it, enabling us to make HTTP requests using Javascript promises.
 - `fetch` makes a simple GET request when given a URL
-- `fetch` should only be called when the component mounts. Otherwise, data will be fecthed every time the component updates.
+- `fetch` should only be called when the component mounts. Otherwise, data will be fetched every time the component updates. 
+- 'useEffect' only needs to be used if you need fetch
 
 ## Fetch with Hooks
 - When calling an API inside a function utilizing the `useState` hook, data is stored locally.
 - Where to fetch data is based on "need-to-know"; all areas using the data should be children of the parent
 - Where to place the loading indicator depends on where you want it viewed
-- 
-
+- General best practice may be to use `fetch` without `useEffect` if the user is fetching data. Otherwise, wrap in `useEffect`
+- Using just `fetch`, follow this pattern:
+```
+  function getData() {
+    fetch(
+      `url`
+    )
+      .then(response => response.json()) //Convert response into json object
+      .then(data => {
+        setData(data)
+      })
+      .catch(() => {
+        console.log("error")
+      })
+  }
+```
+Note that the url can be passed variables from the function to which the `getData` function is scoped.
 
 
 
