@@ -90,6 +90,9 @@ ReactDOM.render(
 
 The variable assigned to the current state, `userCalAverage`, also refers to an object. 'console.log({userCalAverage})' will return the object, while `console.log(userCalAverage)` will return the state. For this reason, when setting state with a variable that is controlled by another state, pass only the name of the variable and do not include curly braces. 
 
+### setState is asynchronous
+That means that a setState function nested inside a hanlder function my complete after that handler function completes. It also means that you should always access data via a function inside setState (see below).
+
 ## Passing a function to your state function
 The function used to update state can also accept a function when executed. This function can also be passed the previous value of the variable. So for example, if you want to make a form display if it isn't currently displayed, and vice versa, this will work:
 ```
@@ -202,6 +205,7 @@ John
 What's your name?
 text
 ```
+Note also that leaving the default value blank, will initially create an uncontrolled data input regardless of whether the state variable has been assigned to the `value`. The form will change to controlled as soon as a `value` is entered, but it is bad practice to change between controlled and uncontrolled inputs.
 # The Effect Hook
 - The effect hook lets you perform side effects in function components. Data fetching is an example of a side effect. `useEffect` combines `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount`.
 - `useEffect` tells React that the function still has to do something after the component renders. React will call the function inside `useEffect` after the DOM updates.
