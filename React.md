@@ -104,8 +104,24 @@ The function used to update state can also accept a function when executed. This
 ```
 
 ## Passing functions as props
-You may need to access and manipulate data from one component and pass it to another one. In this case, you could preserve that data state in a parent component that shares two children. Example:
+You may need to access and manipulate data from one component and pass it to another one. In this case, you could preserve that data state in a parent component that shares two children. Use callback functions to access data from children:
+1) Create a callback function in the parent:
+```
+const [x, setX] = useState();
 
+function handleCallback(data-from-child) {
+...do something with data-from-child. Ex: setX(data-from-child)
+}
+```
+2) Pass call back function as prop to child component
+```
+<Child
+handleCallback={handleCallback}
+/>
+```
+3) Trigger callback in child by some event or function. If within a function: `props.handleCallback(data-from-child)`; If from a click or change event, wrap in an anonymous function: `onChange={ () => handleCallback(data-from-child) }`
+
+**Example**
  - I want to get an array from child component chain `Usersection` -> `UserCards`, calculate the average of array values, then pass it to another child component `MealPlans`. Both child coponents `UserCards` and `MealPlans` share a parent `App`. Basic structure:
 ```
 function App() {
