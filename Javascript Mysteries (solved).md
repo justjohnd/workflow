@@ -1,4 +1,4 @@
-# How does a has work?
+# How does a hash work?
 Consider the example (from Elliott Hindman's blog):
 ```
 const arr = [1,2,3,4,5,6,7,7,8,6,10];
