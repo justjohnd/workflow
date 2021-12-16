@@ -1,4 +1,6 @@
-# Linux System
+# Linux subsystem on WSL2
+Currently I am using two environments: Windows 10 and a Linux subsystem on WSL2. The latter is preferred and should be used for future projects, as for one, it makes Rails much easier to work with, and is more of an industry standard than Windows.
+
 Ubuntu will open in `/home/justjohnd`
 
 ## Find out current user:
