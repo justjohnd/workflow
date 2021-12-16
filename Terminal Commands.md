@@ -3,6 +3,22 @@ Currently I am using two environments: Windows 10 and a Linux subsystem on WSL2.
 
 Ubuntu will open in `/home/justjohnd`
 
+Unless otherwise noted, all commands can be executed from within Ubuntu.
+
+## Commands regarding your linux distribution
+- Check to see what version of WSL you are running: From Windows start, search for **Command Prompt**, right click and run as Administrator. Then enter `wsl --list --verbose`
+- Check the current versuion of Ubuntu: `lsb_release -dc`
+- Update your distribution: (This should be done regularly, and manually, as Windows does not provide automatic updates) `sudo apt update && sudo apt upgrade`
+
+### (Installing nvm)[https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl]
+Node version manager is useful when operating in different environments such as Windows and Ubuntu. Prior to installation, however, node and npm should be uninstalled from the distribution and reinstalled after nvm is installed.
+- Uninstall node, npm, and dependencies: `sudo apt-get purge --auto-remove nodejs`
+- Install cURL: `sudo apt-get install curl`
+- Install nvm: `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash`
+- Close terminal and then verify installation: `command -v nvm`. This should return `nvm`
+- List versions of node currently installed: `nvm ls`
+- **Install current stable version of node**: `nvm install --lts`
+
 ## Find out current user:
 `whoami`
 
