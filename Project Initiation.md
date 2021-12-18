@@ -10,38 +10,7 @@ Instructions for connecting to Github below require setting up public and privat
 3. Generate a key: `ssh-keygen -t rsa`
 4. You can see the file at `~/.ssh/`
 
-## Connecting to Github via SSH
-1. [Add SSH key to SSH agent](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent). First, ensure agent is running: `eval "$(ssh-agent -s)"`
-2. Add private key to ssh agent: `ssh-add ~/.ssh/id_rsa`. **Note:** do not enter the .pub extension here
-3. Open your public ssh key (`id_rsa.pub`) and copy it to clipboard
-4. Go to your account on Github, and under SSH add the key
-5. You will need to use the ssh path when setting up new repos
-Note: See [here](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories) to see how to change an HTTPS repo over to SSH
-
-# Set up git local and Github remote repos
-- Log in to Github, click "New"
-- In your main projects directory (/webdevelopment): `repo project-name`
-
-This alias runs the following function script, which will set up a local repo, run npm init, set up Prettier, and set up ignore files. Note that the path is for a repo set up with SSH
-```
-repo () {
-  mkdir $1
-  cd $1
-  echo "# $1" >> README.md
-  git init
-  git add -A
-  git commit -m "first commit"
-  git branch -M main
-  git remote add origin git@github.com/justjohnd/$1.git
-  git push origin main
-  npm init -y
-  npm install --save-dev --save-exact prettier
-  echo > .gitignore
-  echo > .prettierignore
-  echo "node_modules" | tee .prettierignore .gitignore
-  echo {}> .prettierrc.json
-}
-```
+## Initiate git, created Github repository, and make remote connection. See Git section for more information
 
 ## Additional Dependencies
 - Before starting, verify that node, npm, SASS, and gulp-cli are globally installed. If unsure whether a package is installed, run 
