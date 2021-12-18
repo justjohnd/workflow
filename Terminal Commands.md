@@ -10,6 +10,12 @@ Unless otherwise noted, all commands can be executed from within Ubuntu.
 - Check the current versuion of Ubuntu: `lsb_release -dc`
 - Update your distribution: (This should be done regularly, and manually, as Windows does not provide automatic updates) `sudo apt update && sudo apt upgrade`
 
+### Change environment variables systemwide (note: this doesn't currently work for me!)
+- Enter environment file: `sudo -H vi /etc/environment`
+- Add your value: `MONGOSH = 'mongosh "mongodb+srv://cluster0.r33ym.mongodb.net/myFirstDatabase" --username justjohnd'`
+- Logout and login. Test `echo $MONGOSH`. Get nothing returned
+
+
 ### (Installing nvm)[https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl]
 Node version manager is useful when operating in different environments such as Windows and Ubuntu. Prior to installation, however, node and npm should be uninstalled from the distribution and reinstalled after nvm is installed.
 - Uninstall node, npm, and dependencies: `sudo apt-get purge --auto-remove nodejs`
