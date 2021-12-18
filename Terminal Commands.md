@@ -25,12 +25,15 @@ Node version manager is useful when operating in different environments such as 
 ## Change owner of file to current user:
 `sudo chown -R $USER /file-path`
 
-## Change name of file/directory OR move file/directory:
-### Change name:
+## File and Directory Manipulation
+### Create File
+Use the `touch` command, followed by the path, filename, and extension
+
+### Change file or directory name:
 `mv full/file/path/old-name full/file/path/new-name`
 Ex.: `mv /home/user/temp /home/user/directory`
 
-### Move directory:
+### Move file or directory:
 **WARNING** When moving adirectory, make sure to specify the directory name at the end of the file path or it will overwrite the destination directory!
 Ex.: `sudo mv restaurant /projects/restaurant`
 
