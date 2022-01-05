@@ -80,6 +80,9 @@ Some notes about the above example:
 * `app.use(express.json());` allows server to accept JSON in the body of the request (this replaces the used of bodyParser).
 * `app.use(require('./routes/<route-name>'));` is all that is needed to define routes if your are using React Router. If not, you need to specify the URL, followed by the file name: `app.use('/<route-name>', <route-name>Router);`
 
+# Database commands
+`db.<collection-name>.find()` to show all items in a collection
+`db.<collection-name>.drop()` to delete all items in a collection
 
 # References:
 https://www.mongodb.com/languages/mern-stack-tutorial
