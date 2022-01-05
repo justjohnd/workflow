@@ -51,6 +51,7 @@ const mongoose = require('mongoose');
 
 // Required routes (change <route-name> to the name of your route
 const <route-name>Router = require('./routes/<route-name>');
+app.use('/<route-name>', <route-name>Router);
 
 // Required middleware
 app.use(cors());
@@ -64,6 +65,11 @@ const connection = mongoose.connection;
 connection.once('open', () => {
     console.log('mongo DB success');
 });
+
+
+app.listen(port, (err) => {
+    if (err) console.error(err);
+    console.log(`App listening at http://localhost:${port}`)});
 ```
 
 The above example uses `mongoose` to connect with the backend. However, you can manually set up your backend connection as well, by creating and requiring a `./db/conn` module (See the wayou-kitchen project as an example of manual setup).
