@@ -45,6 +45,9 @@ Ex.: `sudo mv restaurant /projects/restaurant`
 
 If in the above example, you used a desination path `/projects`, the directory `restaurant` would be renamed `projects` and moved to the root (`/`) directory.
 
+### Remove a directory and contents
+`rm -r <directory name>`
+
 ## Learn how to find a file/directory (here)[https://devconnected.com/how-to-rename-a-directory-on-linux/]
 
 # npm Commands
