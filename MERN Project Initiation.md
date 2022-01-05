@@ -39,7 +39,9 @@ npm i uuid axios react-router-dom
 ```
 
 # Setting up the backend
-`server.js` (or `app.js`) is central command for the backend. Boilerplate for this file is as follows:
+`server.js` (or `app.js`) is central command for the backend.
+
+Boilerplate for this file is as follows:
 ```
 // Required dependencies
 const express = require('express');
@@ -50,8 +52,7 @@ const port = process.env.PORT || 5000;
 const mongoose = require('mongoose');
 
 // Required routes (change <route-name> to the name of your route
-const <route-name>Router = require('./routes/<route-name>');
-app.use('/<route-name>', <route-name>Router);
+app.use(require('./routes/<route-name>'));
 
 // Required middleware
 app.use(cors());
@@ -72,7 +73,12 @@ app.listen(port, (err) => {
     console.log(`App listening at http://localhost:${port}`)});
 ```
 
-The above example uses `mongoose` to connect with the backend. However, you can manually set up your backend connection as well, by creating and requiring a `./db/conn` module (See the wayou-kitchen project as an example of manual setup).
+Some notes about the above example:
+* Express uses the `require` method to import modules, however, if you want to use `import` instead, you need to add `"type": "module"` to the `package.json` file.
+* `const app = express();` creates the server.
+* The above example uses `mongoose` to connect with the backend. However, you can manually set up your backend connection as well, by creating and requiring a `./db/conn` module (See the wayou-kitchen project as an example of manual setup).
+* `app.use(express.json());` allows server to accept JSON in the body of the request (this replaces the used of bodyParser).
+* `app.use(require('./routes/<route-name>'));` is all that is needed to define routes if your are using React Router. If not, you need to specify the URL, followed by the file name: `app.use('/<route-name>', <route-name>Router);`
 
 
 # References:
