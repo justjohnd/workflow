@@ -82,7 +82,7 @@ Some notes about the above example:
 ## Importing and exporting modules
 Express uses the `require` method to import modules, however, if you want to use `import` instead, you need to add `"type": "module"` to the `package.json` file.
 
-Any .js file being imported needs to have in it a `module.exports` object to be exported. Example:
+Any .js file being imported needs to have in it a [`module.exports`](https://nodejs.org/api/modules.html#moduleexports) object to be exported. Example:
 
 ## Connecting to MongoDB
 Here is one example of how to connect with your MongoDB database:
@@ -118,8 +118,18 @@ Let's look at what the above code means:
 * `mongodb` is a Node.js dependency, and the native driver that allows our javascript application to interact with the database
 * `const { MongoClient } = require('mongodb');`: imports `MongoClient` from the driver. [`MongoClient()`](https://mongodb.github.io/node-mongodb-native/api-generated/mongoclient.html) is a constructor used to create a new MongoClient instance. You pass it a **serverConfig** object, and **options** object.
 * The above `module.exports` object exports a `connectToServer` function and `getDb` function.
-* The [`connect`](https://mongodb.github.io/node-mongodb-native/api-generated/mongoclient.html#connect) method can be passed various options, such as `db` to determine if a database exists.
+* The [`connect`](https://mongodb.github.io/node-mongodb-native/api-generated/mongoclient.html#connect) is passed the url, option, and a callback function. The callback runs after the method is executed and returns an `error` object, otherwise null.
 
+Back in the `server.js` file, the object is imported, and `connectToServer` is passed a function to return an `error` object if it occurs:
+```
+app.listen(port, () => {
+  // perform a database connection when server starts
+  dbo.connectToServer(function (err) {
+    if (err) console.error(err);
+  });
+  console.log(`Server is running on port: ${port}`);
+});
+```
 
 # Database commands
 `db.<collection-name>.find()` to show all items in a collection`
