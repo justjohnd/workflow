@@ -118,7 +118,7 @@ Let's look at what the above code means:
 * `mongodb` is a Node.js dependency, and the native driver that allows our javascript application to interact with the database
 * `const { MongoClient } = require('mongodb');`: imports `MongoClient` from the driver. [`MongoClient()`](https://mongodb.github.io/node-mongodb-native/api-generated/mongoclient.html) is a constructor used to create a new MongoClient instance. You pass it a **serverConfig** object, and **options** object.
 * The above `module.exports` object exports a `connectToServer` function and `getDb` function.
-* The (`connect`)[https://mongodb.github.io/node-mongodb-native/api-generated/mongoclient.html#connect] method can be passed various options, such as `db` to determine if a database exists.
+* The [`connect`](https://mongodb.github.io/node-mongodb-native/api-generated/mongoclient.html#connect) method can be passed various options, such as `db` to determine if a database exists.
 
 
 # Database commands
