@@ -235,13 +235,6 @@ recordRoutes.route('/update/:id').post(function (req, response) {
     $set: {
       title: req.body.title,
       extendedIngredients: req.body.extendedIngredients,
-      preparationMinutes: req.body.preparationMinutes,
-      cookingMinutes: req.body.cookingMinutes,
-      readyInMinutes: req.body.readyInMinutes,
-      sourceUrl: req.body.sourceUrl,
-      image: req.body.image,
-      analyzedInstructions: req.body.analyzedInstructions,
-      servings: req.body.servings,
     },
   };
   db_connect
