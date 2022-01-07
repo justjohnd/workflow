@@ -249,6 +249,40 @@ recordRoutes.route('/update/:id').post(function (req, response) {
 Notes:
 * [`$set`](https://docs.mongodb.com/manual/tutorial/update-documents/) is an update operator used to modify field values
 
+## Add image upload capability
+You will need the `multer` middleware to upload images. [Multer](http://expressjs.com/en/resources/middleware/multer.html) is a node.js middleware for handling multipart/form-data, which is primarily used for uploading files. You can also use `uuid` to generate random values for your image names.
+
+At the top of the appropriate route, include:
+```
+const multer = require('multer');
+const { v4: uuidv4 } = require('uuid');
+```
+Next, set your storage options using the `diskStorage` engine:
+```
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'images');
+  },
+  filename: function (req, file, cb) {
+    cb(null, uuidv4() + '-' + Date.now() + path.extname(file.originalname));
+  },
+});
+```
+Notes:
+* `cb(null, 'images');` means that if the function doesn't error, the upload will be stored in the `images` directory.
+
+Next, use a function to specify what kinds of images are acceptable for upload:
+```
+const fileFilter = (req, file, cb) => {
+  const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+  if (allowedFileTypes.includes(file.mimetype)) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+```
+
 # Database commands
 `db.<collection-name>.find()` to show all items in a collection`
 `db.<collection-name>.drop()` to delete all items in a collection`
