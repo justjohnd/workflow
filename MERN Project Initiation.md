@@ -39,6 +39,15 @@ npm i uuid axios react-router-dom
 ```
 
 # Setting up the backend
+## General Terminolgy [(Ref)](https://www.freecodecamp.org/news/introduction-to-mongoose-for-mongodb-d2a7aa593c57/)
+* **Collections** in Mongo are equivalent to tables in relational databases. They can hold multiple JSON documents.
+* **Documents** are equivalent to records or rows of data in SQL. While a SQL row can reference data in other tables, Mongo documents usually combine that in a document.
+* **Fields** or attributes are similar to columns in a SQL table.
+* **Schema** is a document data structure (or shape of the document) that is enforced via the application layer.
+* **Models** are higher-order constructors that take a schema and create an instance of a document equivalent to **records** in a relational database.
+* **Record** is an instance of a model saved to the database
+
+## Server.js (app.js)
 `server.js` (or `app.js`) is central command for the backend.
 
 Boilerplate for this file is as follows:
@@ -58,19 +67,7 @@ app.use(require('./routes/<route-name>'));
 app.use(cors());
 app.use(express.json());
 
-// Connect to database
-const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true});
-
-const connection = mongoose.connection;
-connection.once('open', () => {
-    console.log('mongo DB success');
-});
-
-
-app.listen(port, (err) => {
-    if (err) console.error(err);
-    console.log(`App listening at http://localhost:${port}`)});
+// Connect to database (see below)
 ```
 
 Some notes about the above example:
@@ -80,11 +77,11 @@ Some notes about the above example:
 * `app.use(require('./routes/<route-name>'));` is all that is needed to define routes if your are using React Router. If not, you need to specify the URL, followed by the file name: `app.use('/<route-name>', <route-name>Router);`
 
 ## Importing and exporting modules
-Express uses the `require` method to import modules, however, if you want to use `import` instead, you need to add `"type": "module"` to the `package.json` file.
+Express uses the `require` method to import modules, i.e. it creates a single instance (singleton object/singleton pattern) and returns it. If you want to use `import` instead, you need to add `"type": "module"` to the `package.json` file.
 
 Any .js file being imported needs to have in it a [`module.exports`](https://nodejs.org/api/modules.html#moduleexports) object to be exported. Example:
 
-## Connecting to MongoDB
+## Connecting to MongoDB Manually
 Here is one example of how to connect with your MongoDB database:
 ```
 const { MongoClient } = require('mongodb');
@@ -130,6 +127,134 @@ app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
 ```
+
+## Connecting to MongoDB via mongoose
+Mongoose manages relationships between data, provides schema validation, and is used to translate between objects in code and the representation of those objects in MongoDB.
+
+Here is an alternative to the above for connecting to your database:
+```
+const uri = process.env.ATLAS_URI;
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true});
+
+const connection = mongoose.connection;
+connection.once('open', () => {
+    console.log('mongo DB success');
+});
+
+app.listen(port, (err) => {
+    if (err) console.error(err);
+    console.log(`Example app listening at http://localhost:${port}`)});
+```
+Notes:
+* `mongoose.connect` is passed the uri, and can also be passed options (as in the example above) and a callback function to fire when the initial connection is complete
+* [`mongoose.connection`](https://mongoosejs.com/docs/api.html#mongoose_Mongoose-ConnectionStates) is the default connection used for the Mongoose module.  It is used by default for every model created using mongoose.model
+* `mongoose.connection` is an instance of an Node.js [EventEmitter](https://nodejs.org/api/events.html#events_class_events_eventemitter) class, and can access the methods associated with that class, including `once`. This adds a one-time listener function for the event named eventName.
+
+## Schema
+Schema define the structure of the documents and fields in the database. They also include validations. They will be accessed in the appropriate file under **routes**
+
+## Routes
+Routes contain files for any collection in which you want to run CRUD operations on. The top of the route will include something like:
+```
+const express = require('express');
+
+// recordRoutes is an instance of the express router.
+// We use it to define our routes.
+// The router will be added as a middleware and will take control of requests starting with path /record.
+const recordRoutes = express.Router();
+
+// This will help us connect to the database
+const dbo = require('../db/conn');
+
+// This help convert the id from string to ObjectId for the _id.
+const ObjectId = require('mongodb').ObjectId;
+```
+* A router object--`Router()`--is an isolated instance of middleware and routes. You can think of it as a “mini-application,” capable only of performing middleware and routing functions. 
+* [`ObjectId`](https://docs.mongodb.com/manual/reference/method/ObjectId/) returns a new ObjectId value.
+
+### Get all documents in a collection
+If you want to get all items in a collection:
+```
+// This section will help you get a list of all the records.
+recordRoutes.route('/record').get(function (req, res) {
+  let db_connect = dbo.getDb('recipes');
+  db_connect
+    .collection('records')
+    .find({})
+    .toArray(function (err, result) {
+      if (err) throw err;
+      res.json(result);
+    });
+});
+```
+Notes:
+* [`collection()`](https://mongoosejs.com/docs/api/connection.html#connection_Connection-collection) retrieves a collection, creating it if not cached.
+* [`toArray()`](https://docs.mongodb.com/manual/reference/method/cursor.toArray/) method returns an array that contains all the documents from a cursor.
+
+### Get a document by id
+```
+// This section will help you get a single record by id
+recordRoutes.route('/record/:id').get(function (req, res) {
+  let db_connect = dbo.getDb();
+  let myquery = { _id: ObjectId(req.params.id) };
+  db_connect.collection('records').findOne(myquery, function (err, result) {
+    if (err) throw err;
+    res.json(result);
+  });
+});
+```
+Notes:
+* This route accepts a URL parameter id (`:id`) which can be accessed via `req.params.id`
+* In MongoDb the [`_id`](https://www.guru99.com/mongodb-objectid.html) field is the primary key for the collection so that each document can be uniquely identified in the collection. The `_id field` contains a unique `ObjectID` value.
+ 
+ ### Post a new document
+ ```
+ // This section will help you create a new record.
+recordRoutes.route('/record/add').post(function (req, response) {
+  let db_connect = dbo.getDb();
+  let myobj = {
+    title: req.body.title,
+    extendedIngredients: req.body.extendedIngredients
+  };
+  db_connect.collection('records').insertOne(myobj, function (err, res) {
+    if (err) throw err;
+    response.json(res);
+  });
+});
+```
+Notes:
+* [`req.body`](https://www.geeksforgeeks.org/express-js-req-body-property/) property contains key-value pairs of data submitted in the request body. 
+
+### Post an update to an existing document
+```
+// This section will help you update a record by id.
+recordRoutes.route('/update/:id').post(function (req, response) {
+  let db_connect = dbo.getDb();
+  let myquery = { _id: ObjectId(req.params.id) };
+  let newvalues = {
+    $set: {
+      title: req.body.title,
+      extendedIngredients: req.body.extendedIngredients,
+      preparationMinutes: req.body.preparationMinutes,
+      cookingMinutes: req.body.cookingMinutes,
+      readyInMinutes: req.body.readyInMinutes,
+      sourceUrl: req.body.sourceUrl,
+      image: req.body.image,
+      analyzedInstructions: req.body.analyzedInstructions,
+      servings: req.body.servings,
+    },
+  };
+  db_connect
+    .collection('records')
+    .updateOne(myquery, newvalues, function (err, res) {
+      if (err) throw err;
+      console.log('1 document updated');
+      response.json(res);
+    });
+});
+```
+Notes:
+* [`$set`](https://docs.mongodb.com/manual/tutorial/update-documents/) is an update operator used to modify field values
 
 # Database commands
 `db.<collection-name>.find()` to show all items in a collection`
