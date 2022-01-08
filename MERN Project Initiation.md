@@ -271,7 +271,7 @@ const storage = multer.diskStorage({
 Notes:
 * `cb(null, 'images');` means that if the function doesn't error, the upload will be stored in the `images` directory.
 
-Next, use a function to specify what kinds of images are acceptable for upload:
+Next, use a function to specify what kinds of images are acceptable for upload, set your `upload` object and set your route:
 ```
 const fileFilter = (req, file, cb) => {
   const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
@@ -281,6 +281,12 @@ const fileFilter = (req, file, cb) => {
     cb(null, false);
   }
 };
+
+let upload = multer({ storage, fileFilter });
+
+router.route('/add').post(upload.single('photo'), (req, res) => {
+...data
+}
 ```
 
 # Database commands
