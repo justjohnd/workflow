@@ -94,8 +94,7 @@ import React, { Component } from 'react';
 The structure of class components is as follows:
 ```
 export default class <componentName> extends Component {
-<!-- ...do stuff -->
-
+<!-- ...define functions -->
 
 constructor(props) {
 super(props);
@@ -105,6 +104,10 @@ this.state = { items: [] };
 
 <!-- Bind methods -->
 this.functionName = this.functionName.bind(this);
+}
+
+componentDidMount() {
+<!-- get data from database -->
 }
 
   render() {
@@ -118,6 +121,11 @@ this.functionName = this.functionName.bind(this);
 * Initialize local state by assigning the object to `this.state`
 * Bind event handler methods to an instance.
 * Constructor is the only place where you should assign this.state directly. In all other methods, you need to use this.setState() instead.
+
+## componentDidMount()
+`componentDidMount()` is invoked immediately after a component is mounted. If you need to load data from a remote endpoint, this is a good place to instantiate the network request.
+
+Set ste inside `componentDidMount()` using `this.setState()`.
 
 
 # State Hook
