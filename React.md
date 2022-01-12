@@ -31,7 +31,7 @@
     console.log(two) // 2
     ```
  4. **Functional Programming** is a pardigm that focuses on use of **pure functions**, and avoids **shared state**, **mutable data**, and **side-effects**. It is **declarative** (vs. imperative)
-    - A **pure function** is any function is any a function that given the same input, will always result in the same output. It has no side-effects. It also has **referential transparency**, meaning replacing the function with its expected output will have no effect on the program.
+    - A **pure function** is any a function that given the same input, will always result in the same output. It has no side-effects. It also has **referential transparency**, meaning replacing the function with its expected output will have no effect on the program.
     - A **shared state** is any variable, object, or memory space that exists in a shared scope. This means that functions dependent on shared-state variables are prone to race conditions, meaning the order of execution of functions will affect the output (usually a bug).
  6. A [**promise**](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) is an object that can be returned synchonously from an asychonous function, with one of three states: Fulfilled, Rejected, or Pending. Only the function that created the promise will have knowledge of its state.
     - A simple example of a promise is:
@@ -84,6 +84,41 @@ ReactDOM.render(
   document.getElementById('root')
 );
 ```
+
+# Class Components
+Class components are unnecessary if you are using state hooks, but many older programs are written with them. Class components require `Component` to be imported:
+```
+import React, { Component } from 'react';
+```
+
+The structure of class components is as follows:
+```
+export default class <componentName> extends Component {
+<!-- ...do stuff -->
+
+
+constructor(props) {
+super(props);
+
+<!-- Initialize state -->
+this.state = { items: [] };
+
+<!-- Bind methods -->
+this.functionName = this.functionName.bind(this);
+}
+
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+```
+
+## constructor(props)
+`constructor(props)` is used to:
+* Initialize local state by assigning the object to `this.state`
+* Bind event handler methods to an instance.
+* Constructor is the only place where you should assign this.state directly. In all other methods, you need to use this.setState() instead.
+
 
 # State Hook
 `useState` is a hook called inside a function to add local state to it. React preserves state between re-renders. It returns a pair: the current state, and the function used to update it. The only argument passed to `useState` is the initial state value. Ex.: `const [userCalAverage, setUserCalAverage] = useState('');`
