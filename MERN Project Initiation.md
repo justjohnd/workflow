@@ -285,10 +285,31 @@ const fileFilter = (req, file, cb) => {
 let upload = multer({ storage, fileFilter });
 
 router.route('/add').post(upload.single('photo'), (req, res) => {
-...data,
+sourceUrl: req.body.sourceUrl,
 image: req.file.filename,
+analyzedInstructions: JSON.parse(req.body.analyzedInstructions),
 }
 ```
+Not here that `analyzedInstructions` contains an array, which must converted into a string on the frontend (see below), and therefore parsed, using `JSON.parse()` on the backend.
+
+On the front end you will create a `FormData` object, and then post that object data to the database. `FormData` compiles key/value pairs to send using an `XMLHttpRequest`. It can be used to send form data or keyed data. For example:
+```
+  function reciepData(e) {
+    // When post request is sent to the create url, axios will add a new record to the database.
+
+    const formData = new FormData();
+    formData.append('image', recipe.image);
+    formData.append('extendedIngredients', JSON.stringify(recipe.extendedIngredients));
+
+    axios
+      .post('http://localhost:5000/record/add', formData)
+      .then((res) => console.log(res.data));
+  }
+```
+  
+Any array data, such as in the example `extendedIngredients` above, must first use `JSON.stringify()` to stringify the data prior to sending to the database.
+
+`multer` also uses `multipart/form-data` so this needs to be set in the form by adding `encType="multipart/form-data` to the `form` tag.
 
 # Database commands
 `db.<collection-name>.find()` to show all items in a collection`
