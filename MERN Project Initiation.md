@@ -271,7 +271,7 @@ const storage = multer.diskStorage({
 Notes:
 * `cb(null, 'images');` means that if the function doesn't error, the upload will be stored in the `images` directory.
 
-Next, use a function to specify what kinds of images are acceptable for upload, set your `upload` object and set your route. Make sure to set your image data to `req.file.filename`.
+Next, use a function to specify what kinds of images are acceptable for upload, set your `upload` object and set your route. Make sure to set your image data to `req.file.filename`. If no image is entered into the input on submit `req.file` will return undefined, and you will receive an error when trying to upload to the database. You can get around this by adding a tertiary operator to the `image` value:
 ```
 const fileFilter = (req, file, cb) => {
   const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
@@ -286,11 +286,11 @@ let upload = multer({ storage, fileFilter });
 
 router.route('/add').post(upload.single('photo'), (req, res) => {
 sourceUrl: req.body.sourceUrl,
-image: req.file.filename,
+image: req.file === undefined ? "placeholder.jpg" : req.file.filename,
 analyzedInstructions: JSON.parse(req.body.analyzedInstructions),
 }
 ```
-Not here that `analyzedInstructions` contains an array, which must converted into a string on the frontend (see below), and therefore parsed, using `JSON.parse()` on the backend.
+Note here that `analyzedInstructions` contains an array, which must converted into a string on the frontend (see below), and therefore parsed, using `JSON.parse()` on the backend.
 
 On the front end you will create a `FormData` object, and then post that object data to the database. `FormData` compiles key/value pairs to send using an `XMLHttpRequest`. It can be used to send form data or keyed data. For example:
 ```
