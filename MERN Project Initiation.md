@@ -46,6 +46,17 @@ npm i uuid axios react-router-dom
 * **Schema** is a document data structure (or shape of the document) that is enforced via the application layer.
 * **Models** are higher-order constructors that take a schema and create an instance of a document equivalent to **records** in a relational database.
 * **Record** is an instance of a model saved to the database
+* A [**promise**](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) is an object that can be returned synchonously from an asychonous function, with one of three states: Fulfilled, Rejected, or Pending. Only the function that created the promise will have knowledge of its state.
+    - A simple example of a promise is:
+    ```
+    const wait = time => new Promise((resolve) => setTimeout(resolve, time));
+
+    wait(3000).then(() => console.log('Hello!')); // 'Hello!'
+    ```
+   - The function `wait` takes an argument `time`. `wait` generates a new promise, inside of which another function is passed. This function has the argument `resolve`, which upon exectution is passed, along with `time` to the `setTimeout()` method. 
+   - The promise constructor takes two parameters, `resolve()` and `reject()`. The above example does not have a `reject()` parameter defined. Note that technically, the arguments could be called anything. 
+   - `resolve()` is called when the `setTimeout` function is finished.
+   - A promise must always pass and return a result variable
 
 ## Server.js (app.js)
 `server.js` (or `app.js`) is central command for the backend.
