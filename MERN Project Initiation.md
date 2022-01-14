@@ -153,8 +153,21 @@ Notes:
 ## Schema
 Schema define the structure of the documents and fields in the database. They also include validations. They will be accessed in the appropriate file under **routes**
 
-## Routes
-Routes contain files for any collection in which you want to run CRUD operations on. The top of the route will include something like:
+## Routes and Routing
+**Routing** refers to determining how an application responds to a client request to a particular endoint (URI) and a specific HTTP request method.
+
+**Routes** take on the following structure:
+```
+app.METHOD(PATH, HANDLER)
+```
+* `app` is the instance of the `express` application
+* `METHOD` can be any HTTP request method (lowercase)
+* `PATH` is the path on the server
+* `HANDLER` is a callback function executed when the route is matched.
+
+From ExpressJS 4.0 onward `Route()` can also be used. `Route()` is like a mini-Express application that allows access to routing APIs like `.get` and `route`. It is an isolated instance of middleware and routes. You can think of it as a “mini-application,” capable only of performing middleware and routing functions. 
+
+Individual route files are kept in a `routes` directory. The top of the route will include something like:
 ```
 const express = require('express');
 
@@ -169,7 +182,7 @@ const dbo = require('../db/conn');
 // This help convert the id from string to ObjectId for the _id.
 const ObjectId = require('mongodb').ObjectId;
 ```
-* A router object--`Router()`--is an isolated instance of middleware and routes. You can think of it as a “mini-application,” capable only of performing middleware and routing functions. 
+
 * [`ObjectId`](https://docs.mongodb.com/manual/reference/method/ObjectId/) returns a new ObjectId value.
 
 ### Get all documents in a collection
