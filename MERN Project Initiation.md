@@ -14,6 +14,7 @@ project-name
 |--client
     |--src
     |--public
+        |--images (if saving to a local server)
     package.json
 ```
 
