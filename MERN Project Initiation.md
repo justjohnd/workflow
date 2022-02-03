@@ -1,3 +1,23 @@
+# Quick Review of Javascript fundamentals:
+* **object**: a standalone entity with properties and type
+* **object type**: is created using a constructor function and determines the object's name, properties, and methods.
+* * **class**: a template for creating objects. It takes arguments, can contain methods and code to use those arguments, and returns an object (including primitive objects such as numbers, and arrays).
+* **constructor**: a function that creates and initializes an object instance of a class. 
+* **instance**: an object created using a particular constructor function.
+* **higher-order functions**: functions that can receive a function as an argument and also return a function.
+* * A [**promise**](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) is an object that can be returned synchonously from an asychonous function, with one of three states: Fulfilled, Rejected, or Pending. Only the function that created the promise will have knowledge of its state.
+    - A simple example of a promise is:
+    ```
+    const wait = time => new Promise((resolve) => setTimeout(resolve, time));
+
+    wait(3000).then(() => console.log('Hello!')); // 'Hello!'
+    ```
+   - The function `wait` takes an argument `time`. `wait` generates a new promise, inside of which another function is passed. This function has the argument `resolve`, which upon execution is passed--along with `time`--to the `setTimeout()` method. 
+   - The promise constructor takes two parameters, `resolve()` and `reject()`. The above example does not have a `reject()` parameter defined. Note that technically, the arguments could be called anything. 
+   - `resolve()` is called when the `setTimeout` function is finished.
+   - A promise must always pass and return a result variable
+* * Bracket notation must be used when property names are to be dynamically determined (when the property name is not determined until runtime). 
+
 # Project Initiation
 
 The basic project structure for a MERN app looks like this:
@@ -7,7 +27,11 @@ project-name
 |--server
     |--images (if saving images to MongoDB)
     |--routes
+        |--**various route files**
     |--models
+        |--**various model files**
+    |--controllers
+        |--auth.js
     package.json
     .env
     server.js
@@ -28,8 +52,9 @@ Set up seperate node dependency packages or the front and back end.
 For the backend:
 `npm i mongodb express cors dotenv mongoose multer uuid`
 
-These backend dependencies are used if you plan on uploading images to your MongoDB database
 **mongoose** is a MongoDB object modeling tool designed to work in an asynchronous environment.
+
+These backend dependencies are used if you plan on uploading images to your MongoDB database:
 **multer** is a node.js middleware for handling multipart/form-data.
 **uuid** is a package that generates random and unique ids.
 
@@ -38,6 +63,14 @@ For the frontend:
 npx create-react-app <frontend-directory-name (e.g. client)>
 npm i uuid axios react-router-dom
 ```
+Note that `create-react-app` automatically initiates `git` inside the directory. Since git is already initiated in the parent directory, it can be removed from `client`
+
+## .gitignore
+Move the `.gitignore` file from `client` into the parent directory. Add the following lines:
+```
+/node_modules
+node_modules/
+```
 
 # Setting up the backend
 ## General Terminolgy [(Ref)](https://www.freecodecamp.org/news/introduction-to-mongoose-for-mongodb-d2a7aa593c57/)
@@ -45,19 +78,9 @@ npm i uuid axios react-router-dom
 * **Documents** are equivalent to records or rows of data in SQL. While a SQL row can reference data in other tables, Mongo documents usually combine that in a document.
 * **Fields** or attributes are similar to columns in a SQL table.
 * **Schema** is a document data structure (or shape of the document) that is enforced via the application layer.
-* **Models** are higher-order constructors that take a schema and create an instance of a document equivalent to **records** in a relational database.
+* **Models** are higher-order constructors that take a schema and create an instance of a document. 
 * **Record** is an instance of a model saved to the database
-* A [**promise**](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) is an object that can be returned synchonously from an asychonous function, with one of three states: Fulfilled, Rejected, or Pending. Only the function that created the promise will have knowledge of its state.
-    - A simple example of a promise is:
-    ```
-    const wait = time => new Promise((resolve) => setTimeout(resolve, time));
-
-    wait(3000).then(() => console.log('Hello!')); // 'Hello!'
-    ```
-   - The function `wait` takes an argument `time`. `wait` generates a new promise, inside of which another function is passed. This function has the argument `resolve`, which upon exectution is passed, along with `time` to the `setTimeout()` method. 
-   - The promise constructor takes two parameters, `resolve()` and `reject()`. The above example does not have a `reject()` parameter defined. Note that technically, the arguments could be called anything. 
-   - `resolve()` is called when the `setTimeout` function is finished.
-   - A promise must always pass and return a result variable
+* **Controllers** can group related request handling logic into a single class
 
 ## Server.js (app.js)
 `server.js` (or `app.js`) is central command for the backend.
@@ -162,8 +185,42 @@ Notes:
 * [`mongoose.connection`](https://mongoosejs.com/docs/api.html#mongoose_Mongoose-ConnectionStates) is the default connection used for the Mongoose module.  It is used by default for every model created using mongoose.model
 * `mongoose.connection` is an instance of an Node.js [EventEmitter](https://nodejs.org/api/events.html#events_class_events_eventemitter) class, and can access the methods associated with that class, including `once`. This adds a one-time listener function for the event named eventName.
 
+## Controllers
+Here you will define request handling logic, and export that logic as a function. For instance, the `auth.js` constoller will handle user authorization:
+```
+exports.register = (req, res, next) => {
+res.send("Register Route");
+};
+```
+
+`exports` will save the `register` function as a named export. Note that `next` wil be very important for error handling. 
+
 ## Schema
-Schema define the structure of the documents and fields in the database. They also include validations. They will be accessed in the appropriate file under **routes**
+Schema define the structure of the documents and fields in the database. They also include validations. They are defined in files in the `models` directory. They will be accessed in the appropriate file under **routes**
+
+**mongoose** allows you to easily create new models using:
+```
+mongoose.model(modelName, schema)
+```
+
+SchemaTypes control they property type and handle validation among many other things. Here is a example of a new shema:
+```
+const UserSchema = new mongoose.Schema({
+  password: {
+    type: String,
+    required: [true, "Please add a password"],
+    minlength: 6,
+    select: false
+  },
+  resetPasswordToken: String,
+  resetPasswordExpire: Date
+});
+```
+In the above example `required`, `minlength`, and `select` are built in validators for the type `String`. 
+
+Notes on built-in validators:
+* **match**: RegExp, creates a validator that checks if the value matches the given regular expression
+* **select**: Set to true if this path should always be included in the results, false if it should be excluded by default. In the above, if a client queries for a user, they will not be able to access the password.
 
 ## Routes and Routing
 **Routing** refers to determining how an application responds to a client request to a particular endoint (URI) and a specific HTTP request method.
