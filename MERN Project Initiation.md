@@ -27,6 +27,9 @@
 * The `res.status()` function set the HTTP status for the response.
 * The `express.json()` function is a built-in middleware function in Express. It parses incoming requests with JSON payloads. It is instantiated by `app.use(express.json())` in the server file (See server.js section below).
 
+## Mongoose functions
+* The `next` parameter is a function (`next()`) provided to you by mongoose to have a way out, or to tell mongoose you are done and to continue with the next step in the execution chain.
+
 # Project Initiation
 
 The basic project structure for a MERN app looks like this:
@@ -226,6 +229,23 @@ Notes on built-in validators:
 * **match**: RegExp, creates a validator that checks if the value matches the given regular expression
 * **select**: Set to true if this path should always be included in the results, false if it should be excluded by default. In the above, if a client queries for a user, they will not be able to access the password.
 
+### Passwords
+Passwords need to be encrypted prior to being saved to a database. `pre` is mongoose hook, that when used with the keyword `"save"` will perform opertaions prior to saving:
+```
+UserSchema.pre("save", async function(next) {
+  if(!this.isModified("password")) {
+    next();
+  }
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+  next();
+});
+```
+Notes:
+* `this` is the User being requested
+* `Document.prototype.isModified()` returns true if any of the given paths is modified, else false. It will take a property name as an argument to check against.
+
+It's best practice to do this in the model, vs. the controller.
 
 ## Controllers
 Here you will define request handling logic, and export that logic as a function. For instance, the `auth.js` constoller will handle user authorization. First, access the appropriate model related to the controller:
