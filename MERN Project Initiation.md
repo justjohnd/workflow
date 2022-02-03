@@ -16,7 +16,16 @@
    - The promise constructor takes two parameters, `resolve()` and `reject()`. The above example does not have a `reject()` parameter defined. Note that technically, the arguments could be called anything. 
    - `resolve()` is called when the `setTimeout` function is finished.
    - A promise must always pass and return a result variable
-* * Bracket notation must be used when property names are to be dynamically determined (when the property name is not determined until runtime). 
+* An **async** function is a function declared with the async keyword, and the **await** keyword is permitted within it. The async and await keywords enable asynchronous, promise-based behavior to be written in a cleaner style, avoiding the need to explicitly configure promise chains.
+* The **try...catch** statement marks a block of statements to try and specifies a response should an exception be thrown.
+* Bracket notation must be used when property names are to be dynamically determined (when the property name is not determined until runtime).
+* **Hashing** performs a one-way transformation on a password, turning the password into another String, called the hashed password. “One-way” means that it is practically impossible to go the other way - to turn the hashed password back into the original password.
+* * A **salt** is random data that is used as an additional input to a one-way function that hashes data, a password or passphrase.
+* The **bcrypt** hashing function allows us to build a password security platform that scales with computation power and always hashes every password with a salt.
+
+## Express functions 
+* The `res.status()` function set the HTTP status for the response.
+* The `express.json()` function is a built-in middleware function in Express. It parses incoming requests with JSON payloads. It is instantiated by `app.use(express.json())` in the server file (See server.js section below).
 
 # Project Initiation
 
@@ -27,11 +36,13 @@ project-name
 |--server
     |--images (if saving images to MongoDB)
     |--routes
+        |--auth.js
         |--**various route files**
     |--models
         |--**various model files**
     |--controllers
         |--auth.js
+        |--**various controller files**
     package.json
     .env
     server.js
@@ -81,6 +92,9 @@ node_modules/
 * **Models** are higher-order constructors that take a schema and create an instance of a document. 
 * **Record** is an instance of a model saved to the database
 * **Controllers** can group related request handling logic into a single class
+
+The data flow for the backend is:
+Define data **model** using schema --> import into **controller** and assign handling logic based on CRUD operation --> import controller function into the **route**, which executes the appropriate CRUD operation based on that route --> import routes into the **server** file, where the server can be accessed.
 
 ## Server.js (app.js)
 `server.js` (or `app.js`) is central command for the backend.
@@ -185,18 +199,8 @@ Notes:
 * [`mongoose.connection`](https://mongoosejs.com/docs/api.html#mongoose_Mongoose-ConnectionStates) is the default connection used for the Mongoose module.  It is used by default for every model created using mongoose.model
 * `mongoose.connection` is an instance of an Node.js [EventEmitter](https://nodejs.org/api/events.html#events_class_events_eventemitter) class, and can access the methods associated with that class, including `once`. This adds a one-time listener function for the event named eventName.
 
-## Controllers
-Here you will define request handling logic, and export that logic as a function. For instance, the `auth.js` constoller will handle user authorization:
-```
-exports.register = (req, res, next) => {
-res.send("Register Route");
-};
-```
-
-`exports` will save the `register` function as a named export. Note that `next` wil be very important for error handling. 
-
 ## Schema
-Schema define the structure of the documents and fields in the database. They also include validations. They are defined in files in the `models` directory. They will be accessed in the appropriate file under **routes**
+Schema define the structure of the documents and fields in the database. They also include validations. They are defined in files in the `models` directory. 
 
 **mongoose** allows you to easily create new models using:
 ```
@@ -221,6 +225,41 @@ In the above example `required`, `minlength`, and `select` are built in validato
 Notes on built-in validators:
 * **match**: RegExp, creates a validator that checks if the value matches the given regular expression
 * **select**: Set to true if this path should always be included in the results, false if it should be excluded by default. In the above, if a client queries for a user, they will not be able to access the password.
+
+
+## Controllers
+Here you will define request handling logic, and export that logic as a function. For instance, the `auth.js` constoller will handle user authorization. First, access the appropriate model related to the controller:
+```
+const User = require("../models/User");
+```
+
+Then define the logic for each controller function.
+```
+exports.register = async (req, res, next) => {
+  const { userName, email, password } = req.body;
+
+  try {
+    const user = await User.create({ userName, email, password });
+    sendToken(user, 201, res);
+  } catch (error) {
+    next(error);
+  }
+}
+
+```
+Notes:
+* `req` can extract data from the body when the request is made (this is made possible by `app.use(express.json())` in `server`.
+* An asynchronous function must be used, since we are accessing the database.
+* A `try...catch` statement will attempt (one connection is made) to create a new User.
+
+You should also return a status code (201 for success, 500 for failure) based on if the user was created. The logic for this above has been refactored into a `sendToken()` method.
+
+`exports` will save the `register` function as a named export. So when you import into routes, you can do so as:
+```
+const { register } = require('../controllers/auth');
+```
+
+Note that `next` will also be very important for error handling. 
 
 ## Routes and Routing
 **Routing** refers to determining how an application responds to a client request to a particular endoint (URI) and a specific HTTP request method.
@@ -253,6 +292,11 @@ const ObjectId = require('mongodb').ObjectId;
 ```
 
 * [`ObjectId`](https://docs.mongodb.com/manual/reference/method/ObjectId/) returns a new ObjectId value.
+
+The following sections show how to perform various CRUD activities inside the route though, the handling logic could (preferably) be placed in a controller file instead, and just have a function called:
+```
+router.route("/register").post(register);
+```
 
 ### Get all documents in a collection
 If you want to get all items in a collection:
@@ -330,6 +374,12 @@ recordRoutes.route('/update/:id').post(function (req, response) {
 ```
 Notes:
 * [`$set`](https://docs.mongodb.com/manual/tutorial/update-documents/) is an update operator used to modify field values
+
+## Reset password
+A reset password route must be passed a token, and use `put`, vs. `post`:
+```
+router.route('/resetPassword/:resetToken').put(resetPassword);
+```
 
 ## Add image upload capability
 You will need the `multer` middleware to upload images. [Multer](http://expressjs.com/en/resources/middleware/multer.html) is a node.js middleware for handling multipart/form-data, which is primarily used for uploading files. You can also use `uuid` to generate random values for your image names.
