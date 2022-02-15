@@ -54,5 +54,14 @@ If in the above example, you used a desination path `/projects`, the directory `
 ## Find all packages installed:
 `npm list --depth=0`
 
+# Misc:
+**Generate random string of bytes**
+This is good for creating JWT secrets.
+```
+node
+require("crypto").randomBytes(35).toString("hex");
+```
+
+
 
 
