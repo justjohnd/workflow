@@ -7,7 +7,7 @@
   - Use box-sizing. Adding `box-sizing: border-box` to the container will prevent padding or margins from overriding the containers set dimensions. However, you also need to set the image dimension to 100% (in this example, `height: 100%`). [Ex. 003](https://codepen.io/justjohnd/pen/ExXZqrB). This example can be simplified by removing the container, and [applying the properties directly to the image](https://codepen.io/justjohnd/pen/OJgWKdg).
   
   - Use flex-box. Set the container to `display: flex`, then add margin or padding directly to the image. Flexbox will automatically adjust the image size to fit the container, and include the padding or margins. This is the most responsive solution. [Ex. 004](https://codepen.io/justjohnd/pen/JjJEgzj).
-  - Note that if you have a border on a div inside a flex-box, that border can overflow the flex-box container. The border is in relation to the div itself, therefore to prevent overflow, you need to add `border-box` to the div nested inside the flexbox. See here
+  - Note that if you have a border on a div inside a flex-box, that border can overflow the flex-box container. The border is in relation to the div itself, therefore to prevent overflow, you need to add `border-box` to the div nested inside the flexbox. [See here](https://codepen.io/justjohnd/pen/yLPPJqw)
 
 # Flexbox Columns
 1. Problem: Align two items in a colunt to the top and bottom of the column.
