@@ -27,42 +27,65 @@ In this section you will find important information as to how jQuery interacts w
 ## Setting up SSH for Github via [Ubuntu](https://ubuntu.com/tutorials/ssh-keygen-on-windows#1-overview)
 Instructions for connecting to Github below require setting up public and private keys for SSH connection. This only has to be done once, unless you want to set up unique SSH keys for different projects. You can also generate keys via Windows powershell, but this is not necessary if following the instructions below.
 
+**Generate a new key**
 1. Open Ubuntu terminal
 2. Verify ssh is installed: `sudo apt install openssh-client`
 3. Generate a key: `ssh-keygen -t rsa`
 4. You can see the file at `~/.ssh/`
 
-## Initiate git, created Github repository, and make remote connection. See Git section for more information
+SSH allows you to connect your Github account to remote servers and services, without supplying your username and personal access token. You must add a key to your account prior to using SSH to authenticate. `ssh-agent` is a key manager for SSH. It holds your keys and certificates in memory, unencrypted, and ready for use by `ssh`.
+
+**Add the key to your Github account**
+1. First, ensure agent is running: `eval "$(ssh-agent -s)"`
+2. [Add SSH key to SSH agent](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent). Add private key to ssh agent: `ssh-add ~/.ssh/id_rsa`. **Note:** do not enter the .pub extension here
+3. Open your public ssh key:
+  ```
+  cd ~/.ssh
+  cat id_rsa.pub`
+  ```
+4. Copy it to the clipboard
+5. Go to your account on Github, and under SSH add the key
+6. You will need to use the ssh path when setting up new repos
+Note: See [here](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories) to see how to change an HTTPS repo over to SSH
+
+## Set up local and remote git repositories
+- Log in to Github, click "New"
+- In your main projects directory (/projects):
+  ```
+  mkdir <project-name>
+  cd /<project-name>
+  git init
+  touch README.md
+  git commit -m "first commit"
+  git branch -M main
+  git remote add origin git@github.com:justjohnd/<project-name>.git
+  git push -u origin main
+  ```
 
 # Project Initiation for Windows
+Before initiating a new project, confirm you have SSH set up. This process uses the PuTTy application in Windows. Instructions below are for using an Ubuntu environment. 
 
-## Setting up SSH for Windows
-This process uses the PuTTy application in Windows. Instructions below are for using an Ubuntu environment. 
+## Set up git local and Github remote repos
+- Log in to Github, click "New"
+- In your main projects directory (/webdevelopment): `repo project-name`
 
-# Setup for Wordpress Projects
-
-## Download Wordpress and set up MySQL (for Bootstrap 4)
-- Open the XAMPP Control Panel and start MySQL.
-- Click Admin to open phpMyAdmin.
-- Click New and enter database name.
-- Download newest version of Wordpress from here: `https://wordpress.org/download/`, directly into the new project directory.
-- Inside the directory, change the filename `wp-config-sample.php` to `wp-config.php`.
-- Open `wp-config.php` and change:
--  `'database_name_here'` to your database name.
--  `'username_here'` to `'root'`
--  `'password_here'` to `''`
-- In browser, open `http://localhost/my-project-name`.
-- Enter username, password, and email information and click Create. For consistancy, use the name `admin_project-name`
-- Copy your theme (ex: `bootstrap-theme`) into the themes directory
-- Delete the .git directory from the theme
--In your gulpfile change the brwosersync proxy to your appropriate database path. Ex.: `proxy: 'http://localhost/database-name',`
-
-## Configure Wordpress Dashboard
-- Install Advanced Custom Fields plugin
-- Create a field group with image arrays `image-1` to `image-8`
-- Add default images to each field, and make the field group applicable to all posts and pages
-- Activate the theme
-- Create a blank Home Page called "Home"
-- Under Customize, set the Homepage to "Static" and select the Home page
-- Under Users, disable viewing of the toolbar on the site
-- Check the site in the browswer; it should be loaded
+This alias runs the following function script (for windows), which will set up a local repo, run npm init, set up Prettier, and set up ignore files. Note that the path is for a repo set up with SSH
+```
+repo () {
+  mkdir $1
+  cd $1
+  echo "# $1" >> README.md
+  git init
+  git add -A
+  git commit -m "first commit"
+  git branch -M main
+  git remote add origin git@github.com/justjohnd/$1.git
+  git push origin main
+  npm init -y
+  npm install --save-dev --save-exact prettier
+  echo > .gitignore
+  echo > .prettierignore
+  echo "node_modules" | tee .prettierignore .gitignore
+  echo {}> .prettierrc.json
+}
+```
