@@ -1,6 +1,7 @@
 # Project Initiation (with git and Github)
 
 ## Connecting to Github via SSH
+Note, that this can typically be skippeds as SSH has already been set up for the account. Use for reference.
 SSH allows you to connect your Github account to remote servers and services, without supplying your username and personal access token. You must add a key to your account prior to using SSH to authenticate. `ssh-agent` is a key manager for SSH. It holds your keys and certificates in memory, unencrypted, and ready for use by `ssh`.
 
 1. First, ensure agent is running: `eval "$(ssh-agent -s)"`
