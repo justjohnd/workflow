@@ -1,11 +1,16 @@
 # Project Initiation (with git and Github)
+
 ## Connecting to Github via SSH
-1. [Add SSH key to SSH agent](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent). First, ensure agent is running: `eval "$(ssh-agent -s)"`
-2. Add private key to ssh agent: `ssh-add ~/.ssh/id_rsa`. **Note:** do not enter the .pub extension here
+SSH allows you to connect your Github account to remote servers and services, without supplying your username and personal access token. You must add a key to your account prior to using SSH to authenticate.
+
+1. First, ensure agent is running: `eval "$(ssh-agent -s)"`
+2. [Add SSH key to SSH agent](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent). Add private key to ssh agent: `ssh-add ~/.ssh/id_rsa`. **Note:** do not enter the .pub extension here
 3. Open your public ssh key (`id_rsa.pub`) and copy it to clipboard
 4. Go to your account on Github, and under SSH add the key
 5. You will need to use the ssh path when setting up new repos
 Note: See [here](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories) to see how to change an HTTPS repo over to SSH
+
+`ssh-agent` is a key manager for SSH. It holds your keys and certificates in memory, unencrypted, and ready for use by `ssh`.
 
 # Set up git local and Github remote repos
 - Log in to Github, click "New"
