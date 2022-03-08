@@ -2,9 +2,37 @@
 
 This document describes my worflow in detail for creating a Wordpress or static site project, using Bootstrap 4 and gulp, as well as documentation intended for the administrator of that site.
 
-Read about [Project Initiation](https://github.com/justjohnd/workflow/blob/main/Project%20Initiation.md)
+Read about general [project initiation](https://github.com/justjohnd/workflow/blob/main/Project%20Initiation.md)
 
-# Wordpress Front End #
+# Project Setup
+
+## Download Wordpress and set up MySQL (for Bootstrap 4)
+- Open the XAMPP Control Panel and start MySQL.
+- Click Admin to open phpMyAdmin.
+- Click New and enter database name.
+- Download newest version of Wordpress from here: `https://wordpress.org/download/`, directly into the new project directory.
+- Inside the directory, change the filename `wp-config-sample.php` to `wp-config.php`.
+- Open `wp-config.php` and change:
+-  `'database_name_here'` to your database name.
+-  `'username_here'` to `'root'`
+-  `'password_here'` to `''`
+- In browser, open `http://localhost/my-project-name`.
+- Enter username, password, and email information and click Create. For consistancy, use the name `admin_project-name`
+- Copy your theme (ex: `bootstrap-theme`) into the themes directory
+- Delete the .git directory from the theme
+-In your gulpfile change the brwosersync proxy to your appropriate database path. Ex.: `proxy: 'http://localhost/database-name',`
+
+## Configure Wordpress Dashboard
+- Install Advanced Custom Fields plugin
+- Create a field group with image arrays `image-1` to `image-8`
+- Add default images to each field, and make the field group applicable to all posts and pages
+- Activate the theme
+- Create a blank Home Page called "Home"
+- Under Customize, set the Homepage to "Static" and select the Home page
+- Under Users, disable viewing of the toolbar on the site
+- Check the site in the browswer; it should be loaded
+
+# Wordpress Front End
 
 ## General Escaping Notes
 All HTML should be escaped to avoid hacks.
