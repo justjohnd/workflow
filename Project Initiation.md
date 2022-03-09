@@ -60,13 +60,12 @@ Note: See [here](https://docs.github.com/en/get-started/getting-started-with-git
   git branch -M main
   git remote add origin git@github.com:justjohnd/<project-name>.git
   git push -u origin main
-  
   npm init -y
   npm install --save-dev --save-exact prettier
   echo > .gitignore
   echo > .prettierignore
   echo "node_modules" | tee .prettierignore .gitignore
-  echo {}> .prettierrc.json
+  echo {} > .prettierrc.json
   ```
 
 # Project Initiation for Windows
