@@ -36,9 +36,22 @@ Node version manager is useful when operating in different environments such as 
 There are a variety of ways to create a file or directory. To create a file or directory, either navigate to the location you want it created, or precede the file/directory name with path
 - **Directory only**:  `mkdir <directory-name>`
 - **File only**: `touch <filename>`
-- **Use `echo` for either**: `echo > <filename/directory-name>` This will write the name with empty content
-- **Add content to file upon creation**: `echo "Content" > <file/name>`
-    Example: `echo {} > .prettierrc.json` creates the file `.prettierrc.json` and adds `{}` to the file
+- 
+You can also use `>` or `| tee` along with the `echo` command, as shown below, to create files and directories and to add content into the file or directory at the same time. **WARNING**: using `>` or `| tee` alone will overwrite any existing files or directories (and their content) of the same name. You can use `-a` to append, instead of overwriting.
+
+**Using `>`**
+This will add "Content" to a file, and also create the file. (You can also create an empty file)
+```
+echo "Content" > <file/name>
+``` 
+Example: `echo {} > .prettierrc.json` creates the file `.prettierrc.json` and adds `{}` to the file
+    
+**Using `| tee`**
+Thus will add "Content" to one or multiple files.
+```
+echo "Content" | tee <filename> <filename>`
+```
+Example: `echo "node_modules" | tee .gitignore .prettierignore` creates two files and adds "node_modules" to both
 
 ### Change file or directory name:
 `mv full/file/path/old-name full/file/path/new-name`
