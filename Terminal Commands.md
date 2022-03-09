@@ -32,8 +32,13 @@ Node version manager is useful when operating in different environments such as 
 `sudo chown -R $USER /file-path`
 
 ## File and Directory Manipulation
-### Create File
-Use the `touch` command, followed by the path, filename, and extension
+### Create File or direcotry
+There are a variety of ways to create a file or directory. To create a file or directory, either navigate to the location you want it created, or precede the file/directory name with path
+- **Directory only**:  `mkdir <directory-name>`
+- **File only**: `touch <filename>`
+- **Use `echo` for either**: `echo > <filename/directory-name>` This will write the name with empty content
+- **Add content to file upon creation**: `echo "Content" > <file/name>`
+    Example: `echo {} > .prettierrc.json` creates the file `.prettierrc.json` and adds `{}` to the file
 
 ### Change file or directory name:
 `mv full/file/path/old-name full/file/path/new-name`
