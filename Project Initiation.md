@@ -1,6 +1,12 @@
 # Project Initiation
 This setup is in regards to using either Windows or Ubuntu (on Windows with WSL) development systems.
 
+# Developer Environment
+The Windows system is set up with Node Version Manager (`nvm`) allowing different projects to use different versions of node. Some helpful commands for nvm are:
+- `nvm version`
+- `nvm list` to see all versions of Node installed, and which version is assigned to that project
+
+
 # Dependencies
 - Before starting, verify that node, npm, SASS, and gulp-cli are globally installed. If unsure whether a package is installed, run 
 ```
