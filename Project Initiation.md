@@ -5,6 +5,8 @@ This setup is in regards to using either Windows or Ubuntu (on Windows with WSL)
 The Windows system is set up with Node Version Manager (`nvm`) allowing different projects to use different versions of node. Some helpful commands for nvm are:
 - `nvm version`
 - `nvm list` to see all versions of Node installed, and which version is assigned to that project
+- `nvm install vXX.XX.XX` to install new Node version, replacing XX.XX.XX with the appropriate version number
+- `nvm use XX.XX.XX` to change versions for a project
 
 
 # Dependencies
