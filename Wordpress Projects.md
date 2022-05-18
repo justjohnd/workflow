@@ -279,10 +279,10 @@ Refer to this tutorial for setting up a virtual host: https://www.digitalocean.c
 - Choose Connection Method: Standard TCP/IP over SSH
 - SSH Hostname: IP address
 - SSH Username: root
-- SSH Keyfile:
-- 	First open PuTTYgen and load private key. Remove passphrase and under Conversions, click Export Open SSH Key
-- 	Save file
-- 	Under SSH Keyfile, enter the path to the above file
+- SSH Keyfile (note that the key should already exist under the name `exportedKey`:
+	* First open PuTTYgen and load private key. Under Conversions, click Export Open SSH Key
+	* Save file
+	* Under SSH Keyfile, enter the path to the above file
 
 - MySQL Hostfile: 127.0.0.1
 - MySQL Server Port: 3306
