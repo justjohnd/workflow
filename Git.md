@@ -44,6 +44,7 @@ Note that it is not possible to revert commits directly from the GitHub site. Yo
 1. First add the files or directories to youre `.gitignore` file
 2. In terminal, type `git rm --cached <filename>` or `git rm -rf --cached <directory>`. This will remove these items from the git staging index, but won't delete theme.
 3. Commit all changes and push to remote.
+**WARNING: When doing `git pull` it is possible that the remote repo will overwrite and remove the files. Make sure to have made copies of all the files beforehand! Because they are not longer being tracked by git the will otherwise be gone forever**
 
 The `rm` command is also a regular terminal command (the `git` prefix is not needed), which can be used for the following:
 - Remove (Undo) git init: `rm -rf .git`
