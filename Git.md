@@ -1,5 +1,7 @@
 Git uses command and options. For instance `git add -A` uses the command `add` and the option `-A`.
 
+Note that GitHub does not show empty directories.
+
 # Common commands and their options
 ## `add`
 `add` allows you to stage files
@@ -32,7 +34,21 @@ This is good when you want to go back, but be sure to maintain the integrity of 
 `git checkout <commit-hash>`
 
 ## `revert`
-Revert to a previous commit: `git revert <commit-hash>`
+Note that it is not possible to revert commits directly from the GitHub site. You can, however, revert a commit on your local repo.
+- From the command line, revert to a previous commit: `git revert <commit-hash>`
+- You can also revert from the Command Pallette in VS Code by typing `git undo` and selecting "Last Commit"
+
+
+## `rm`
+`rm` can be used with the option `--cached` in order to remove files or directories that have been accidentally added to the remote repo
+1. First add the files or directories to youre `.gitignore` file
+2. In terminal, type `git rm --cached <filename>` or `git rm -rf --cached <directory>`. This will remove these items from the git staging index, but won't delete theme.
+3. Commit all changes and push to remote.
+
+The `rm` command is also a regular terminal command (the `git` prefix is not needed), which can be used for the following:
+- Remove (Undo) git init: `rm -rf .git`
+- Remove directory and all contents
+`rm -r <directory-name>`
 
 # Project Initiation (with git and Github)
 
@@ -79,11 +95,6 @@ repo () {
 
 # Compare branch file with main file
 In VS Code, while in the branch you want to compare with main, click the Source Control icon on the left. Then click SEARCH & COMPARE and click on the file you want to compare.
-
-# `rm` (Regular terminal command)
-- Remove (Undo) git init: `rm -rf .git`
-- Remove directory and all contents
-`rm -r <directory-name>`
 
 # .gitignore
 Place a `.gitignore` file in your parent directory to prevent certain files from tracked. Note that this is for the local and remote directories!
