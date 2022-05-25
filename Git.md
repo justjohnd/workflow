@@ -1,3 +1,39 @@
+Git uses command and options. For instance `git add -A` uses the command `add` and the option `-A`.
+
+# Common commands and their options
+## `add`
+`add` allows you to stage files
+**Options**
+- `.` will add all changes in the current directory only
+- `-A` will add all changes in all directories
+
+## `branch`
+Tying `branch` alone will show all branches, as well as the current branch
+**Options**
+- `-M <new-branch-name>` will change the name of the current branch.
+- `-M <old-branch-name> <new-branch-name>`
+
+## `remote`
+Controls access to a remote repository
+- `add origin <path>` creates a new remote repository called `origin` at the path specified
+
+## `git stash` to stash a file
+Remove untracked files:
+```
+git stash save --keep-index --include-untracked
+git stash drop
+```
+
+## `log`
+See commit log for branch: `git log <branch-name>`
+
+## `checkout` to temporarily check out previous commit
+This is good when you want to go back, but be sure to maintain the integrity of HEAD
+`git checkout <commit-hash>`
+
+## `revert`
+Revert to a previous commit: `git revert <commit-hash>`
+
 # Project Initiation (with git and Github)
 
 ## Connecting to Github via SSH
@@ -16,7 +52,7 @@ SSH allows you to connect your Github account to remote servers and services, wi
 6. You will need to use the ssh path when setting up new repos
 Note: See [here](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories) to see how to change an HTTPS repo over to SSH
 
-# Set up git local and Github remote repos
+## Set up git local and Github remote repos
 - Log in to Github, click "New"
 - In your main projects directory (/webdevelopment): `repo project-name`
 
@@ -41,34 +77,10 @@ repo () {
 }
 ```
 
-#### Change master branch name to main
-git branch -M master main
-
-#### Compare branch file with main file
+# Compare branch file with main file
 In VS Code, while in the branch you want to compare with main, click the Source Control icon on the left. Then click SEARCH & COMPARE and click on the file you want to compare.
 
-### Stash a file
-`git stash`
-
-#### Remove untracked files
-```
-git stash save --keep-index --include-untracked
-git stash drop
-```
-
-#### Remove (Undo) git init
-`rm -rf .git`
-
-#### Remove directory and all contents
+# `rm` (Regular terminal command)
+- Remove (Undo) git init: `rm -rf .git`
+- Remove directory and all contents
 `rm -r <directory-name>`
-
-### See commit log for branch
-`git log <branch-name>`
-
-### Temporarily check out previous commit
-This is good when you want to go back, but be sure to maintain the integrity of HEAD
-`git checkout <commit-hash>`
-
-### Revert to a previous commit
-`git revert <commit-hash>`
-
