@@ -84,3 +84,8 @@ In VS Code, while in the branch you want to compare with main, click the Source 
 - Remove (Undo) git init: `rm -rf .git`
 - Remove directory and all contents
 `rm -r <directory-name>`
+
+# .gitignore
+Place a `.gitignore` file in your parent directory to prevent certain files from being pushed to remote.
+
+.git ignore will also ignore subdirectories and files. For example: `themes/bad-themes` will ignore the sub-directory `bad-themes` and all of its files.
