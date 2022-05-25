@@ -86,6 +86,6 @@ In VS Code, while in the branch you want to compare with main, click the Source 
 `rm -r <directory-name>`
 
 # .gitignore
-Place a `.gitignore` file in your parent directory to prevent certain files from being pushed to remote.
+Place a `.gitignore` file in your parent directory to prevent certain files from tracked. Note that this is for the local and remote directories!
 
 .git ignore will also ignore subdirectories and files. For example: `themes/bad-themes` will ignore the sub-directory `bad-themes` and all of its files.
