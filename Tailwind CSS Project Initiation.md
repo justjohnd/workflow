@@ -1,5 +1,7 @@
+This setup uses Tailwind CSS as a PostCSS plugin, in order to also use Autoprefixer to automatically add vendor prefixes.
+
 - `npm init` project
-- `npm install -D tailwindcss`
+- `npm install -D tailwindcss postcss autoprefixer`
 - Create basic project structure:
 ```
 public
@@ -15,5 +17,14 @@ src
   "scripts": {
     "build": "npx tailwindcss -i ./src/style.css -o ./public/style.css --watch"
   }
+```
+- Add a PostCSS config file `postcss.config.js`  in the project folder, and add your plugins:
+```
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  }
+}
 ```
 - Now add classes to your files per Tailwind CSS documentation
