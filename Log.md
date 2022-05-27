@@ -8,5 +8,10 @@
 
 **5/26/22** Thursday
 - Practice presentation
-- Study Bootstrap navbar (mainly flex properties)
-- Create Tailwind navbar to look like bootstrap
+- Study Bootstrap navbar
+- Create Bootstrap navbar from scratch
+- Study flex proprties, flex-wrap, grow, shrink, basis; Study text white-space
+
+**5/27/22** Friday
+- Create Bootstrap-like navbar in Tailwind CSS
+- Study svgs. What are they? How are they used? How are they embedded as background images or directly in html via the <svg> tag
