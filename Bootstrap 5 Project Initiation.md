@@ -42,5 +42,8 @@ Variables can be found in `node_modules/bootstrap/scss/variables`. Note also tha
 - Copy any variables you want to use into the top of the `style.scss` file, above your bootstrap.scss import
 - Remove and `!default` value from the variable, so they will override those found in the main bootsrap.scss file
 
+# Javascript
+To add Bootstrap JavaScript without any other JS files, just add the following script into the page just below the closing body tag: `<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>`
+
 
 
