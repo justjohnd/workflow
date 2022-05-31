@@ -14,4 +14,8 @@
 
 **5/27/22** Friday
 - Create Bootstrap-like navbar in Tailwind CSS
-- Study svgs. What are they? How are they used? How are they embedded as background images or directly in html via the <svg> tag
+- Study svgs. What are they? How are they used? How are they embedded as background images or directly in html via the `<svg>` tag
+
+  **5/31/22** Tuesday
+  Study basics of APIs
+  Study basics of Event Listeners
