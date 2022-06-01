@@ -301,6 +301,32 @@ Note also that leaving the default value blank, will initially create an uncontr
 ```
 Note that the url can be passed variables from the function to which the `getData` function is scoped.
 
+# Design Pattern for Displaying Data From API on Load
+The best way to use data from an API on page load is to:
+- Use the `axios` library to simplify the code, instead of using `fetch()` directly
+- Place the fetch inside `useEffect` so that it is fetched immediately
+- Use `async...await` to prevent data from loading prior to receiving it from the server
+- Use `try...catch` for error handling.
+
+Here is the basic pattern:
+```
+useEffect(() => {
+  try {
+    const getData = async () => {
+      const { data } = await axios.get('website-url/path/');
+      
+      // Do things with data
+    };
+    
+    getData();
+    
+  } catch (err) {
+    console.log(err);
+  }  
+}
+
+```
+
 
 
 
