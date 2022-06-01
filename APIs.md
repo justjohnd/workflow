@@ -35,5 +35,29 @@ Rest is comprised of:
 
 # Client Side APIs for JS
 - Either browser or third party API's
-- The **Fetch API** (aka Ajax) is a browser API used for data between applications across the web
+- AJAX (Asynchronous Javascript and XML) uses an httpXMLRequest to communicate with the server
+- The **Fetch API** is a browser API used for data between applications across the web
 - Third party APIs
+
+# Design Patterns for making API requests
+One great and modern way to make API requests is to use `fetch` with `async...await`. You can also use the `axios` package to simplify the code. Additionally, you can use `try...catch` for error handling.
+Here is the basic structure:
+```
+const getData = async () => {
+try {
+
+  const { data } = await axios.get('website-url/path/');
+  
+  // Do things with data
+  
+ } catch (err) {
+ 
+  console.log(err)
+  
+ }
+```
+
+
+
+
+
