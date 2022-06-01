@@ -45,15 +45,10 @@ Here is the basic structure:
 ```
 const getData = async () => {
 try {
-
   const { data } = await axios.get('website-url/path/');
-  
   // Do things with data
-  
  } catch (err) {
- 
-  console.log(err)
-  
+  console.log(err);
  }
 ```
 
