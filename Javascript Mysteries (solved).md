@@ -1,5 +1,5 @@
 # General Terminology
-2. **Arrow Function** - A shorthand form of a function consisting of `name = (parameters) => { operations; }
+1. **Arrow Function** - A shorthand form of a function consisting of `name = (parameters) => { operations; }
   - If the function contains a single operation, it doesn't need curly braces and has implicit return. Ex:
   ```hello = () => "Hello World!";```
   - Arrow functions don't bind their own `this`, instead they inherit the one from the parent scope. [See here](https://www.codementor.io/@dariogarciamoya/understanding-this-in-javascript-with-arrow-functions-gcpjwfyuc)
