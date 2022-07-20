@@ -79,3 +79,10 @@ console.log(findDupes(arr)); // Returns 7
 The for loop will look to see if there are any keys assigned the number associated with `[arr[i]]`. If so, the duplicate has been found.
 
 Otherwise a new `key: value` pair will be created: `arr[i]: arr[i]`
+
+# General test questions
+1. What is a closure?
+  A closure is a function nested in another function that can take and use arguments that are scoped to its wrapping function.
+  
+2. What do event and target refer to in the browser?
+  The event interface represents and event that takes place in the DOM. event.target is a read-only property referring tot he the object onto which the event was dispatched.
