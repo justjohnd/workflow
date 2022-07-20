@@ -102,9 +102,11 @@ const myFather = new Person("John", "Doe", 50, "blue");
 6. **What is the call() method?** It can be used to invoke (call) a method with an owner object as an argument (parameter).
 7. **What does the toString() method do?** Returns a string representing the object.
 8. **How do you find out if a variable is not only an object, but an array?** 
-9. ```
-10. Object.prototype.toString.call(<variable-name> //Returns [object Array]
-   console.log(<variable-name>.constructor === Object); //Returns false for array, true if object were created by Object literal (otherwise the appropriate Object Construtor name would have to be entered).
+```
+Object.prototype.toString.call(<variable-name> //Returns [object Array]
+console.log(<variable-name>.constructor === Object); //Returns false for array, true if object were created by Object literal (otherwise the appropriate Object Construtor name would have to be entered)
+console.log(Arra.isArray(<variable-name>); //Returns true for Array, false for object
   ```
-11. 
+11. **How can you know if two calculated values are equal?** Compare the absolute value of the difference to `Number.EPSILON`
+12. 
 
