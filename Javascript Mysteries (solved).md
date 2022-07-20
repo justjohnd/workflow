@@ -99,5 +99,12 @@ const myFather = new Person("John", "Doe", 50, "blue");
 
 4. **What is a prototype?** Prototypes are data structures from which objects in JavaScript inherit properties and methods.
 5. **How do you add a new property or method to an object constructor?** Use the `prototype` property. Ex: `Person.prototype.nationality = "English"`
-6. 
+6. **What is the call() method?** It can be used to invoke (call) a method with an owner object as an argument (parameter).
+7. **What does the toString() method do?** Returns a string representing the object.
+8. **How do you find out if a variable is not only an object, but an array?** 
+9. ```
+10. Object.prototype.toString.call(<variable-name> //Returns [object Array]
+   console.log(<variable-name>.constructor === Object); //Returns false for array, true if object were created by Object literal (otherwise the appropriate Object Construtor name would have to be entered).
+  ```
+11. 
 
