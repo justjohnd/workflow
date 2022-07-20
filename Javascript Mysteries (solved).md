@@ -81,8 +81,23 @@ The for loop will look to see if there are any keys assigned the number associat
 Otherwise a new `key: value` pair will be created: `arr[i]: arr[i]`
 
 # General test questions
-1. What is a closure?
-A closure is a function nested in another function that can take and use arguments that are scoped to its wrapping function.
-  
-2. What do event and target refer to in the browser?
-  The event interface represents and event that takes place in the DOM. event.target is a read-only property referring tot he the object onto which the event was dispatched.
+1. **What is a closure?** A closure is a function nested in another function that can take and use arguments that are scoped to its wrapping function.
+2. **What do event and target refer to in the browser?** The event interface represents and event that takes place in the DOM. event.target is a read-only property referring tot he the object onto which the event was dispatched.
+3. **What is an object constructor?** An object constructor is a function used as a template to create objects with the same data structure. Example:
+```
+function Person(first, last, age, eye) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eye;
+}
+
+
+//Create a new object by calling the new keyword:
+const myFather = new Person("John", "Doe", 50, "blue");
+```
+
+4. **What is a prototype?** Prototypes are data structures from which objects in JavaScript inherit properties and methods.
+5. **How do you add a new property or method to an object constructor?** Use the `prototype` property. Ex: `Person.prototype.nationality = "English"`
+6. 
+
