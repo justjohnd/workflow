@@ -2,6 +2,10 @@ Git uses command and options. For instance `git add -A` uses the command `add` a
 
 Note that GitHub does not show empty directories.
 
+# Common actions
+## View git log
+In VS Code, from the Command Pallette type "git history" to find the visualized Git History. From here you can find commit SHA's, comments, and other info.
+
 # Common commands and their options
 ## `add`
 `add` allows you to stage files
