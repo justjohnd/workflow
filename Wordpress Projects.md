@@ -4,7 +4,18 @@ This document describes my worflow in detail for creating a Wordpress or static 
 
 Read about general [project initiation](https://github.com/justjohnd/workflow/blob/main/Project%20Initiation.md)
 
-# Project Setup
+# Absolute Basics
+This section assumes a local server has already been connected.
+
+All WordPress themes must have, at minimum:
+- functions.php
+- index.php
+- styles.css
+
+* The appropriate way to load css and js is via enqueuing in the functions.php file.
+* To create custom post types (example: mysite.com/brands/nike where brands is the custom post type), register the custom post type in functions.php (or create a plugin
+
+# Opinionated Project Setup
 
 ## Download Wordpress and set up MySQL (for Bootstrap 4)
 - Open the XAMPP Control Panel and start MySQL.
