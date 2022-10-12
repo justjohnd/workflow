@@ -13,7 +13,34 @@ All WordPress themes must have, at minimum:
 - styles.css
 
 * The appropriate way to load css and js is via enqueuing in the functions.php file.
-* To create custom post types (example: mysite.com/brands/nike where brands is the custom post type), register the custom post type in functions.php (or create a plugin
+
+## Custom Post Types
+Custom post types are used to organize data that doesn't fall into the native WordPress post types, such as products, brands, etc.
+* To create custom post types (example: mysite.com/brands/nike where brands is the custom post type), register the custom post type in functions.php (or create a plugin (see sandbox for example)
+* To query for a post type use `post_type`
+
+## Loops
+* Use the Loop for querying posts, `WP_Query()` for other things, like custom post types.
+
+# John's FAQ
+## Retrieving data from database
+Q: How do I retrieve and display all posts?
+A: Use the `have_posts()` function and loop and use a 'while' loop to loop through it.
+
+Q: How do I retrieve pages under a custom post type?
+A: Use either the `WP_Query {}` query class or `get_posts()` function, and filter by the `post_type` property.
+
+Q: How do I limit the number of posts shown?
+A: Pass the `posts_per_page` parameter to your `WP_Query($args)` or `number_posts` to your `get_posts($args)`
+
+## Enqueuing
+Q: Is it less performant to call `wp_enqueue_scripts()` multiple times?
+A: It doesn't **seem** to be less performant
+
+Q: What's the difference between `get_stylesheet_uri()` and `get_stylesheet_directory()`?
+A: `get_stylseheet_uri' will return the uri that includes `style.css` appended to it. `get_stylesheet_direcotry()` will return the path to the directory.
+
+
 
 # Opinionated Project Setup
 
@@ -21,7 +48,7 @@ All WordPress themes must have, at minimum:
 - Open the XAMPP Control Panel and start MySQL.
 - Click Admin to open phpMyAdmin.
 - Click New and enter database name.
-- Download newest version of Wordpress from here: `https://wordpress.org/download/`, directly into the new project directory.
+- Download newest version of Wordpress from here: `https://wordpress.org/download/`, directly into the new project directory a
 - Inside the directory, change the filename `wp-config-sample.php` to `wp-config.php`.
 - Open `wp-config.php` and change:
 -  `'database_name_here'` to your database name.
