@@ -24,34 +24,38 @@ Custom post types are used to organize data that doesn't fall into the native Wo
 
 # John's FAQ
 ## Retrieving data from database
-Q: How do I retrieve and display all posts?
+Q: How do I retrieve and display all posts? <br>
 A: Use the `have_posts()` function and loop and use a 'while' loop to loop through it.
 
-Q: How do I retrieve pages under a custom post type?
+Q: How do I retrieve pages under a custom post type? <br>
 A: Use either the `WP_Query {}` query class or `get_posts()` function, and filter by the `post_type` property.
 
-Q: How do I limit the number of posts shown?
+Q: How do I limit the number of posts shown? <br>
 A: Pass the `posts_per_page` parameter to your `WP_Query($args)` or `number_posts` to your `get_posts($args)`
 
+
 ## Enqueuing
-Q: Is it less performant to call `wp_enqueue_scripts()` multiple times?
+Q: Is it less performant to call `wp_enqueue_scripts()` multiple times? <br>
 A: It doesn't **seem** to be less performant
 
-Q: What's the difference between:
 
-`get_stylesheet_uri()`
+Q: What's the difference between: <br>
+`get_stylesheet_uri()` <br>
+`get_stylesheet_directory()` <br>
+`get_template_directory_uri()` <br>
 
-`get_stylesheet_directory()`
+A: <br>
+`get_stylseheet_uri` will return the uri that includes `style.css` appended to it <br>
+`get_stylesheet_directory()` will return the path to the directory for the **active** theme <br>
+`get_template_directory_uri()` will alays return the path for the **parent** theme <br>
 
-`get_template_directory_uri()`
-
-A: 
-
-`get_stylseheet_uri` will return the uri that includes `style.css` appended to it 
-
-`get_stylesheet_directory()` will return the path to the directory for the **active** theme
-
-`get_template_directory_uri()` will alays return the path for the **parent** theme
+## Features
+Q: How do I create a loader animation? <br>
+A: (See sandbox for example) <br>
+1. Create your CSS file for the animation and enqueue it
+2. Create your javascript file and enqueue it. Load the js in the footer in order to ensure access to css classes in the DOM.
+3. Use `window.addEventListener('load', function() {})` to trigger the animation and have it run until window.load completes
+4. Add a full-screen container just inside the document's `body` element
 
 
 
