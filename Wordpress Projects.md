@@ -38,12 +38,19 @@ Q: Is it less performant to call `wp_enqueue_scripts()` multiple times?
 A: It doesn't **seem** to be less performant
 
 Q: What's the difference between:
+
 `get_stylesheet_uri()`
+
 `get_stylesheet_directory()`
+
 `get_template_directory_uri()`
+
 A: 
+
 `get_stylseheet_uri` will return the uri that includes `style.css` appended to it 
+
 `get_stylesheet_directory()` will return the path to the directory for the **active** theme
+
 `get_template_directory_uri()` will alays return the path for the **parent** theme
 
 
