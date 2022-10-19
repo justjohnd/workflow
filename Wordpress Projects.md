@@ -72,10 +72,12 @@ A: Use translateZ and set elements to different depths. Make sure to set perspec
 
 ## Features (Note: not all of these are necessarily related to Wordpress)
 Q: How can I create a transparent navbar with background elements? </br>
-A: Add a wrapper to the navbar and include in that wrapper any elements you want to be seen. Place the background elements above the nav elements in the HTML flow so that they can be seen on top. Set background elements to position: absolute. See Codepen
+A: Add a wrapper to the navbar and include in that wrapper any elements you want to be seen. Place the background elements above the nav elements in the HTML flow so that they can be seen on top. Set background elements to position: absolute. See Codepen <br>
 
 ## Frontend Manipulation
-Q: How do I add classes based on the page I am on, for instance on the front page only?
+Q: How do I add classes based on the page I am on, for instance on the front page only? <br>
+A: `is_front_page()` <br>
+
 
 
 
