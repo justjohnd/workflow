@@ -55,7 +55,8 @@ A: (See sandbox for example) <br>
 1. Create your CSS file for the animation and enqueue it
 2. Create your javascript file and enqueue it. Load the js in the footer in order to ensure access to css classes in the DOM.
 3. Use `window.addEventListener('load', function() {})` to trigger the animation and have it run until window.load completes
-4. Add a full-screen container just inside the document's `body` element
+4. Control the css with js, making the loader cover the whole page with a higher z-index than the page contents. When page load completes, change z-index to hide the loader element behind the page content
+5. Add a full-screen container just inside the document's `body` element
 
 Q: How do I create seperate elements that scroll over and under each other at different rates? <br>
 A: Use translateZ and set elements to different depths. Make sure to set perspective origin and transform origin to same point. See Code Sandbox.
