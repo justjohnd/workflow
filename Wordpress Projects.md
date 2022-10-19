@@ -49,13 +49,20 @@ A: <br>
 `get_stylesheet_directory()` will return the path to the directory for the **active** theme <br>
 `get_template_directory_uri()` will alays return the path for the **parent** theme <br>
 
-## Features
+## Animations (Note: not all of these are necessarily related to WordPress)
 Q: How do I create a loader animation? <br>
 A: (See sandbox for example) <br>
 1. Create your CSS file for the animation and enqueue it
 2. Create your javascript file and enqueue it. Load the js in the footer in order to ensure access to css classes in the DOM.
 3. Use `window.addEventListener('load', function() {})` to trigger the animation and have it run until window.load completes
 4. Add a full-screen container just inside the document's `body` element
+
+Q: How do I create seperate elements that scroll over and under each other at different rates? <br>
+A: Use translateZ and set elements to different depths. Make sure to set perspective origin and transform origin to same point. See Code Sandbox.
+
+
+
+
 
 
 
