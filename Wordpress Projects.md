@@ -14,6 +14,15 @@ All WordPress themes must have, at minimum:
 
 * The appropriate way to load css and js is via enqueuing in the functions.php file.
 
+## Home Page
+* Home page is set either to Latest Posts (blog posts index) or a static page.
+* Either way, if a `front-page.php` exists, that template will be used. Based on whether **latest posts** or **static page** is selected, the Loop will return different information.
+	- **static page** loop will return the post flagged as "Front Page"
+	- **latest posts** loop will return all posts
+* Template heirarchy for **latest posts** is: `front-page.php`->`home.php`->`index.php`
+* Template heirarch for **static page** is: `front-page.php`->`page.php`->`index.php`
+
+
 ## Custom Post Types
 Custom post types are used to organize data that doesn't fall into the native WordPress post types, such as products, brands, etc.
 * To create custom post types (example: mysite.com/brands/nike where brands is the custom post type), register the custom post type in functions.php (or create a plugin (see sandbox for example)
@@ -59,9 +68,14 @@ A: (See sandbox for example) <br>
 5. Add a full-screen container just inside the document's `body` element
 
 Q: How do I create seperate elements that scroll over and under each other at different rates? <br>
-A: Use translateZ and set elements to different depths. Make sure to set perspective origin and transform origin to same point. See Code Sandbox.
+A: Use translateZ and set elements to different depths. Make sure to set perspective origin and transform origin to same point. See Codepen.
 
+## Features (Note: not all of these are necessarily related to Wordpress)
+Q: How can I create a transparent navbar with background elements? </br>
+A: Add a wrapper to the navbar and include in that wrapper any elements you want to be seen. Place the background elements above the nav elements in the HTML flow so that they can be seen on top. Set background elements to position: absolute. See Codepen
 
+## Frontend Manipulation
+Q: How do I add classes based on the page I am on, for instance on the front page only?
 
 
 
