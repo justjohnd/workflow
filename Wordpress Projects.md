@@ -78,6 +78,9 @@ A: Add a wrapper to the navbar and include in that wrapper any elements you want
 Q: How do I add classes based on the page I am on, for instance on the front page only? <br>
 A: `is_front_page()` <br>
 
+Q: How do I add images directly from the theme directory? </br>
+A: Add the root path at the front of the path. Example: `<img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/john.PNG'); ?>">`
+
 
 
 
