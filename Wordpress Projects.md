@@ -79,7 +79,10 @@ Q: How do I add classes based on the page I am on, for instance on the front pag
 A: `is_front_page()` <br>
 
 Q: How do I add images directly from the theme directory? </br>
-A: Add the root path at the front of the path. Example: `<img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/john.PNG'); ?>">`
+A: Add the root path at the front of the path. Example: `<img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/john.PNG'); ?>">`<br>
+
+Q: How can I access the archive page? <br>
+A: First make sure a page has been set up as the Posts page under Appearance -> Customize. The slug will be whatever is assigned to that page (ex.: `http://localhost/sandbox/blog/`). <br>
 
 
 
